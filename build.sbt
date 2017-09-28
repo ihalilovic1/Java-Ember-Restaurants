@@ -8,8 +8,9 @@ resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
       
 scalaVersion := "2.11.11"
 
-libraryDependencies ++= Seq( javaJdbc , cache , javaWs )
+libraryDependencies ++= Seq( javaJdbc , cache , javaWs ,
+  "org.postgresql" % "postgresql" % "9.4-1206-jdbc42", javaJpa )
 
-unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )  
+unmanagedResourceDirectories in Test <+=  baseDirectory ( _ /"target/web/public/test" )
 
-      
+libraryDependencies += evolutions
