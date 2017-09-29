@@ -1,2 +1,105 @@
 
 @import "ember-cli-bootstrap-4/bootstrap";
+
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
+/*
+    header component
+*/
+
+.custom-header {
+    height: 85px;
+}
+
+.custom-header-link {
+    color: black;
+    font-family: SourceSansPro;
+    font-weight: 600;
+}
+
+.custom-header-list {
+    font-size: 16px;
+    text-align: right;
+    
+}
+
+.custom-header-app-name {
+    font-size: 20px;
+    text-align: center;
+}
+
+.custom-header-link:active {
+    color: rgb(253, 111, 96);
+}
+
+.custom-header-link:hover {
+    color: rgb(253, 111, 96);
+}
+
+.custom-header-link:visited {
+    text-decoration: none;
+}
+
+/*
+    global
+*/
+.app-content-class {
+    margin-top: 85px;
+    background-color: #F9F9F9;
+    padding-top: 89px;
+    height: 100%;
+    padding-bottom: 300px;   
+}
+
+/*
+    footer
+*/
+.footer-left-side {
+    opacity: 0.4;
+    color: #ffffff;
+    //color: var(--white-three);
+    float: left;
+  }
+
+  .copyright-par {
+    font-size: 14px;
+    font-family: SourceSansPro-Regular;
+  }
+
+  .footer-list {
+    list-style-type: none;
+    font-family: SourceSansPro-Semibold;
+    margin: 0;
+    padding: 0;
+    padding-right: 5px;
+  }
+
+  .footer-list-item {
+    display: inline;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .footer-list-item-link {
+    color: white;
+  }
+  .footer-list-item-link:hover {
+    color: rgb(253, 111, 96);
+  }
+
+  .footer-right-side {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    color: var(--white-three);
+    float: right;
+  }
+
+  .footer-container {
+    height: 150px;
+    background-color: #131d24;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+    padding-top: 50px;
+  }
