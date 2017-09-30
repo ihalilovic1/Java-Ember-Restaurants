@@ -1,35 +1,65 @@
 {{header-component root='login'}}
 
 <div class="container">
-    <div class="row">
-        <div class="col-4">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-4">
+
+                </div>
+                <div class="col-md-1">
+                    <legend class="login-label">Login</legend>
+                </div>
+                <div class="col-md-3">
+                   {{#link-to 'register' class="login-create-acc-link"}}Create Account{{/link-to}}
+                </div>
+                <div class="col-4">
+
+                </div>
             </div>
 
-        <div class="col-4">
-            <form class="form-signin">
-                <div class="row">
-                    <div class="col-6">
-                        <h2 class="form-signin-heading">Login</h2>
-                    </div>
+            <div class="row">
+                <div class="col-4">
 
-                    <div class="col-6">
-                        <div class="text-center">
-                            {{#link-to 'register' class="button"}}
-                                Create Account
-                            {{/link-to}}
-                        </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md login-input" required="">
                     </div>
                 </div>
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-            </form>
-        </div>
+                <div class="col-4">
 
-        <div class="col-4">
-                    
-        </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-4">
+
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md login-input"
+                            required="">
+                    </div>
+                </div>
+                <div class="col-4">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="signin"></label>
+                        <button id="signin" name="signin" class="btn login-submit btn-block">Create Account</button>
+                    </div>
+                </div>
+                <div class="col-4">
+
+                </div>
+            </div>
+        </form>
     </div>
-</div>
