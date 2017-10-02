@@ -2,13 +2,13 @@
 
 CREATE TABLE Countries (
     id serial not null primary key,
-    name varchar(50) not null
+    name varchar(50) not null unique
 );
 
 CREATE TABLE Cities (
     id serial not null primary key,
     name varchar(50) not null ,
-    country bigint not null ,
+    country int not null ,
     foreign key(country) references Countries(id) on delete cascade
 );
 
@@ -18,12 +18,10 @@ CREATE TABLE Users (
     lastName varchar(255) not null,
     email varchar(255) not null,
     phone varchar(50) not null,
-    city bigint not null,
-    country bigint not null,
+    city int not null,
     isAdmin boolean not null,
     password text not null,
-    foreign key(city) references Countries(id) on delete restrict,
-    foreign key(country) references Cities(id) on delete restrict
+    foreign key(city) references Cities(id) on delete restrict
 );
 
 # --- !Downs

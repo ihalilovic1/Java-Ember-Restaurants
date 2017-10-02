@@ -1,33 +1,48 @@
-package models;
+package models.tables;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table( name = "\"users\"" )
 public class User {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "firstname")
     private String firstName;
 
+    @Column(name = "lastname")
     private String lastName;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "phone")
     private  String phone;
 
-    private Integer city;
+    @ManyToOne
+    @JoinColumn(name = "city",
+            foreignKey = @ForeignKey(name = "users_city_fkey")
+    )
+    private City city;
 
-    private Integer country;
-
+    @Column(name = "isadmin")
     private Boolean isAdmin;
 
+    @Column(name = "password")
     private String password;
 
-    public User(Integer id, String firstName, String lastName, String email, String phone, Integer city, Integer country, Boolean isAdmin, String password) {
+    public User(String firstName, String lastName, String email, String phone, City city, Boolean isAdmin, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.city = city;
-        this.country = country;
         this.isAdmin = isAdmin;
         this.password = password;
     }
@@ -75,20 +90,12 @@ public class User {
         this.phone = phone;
     }
 
-    public Integer getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(Integer city) {
+    public void setCity(City city) {
         this.city = city;
-    }
-
-    public Integer getCountry() {
-        return country;
-    }
-
-    public void setCountry(Integer country) {
-        this.country = country;
     }
 
     public Boolean getAdmin() {

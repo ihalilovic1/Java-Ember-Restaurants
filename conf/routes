@@ -3,4 +3,4 @@
 # ~~~~
 
 # Home page
-GET     /register                           controllers.UserController.register()
+GET     /getMe                           controllers.UserController.getMe
