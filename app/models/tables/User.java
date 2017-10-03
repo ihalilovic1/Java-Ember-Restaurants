@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table( name = "\"users\"" )
-public class User {
+public class User extends AbstractModel {
 
     @Id
     @GeneratedValue

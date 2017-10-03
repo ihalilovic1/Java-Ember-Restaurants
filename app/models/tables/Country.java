@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table( name = "\"countries\"" )
-public class Country {
+public class Country extends AbstractModel {
 
     @Id
     @GeneratedValue

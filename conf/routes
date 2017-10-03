@@ -4,3 +4,7 @@
 
 # Home page
 GET     /getMe                           controllers.UserController.getMe
+
+POST    /register                        controllers.UserController.register
+
+POST    /login                           controllers.UserController.login

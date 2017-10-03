@@ -1,29 +1,36 @@
 package services;
 
 
+import forms.LoginForm;
 import models.tables.User;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.jpa.HibernateEntityManager;
-import org.hibernate.Session;
 import play.db.jpa.JPA;
-import play.db.jpa.JPAApi;
 
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
-
-public class UserService {
-
-    private JPAApi jpaApi;
-
-    @Inject
-    public UserService(JPAApi api) {
-        this.jpaApi = api;
-    }
+public class UserService extends AbstractService {
 
     public User getUser() {
+        return getEntityManager().getReference(User.class, 1);
+    }
 
-        EntityManager em = jpaApi.em();
+    public User register() {
+        return new User();
+    }
 
-        return em.getReference(User.class, 1);
+    public User login(LoginForm loginForm) {
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<User> criteria = builder.createQuery(User.class);
+        Root<User> root = criteria.from(User.class);
+
+        criteria.select(root);
+        criteria.where(builder.equal(root.get("email"), loginForm.getEmail()));
+        criteria.where(builder.equal(root.get("password"), hash(loginForm.getPassword())));
+
+        return getEntityManager().createQuery(criteria).getSingleResult();
     }
 }
