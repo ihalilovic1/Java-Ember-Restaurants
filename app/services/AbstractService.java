@@ -17,12 +17,9 @@ public abstract class AbstractService {
         return JPA.em();
     }
 
+    //TODO: implement hashing
     public String hash(String password) {
         return password;
-    }
-
-    public Session getSession() {
-        return ((HibernateEntityManager) JPA.em()).getSession();
     }
 
 }

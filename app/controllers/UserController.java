@@ -32,14 +32,6 @@ public class UserController extends AbstractController {
     }
 
     @Transactional
-    public Result getMe() {
-
-        User result = userService.getUser();
-
-        return ok(Json.toJson(result.getCity().getCountry().getName()));
-    }
-
-    @Transactional
     public Result register() {
         userService.register();
         return ok();
@@ -47,9 +39,40 @@ public class UserController extends AbstractController {
 
     @Transactional
     public Result login() {
-        Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
-        User result = userService.login(loginForm.bindFromRequest().get());
-        return ok(result.getFirstName() + " " + result.getLastName());
+        try {
+            Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
+            User result = userService.login(loginForm.bindFromRequest().get());
+
+            if(result != null) {
+                session("connected", result.getEmail());
+                return ok("Logged in");
+            } else {
+                return badRequest();
+            }
+
+            //TODO return requested body
+
+        } catch (Exception e) {
+            return badRequest();
+        }
+    }
+
+    public Result logout() {
+        try {
+            session().remove("connected");
+            return ok("Logged out");
+        } catch (Exception ex) {
+            return badRequest("Not logged in");
+        }
+    }
+
+    public Result currentUser() {
+        try {
+            return ok(session().get("connected"));
+
+        } catch (Exception ex) {
+            return badRequest("User does not exist");
+        }
     }
 
 }

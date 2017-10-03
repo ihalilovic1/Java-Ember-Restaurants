@@ -14,10 +14,6 @@ import javax.persistence.criteria.Root;
 
 public class UserService extends AbstractService {
 
-    public User getUser() {
-        return getEntityManager().getReference(User.class, 1);
-    }
-
     public User register() {
         return new User();
     }

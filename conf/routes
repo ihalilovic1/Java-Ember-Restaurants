@@ -2,9 +2,11 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET     /getMe                           controllers.UserController.getMe
+# User routes
+POST    /register                             controllers.UserController.register
 
-POST    /register                        controllers.UserController.register
+POST    /login                                controllers.UserController.login
 
-POST    /login                           controllers.UserController.login
+GET     /logout                               controllers.UserController.logout
+
+GET     /currentUser                          controllers.UserController.currentUser
