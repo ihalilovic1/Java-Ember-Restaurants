@@ -3,10 +3,10 @@
 # ~~~~
 
 # User routes
-POST    /register                             controllers.UserController.register
+POST    /api/v1/register                             controllers.UserController.register
 
-POST    /login                                controllers.UserController.login
+POST    /api/v1/login                                controllers.UserController.login
 
-GET     /logout                               controllers.UserController.logout
+GET     /api/v1/logout                               controllers.UserController.logout
 
-GET     /currentUser                          controllers.UserController.currentUser
+GET     /api/v1/currentUser                          controllers.UserController.currentUser

@@ -1,7 +1,7 @@
 {{header-component}}
 
 <div class="container create-acc-container">
-  <form class="form-horizontal">
+  <form class="form-horizontal" {{action 'register' on='submit'}}>
     <div class="row">
       <div class="col-4">
 
@@ -23,7 +23,7 @@
         </div>
       <div class="col-md-4">
         <div class="form-group">
-          <input id="first-name" name="first-name" type="text" placeholder="First Name" class="form-control input-md create-acc-input" required=""> 
+          {{input id="first-name" type="text" placeholder="First Name" class="form-control input-md create-acc-input" value=firstName}} 
         </div>
       </div>
       <div class="col-4">
@@ -37,7 +37,7 @@
         </div>
       <div class="col-md-4">
         <div class="form-group">
-            <input id="last-name" name="last-name" type="text" placeholder="Last Name" class="form-control input-md create-acc-input" required="">
+            {{input id="last-name" type="text" placeholder="Last Name" class="form-control input-md create-acc-input" value=lastName}}
         </div>
       </div>
       <div class="col-4">
@@ -51,7 +51,7 @@
         </div>
       <div class="col-md-4">
         <div class="form-group">
-            <input id="email" name="email" type="text" placeholder="Email" class="form-control input-md create-acc-input" required="">
+            {{input id="email" type="text" placeholder="Email" class="form-control input-md create-acc-input" value=email}}
         </div>
       </div>
       <div class="col-4">
@@ -65,7 +65,7 @@
         </div>
       <div class="col-md-4">
         <div class="form-group">
-            <input id="phone" name="phone" type="text" placeholder="Phone Number" class="form-control input-md create-acc-input" required=""> 
+            {{input id="phone" type="text" placeholder="Phone Number" class="form-control input-md create-acc-input" value=phone}}
         </div>
       </div>
       <div class="col-4">
@@ -93,7 +93,7 @@
       </div>
       <div class="col-md-2 create-acc-dropdown-right-col">
           <select id="city" name="city" class="form-control create-acc-input create-acc-dropdown">
-              <option value="1">Sarajevo</option>
+              <option value="1" selected>Sarajevo</option>
               <option value="2">A</option>
               <option value="3">B</option>
               <option value="4">C</option>
@@ -114,7 +114,7 @@
         </div>
       <div class="col-md-4">
         <div class="form-group">
-            <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md create-acc-input" required="">
+            {{input id="password" type="password" placeholder="Password" class="form-control input-md create-acc-input" value=password}}
         </div>
       </div>
       <div class="col-4">
@@ -128,7 +128,7 @@
         </div>
       <div class="col-md-4">
         <div class="form-group">
-            <input id="confirm-password" name="confirm-password" type="password" placeholder="Confirm Password" class="form-control input-md create-acc-input" required="">
+            {{input id="confirm-password" type="password" placeholder="Confirm Password" class="form-control input-md create-acc-input" value=confirmPassword}}
         </div>
       </div>
       <div class="col-4">
@@ -142,7 +142,7 @@
         </div>
       <div class="col-md-4">
         <div class="form-group">
-            <label class="col-md-4 control-label" for="signup"></label>
+
             <button id="signup" name="signup" class="btn create-acc-submit btn-block">Create Account</button>
         </div>
       </div>

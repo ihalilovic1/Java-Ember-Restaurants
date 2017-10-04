@@ -1,8 +1,9 @@
 package controllers;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import forms.LoginForm;
 import forms.RegisterForm;
+import helpers.SessionHelper;
+import helpers.UserResponse;
 import models.tables.User;
 import play.data.Form;
 import play.data.FormFactory;
@@ -32,59 +33,56 @@ public class UserController extends AbstractController {
 
     @Transactional
     public Result register() {
+        try {
+            Form<RegisterForm> registerForm = formFactory.form(RegisterForm.class);
 
-        return badRequest("Not implemented");
+            User result = userService.register(registerForm.bindFromRequest().get());
+
+            SessionHelper.connect(result.getId().toString());
+            return ok(UserResponse.makeResponse(result));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+
     }
 
     @Transactional
     public Result login() {
         try {
             Form<LoginForm> loginForm = formFactory.form(LoginForm.class);
-            if(loginForm.hasErrors()) {
-                return badRequest(loginForm.errorsAsJson());
-            }
+
             User result = userService.login(loginForm.bindFromRequest().get());
 
             if(result != null) {
-                session("connected", result.getId().toString());
-                ObjectNode json = (ObjectNode)Json.toJson(result);
-                json.remove("password");
-                json.put("country", result.getCity().getCountry().getName());
-                json.put("city", result.getCity().getName());
-                return ok(json);
+                SessionHelper.disconnect();
+                SessionHelper.connect(result.getId().toString());
+                return ok(UserResponse.makeResponse(result));
             } else {
                 return badRequest(Json.parse("{\"error\":\"Entered data is not valid!\"}"));
         }
 
-            //TODO return requested body
-
         } catch (Exception e) {
-            return badRequest();
+            return badRequest(e.getLocalizedMessage());
         }
     }
 
     @Transactional
     public Result logout() {
         try {
-            session().remove("connected");
+            SessionHelper.disconnect();
             return ok();
         } catch (Exception ex) {
-            return badRequest();
+            return badRequest(ex.getLocalizedMessage());
         }
     }
 
     @Transactional
     public Result currentUser() {
         try {
-            User result = userService.getUserById(Integer.parseInt(session().get("connected")));
+            User result = userService.getUserById(SessionHelper.getId());
 
             if(result != null) {
-                //TODO return according to api table, currently returning password
-                ObjectNode json = (ObjectNode)Json.toJson(result);
-                json.remove("password");
-                json.put("country", result.getCity().getCountry().getName());
-                json.put("city", result.getCity().getName());
-                return ok(json);
+                return ok(UserResponse.makeResponse(result));
             } else {
                 return badRequest(Json.toJson("User does not exist"));
             }

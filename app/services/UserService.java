@@ -6,6 +6,7 @@ import forms.RegisterForm;
 import models.tables.City;
 import models.tables.User;
 
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -13,6 +14,12 @@ import javax.persistence.criteria.Root;
 public class UserService extends AbstractService {
 
     public User register(RegisterForm registerForm) {
+        //TODO implement using API
+        Query getCountry = getEntityManager().createQuery("select 'id' from 'countries' where 'name' = '" + registerForm.getCountry() + "';" );
+        Integer countyId = getCountry.getFirstResult();
+        Query getCity = getEntityManager().createQuery("select 'id' from 'cities' where 'name' = '" + registerForm.getCity()
+                + "' and 'id'='" + countyId +"';");
+        Integer cityId = getCity.getFirstResult();
 
         return null;
     }
@@ -23,8 +30,7 @@ public class UserService extends AbstractService {
         Root<User> root = criteria.from(User.class);
 
         criteria.select(root);
-        criteria.where(builder.equal(root.get("email"), loginForm.getEmail()));
-        criteria.where(builder.equal(root.get("password"), hash(loginForm.getPassword())));
+        criteria.where(builder.equal(root.get("password"), hash(loginForm.getPassword())), builder.equal(root.get("email"), loginForm.getEmail()));
         try {
             return getEntityManager().createQuery(criteria).getSingleResult();
         } catch (Exception ex) {
