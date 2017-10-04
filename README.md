@@ -5,7 +5,8 @@ Atlantbh internship project.
 ## TODO
 - [ ] Exception handling
 - [ ] Set response body according to API table
-- [ ] Change color of active navigation bar links
+- [x] Change color of active navigation bar links
+- [ ] Form validation
 
 ## Built With
 

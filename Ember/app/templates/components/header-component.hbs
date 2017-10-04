@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-lg bg-white  custom-header">
     <div class="container">
-        <a class="navbar-brand custom-header-link" href="#">AppName</a>
+        <div>
+            
+            {{#link-to 'index' class="navbar-brand custom-header-link"}}
+                AppName
+            {{/link-to}}
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -8,17 +13,29 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     {{#link-to 'index' id="home-link" class="nav-link header-link custom-header-link"}}
-                        Home
+                        {{#if home}}
+                            <span class="custom-header-link-open">Home</span>
+                        {{else}}
+                            Home
+                        {{/if}}
                     {{/link-to}}
                 </li>
                 <li class="nav-item">
                     {{#link-to 'restaurants' id="restaurants-link" class="nav-link header-link custom-header-link"}}
-                        Restaurants
+                        {{#if restaurants}}
+                            <span class="custom-header-link-open">Restaurants</span>
+                        {{else}}
+                            Restaurants
+                        {{/if}}
                     {{/link-to}}
                 </li>
                 <li class="nav-item">
                     {{#link-to 'login' id="login-link" class="nav-link header-link custom-header-link"}}
-                        Login
+                        {{#if login}}
+                            <span class="custom-header-link-open">Login</span>
+                        {{else}}
+                            Login
+                        {{/if}}
                     {{/link-to}}
                 </li>
             </ul>
