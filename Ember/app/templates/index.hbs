@@ -1,13 +1,12 @@
 {{header-component home=true}}
 <div>
     {{outlet}}
-    <p>Work in progress!!!</p>
     <div class="container">
         <div class="row">
             <div class="col">
-                {{#if isLoggedIn}}
-                    logged in
-                    
+                {{#if model.currentUser}}
+                    current user: 
+                    {{model.currentUser.phone}}
                 {{else}}
                     not logged in
                  

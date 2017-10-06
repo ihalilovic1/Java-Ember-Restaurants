@@ -11,7 +11,12 @@ export default Ember.Route.extend({
     actions: {
         login() {
             this.get('userService').login(this.get('controller.email'), this.get('controller.password'))
-                .then(() => this.transitionTo('index'));
+                .then(data => {
+                    this.transitionTo('index');
+                })
+                .catch(error => {
+                    alert("Login was not successfull");
+                })
         }
     }
 });

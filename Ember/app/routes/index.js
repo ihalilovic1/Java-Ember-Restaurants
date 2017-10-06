@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
 
 const {
     inject: {
@@ -8,15 +9,17 @@ const {
 
 export default Ember.Route.extend({
     userService:    service('user-service'),
-    isLoggedIn:     function() {
-        return this.get('userService').get('isLoggedIn');
-    },
+    
     model() {
-        currentUser:    this.get('userService.currentUser');
-    },
-    actions: {
-        getCurrentUser() {
-            
-        }
+        return RSVP.hash({
+            currentUser:    this.get('userService').getCurrentUser()
+                                .then(data => {
+                                    return data;
+                                })
+                                .catch(error => {
+                                    return null;
+                                })
+        })
+        
     }
 });
