@@ -8,6 +8,7 @@ const {
 
 export default Ember.Route.extend({
     userService:    service('user-service'),
+
     actions: {
         login() {
             this.get('userService').login(this.get('controller.email'), this.get('controller.password'))
