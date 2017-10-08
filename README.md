@@ -4,9 +4,10 @@ Atlantbh internship project.
 
 ## TODO
 - [ ] Exception handling
-- [ ] Set response body according to API table
+- [x] Set response body according to API table
 - [x] Change color of active navigation bar links
 - [ ] Form validation
+- [ ] Switch to PostgreSQL-specific UUID
 
 ## Built With
 

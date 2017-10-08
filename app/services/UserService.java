@@ -3,10 +3,8 @@ package services;
 
 import forms.LoginForm;
 import forms.RegisterForm;
-import models.tables.City;
 import models.tables.User;
 
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -14,13 +12,6 @@ import javax.persistence.criteria.Root;
 public class UserService extends AbstractService {
 
     public User register(RegisterForm registerForm) {
-        //TODO implement using API
-        Query getCountry = getEntityManager().createQuery("select 'id' from 'countries' where 'name' = '" + registerForm.getCountry() + "';" );
-        Integer countyId = getCountry.getFirstResult();
-        Query getCity = getEntityManager().createQuery("select 'id' from 'cities' where 'name' = '" + registerForm.getCity()
-                + "' and 'id'='" + countyId +"';");
-        Integer cityId = getCity.getFirstResult();
-
         return null;
     }
 
@@ -56,13 +47,13 @@ public class UserService extends AbstractService {
         }
     }
 
-    public City getCityByName(String name) {
+    public User getUserByEmail(String email) {
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<City> criteria = builder.createQuery(City.class);
-        Root<City> root = criteria.from(City.class);
+        CriteriaQuery<User> criteria = builder.createQuery(User.class);
+        Root<User> root = criteria.from(User.class);
 
         criteria.select(root);
-        criteria.where(builder.equal(root.get("name"), name));
+        criteria.where(builder.equal(root.get("email"), email));
 
         try {
             return getEntityManager().createQuery(criteria).getSingleResult();

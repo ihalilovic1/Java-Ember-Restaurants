@@ -42,7 +42,7 @@ insert into Users (firstName, lastName, email, phone, city, isAdmin, password)
         '062720716',
         1,
         true,
-        "admin"
+        'admin'
     );
 
 insert into Users (firstName, lastName, email, phone, city, isAdmin, password)
@@ -53,7 +53,7 @@ insert into Users (firstName, lastName, email, phone, city, isAdmin, password)
         '123123123',
         2,
         false,
-        "regular"
+        'regular'
     );
 
 insert into FoodTypes (name)
@@ -94,7 +94,7 @@ insert into FoodTypes (name)
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
     values(
         'Njam Njam',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis. Nulla mauris nisl, finibus et arcu vitae, commodo gravida ipsum. Nam sed felis vel est congue rhoncus. Phasellus malesuada suscipit urna a viverra. Mauris mattis tellus lacus, quis bibendum neque rhoncus varius. In ultrices dolor risus, at elementum dui vestibulum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam metus augue, accumsan nec risus vel, varius mollis odio. Pellentesque in est euismod, scelerisque lectus ac, lobortis augue. Vivamus quis lorem vel orci tincidunt maximus. Praesent hendrerit finibus felis.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
         43.8563,
         18.4131,
         1,
@@ -106,7 +106,7 @@ insert into Restaurants(name, description, latitude, longitude, priceRange, imag
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
     values(
         'Zeljo',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis. Nulla mauris nisl, finibus et arcu vitae, commodo gravida ipsum. Nam sed felis vel est congue rhoncus. Phasellus malesuada suscipit urna a viverra. Mauris mattis tellus lacus, quis bibendum neque rhoncus varius. In ultrices dolor risus, at elementum dui vestibulum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam metus augue, accumsan nec risus vel, varius mollis odio. Pellentesque in est euismod, scelerisque lectus ac, lobortis augue. Vivamus quis lorem vel orci tincidunt maximus. Praesent hendrerit finibus felis.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
         43.8563,
         18.4131,
         2,
@@ -118,7 +118,7 @@ insert into Restaurants(name, description, latitude, longitude, priceRange, imag
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
     values(
         'Mc Donalds',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis. Nulla mauris nisl, finibus et arcu vitae, commodo gravida ipsum. Nam sed felis vel est congue rhoncus. Phasellus malesuada suscipit urna a viverra. Mauris mattis tellus lacus, quis bibendum neque rhoncus varius. In ultrices dolor risus, at elementum dui vestibulum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam metus augue, accumsan nec risus vel, varius mollis odio. Pellentesque in est euismod, scelerisque lectus ac, lobortis augue. Vivamus quis lorem vel orci tincidunt maximus. Praesent hendrerit finibus felis.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
         43.8563,
         18.4131,
         2,
@@ -130,7 +130,7 @@ insert into Restaurants(name, description, latitude, longitude, priceRange, imag
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
     values(
         'Cordoba',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis. Nulla mauris nisl, finibus et arcu vitae, commodo gravida ipsum. Nam sed felis vel est congue rhoncus. Phasellus malesuada suscipit urna a viverra. Mauris mattis tellus lacus, quis bibendum neque rhoncus varius. In ultrices dolor risus, at elementum dui vestibulum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam metus augue, accumsan nec risus vel, varius mollis odio. Pellentesque in est euismod, scelerisque lectus ac, lobortis augue. Vivamus quis lorem vel orci tincidunt maximus. Praesent hendrerit finibus felis.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
         43.8563,
         18.4131,
         3,
@@ -142,7 +142,7 @@ insert into Restaurants(name, description, latitude, longitude, priceRange, imag
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
     values(
         'Mrkva',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis. Nulla mauris nisl, finibus et arcu vitae, commodo gravida ipsum. Nam sed felis vel est congue rhoncus. Phasellus malesuada suscipit urna a viverra. Mauris mattis tellus lacus, quis bibendum neque rhoncus varius. In ultrices dolor risus, at elementum dui vestibulum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam metus augue, accumsan nec risus vel, varius mollis odio. Pellentesque in est euismod, scelerisque lectus ac, lobortis augue. Vivamus quis lorem vel orci tincidunt maximus. Praesent hendrerit finibus felis.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
         43.8563,
         18.4131,
         4,
@@ -154,7 +154,7 @@ insert into Restaurants(name, description, latitude, longitude, priceRange, imag
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
     values(
         'Java',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis. Nulla mauris nisl, finibus et arcu vitae, commodo gravida ipsum. Nam sed felis vel est congue rhoncus. Phasellus malesuada suscipit urna a viverra. Mauris mattis tellus lacus, quis bibendum neque rhoncus varius. In ultrices dolor risus, at elementum dui vestibulum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam metus augue, accumsan nec risus vel, varius mollis odio. Pellentesque in est euismod, scelerisque lectus ac, lobortis augue. Vivamus quis lorem vel orci tincidunt maximus. Praesent hendrerit finibus felis.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
         43.8563,
         18.4131,
         5,
@@ -166,7 +166,7 @@ insert into Restaurants(name, description, latitude, longitude, priceRange, imag
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
     values(
         'Kimono',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis. Nulla mauris nisl, finibus et arcu vitae, commodo gravida ipsum. Nam sed felis vel est congue rhoncus. Phasellus malesuada suscipit urna a viverra. Mauris mattis tellus lacus, quis bibendum neque rhoncus varius. In ultrices dolor risus, at elementum dui vestibulum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam metus augue, accumsan nec risus vel, varius mollis odio. Pellentesque in est euismod, scelerisque lectus ac, lobortis augue. Vivamus quis lorem vel orci tincidunt maximus. Praesent hendrerit finibus felis.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
         43.8563,
         18.4131,
         2,
@@ -178,7 +178,7 @@ insert into Restaurants(name, description, latitude, longitude, priceRange, imag
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
     values(
         'Mrvica',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis. Nulla mauris nisl, finibus et arcu vitae, commodo gravida ipsum. Nam sed felis vel est congue rhoncus. Phasellus malesuada suscipit urna a viverra. Mauris mattis tellus lacus, quis bibendum neque rhoncus varius. In ultrices dolor risus, at elementum dui vestibulum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam metus augue, accumsan nec risus vel, varius mollis odio. Pellentesque in est euismod, scelerisque lectus ac, lobortis augue. Vivamus quis lorem vel orci tincidunt maximus. Praesent hendrerit finibus felis.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
         43.8563,
         18.4131,
         1,

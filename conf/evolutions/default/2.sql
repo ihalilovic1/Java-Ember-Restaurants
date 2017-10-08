@@ -21,7 +21,9 @@ CREATE TABLE Restaurants (
 CREATE TABLE Restaurant_FoodType (
     id serial primary key,
     restaurant int not null,
-    foodType int not null
+    foodType int not null,
+    foreign key(restaurant) references Restaurants(id) on delete restrict,
+    foreign key(foodType) references FoodTypes(id) on delete restrict
 );
 
 CREATE TABLE Restaurant_Menu (
@@ -30,15 +32,18 @@ CREATE TABLE Restaurant_Menu (
     type varchar(50) not null,
     name varchar(50) not null,
     price int not null,
-    description text not null
+    description text not null,
+    foreign key(restaurant) references Restaurants(id) on delete restrict
 );
 
 CREATE TABLE Reviews (
     id serial not null primary key,
     mark int not null,
-    user int not null,
+    userId int not null,
     restaurant int not null,
-    comment text not null
+    comment text not null,
+    foreign key(userId) references Users(id) on delete restrict,
+    foreign key(restaurant) references Restaurants(id) on delete restrict
 );
 
 # --- !Downs
