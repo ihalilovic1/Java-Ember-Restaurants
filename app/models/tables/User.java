@@ -1,16 +1,16 @@
 package models.tables;
 
-
 import javax.persistence.*;
+import java.util.UUID;
+
 
 @Entity
-@Table( name = "\"users\"" )
+@Table( name = "`users`" )
 public class User extends AbstractModel {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
-    private Integer id;
+    private UUID id;
 
     @Column(name = "firstname")
     private String firstName;
@@ -37,7 +37,6 @@ public class User extends AbstractModel {
     private String password;
 
     public User(String firstName, String lastName, String email, String phone, City city, Boolean isAdmin, String password) {
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -50,11 +49,12 @@ public class User extends AbstractModel {
     public User() {
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
+        System.out.println("AAAAAAAAAAAAAAAAAAA" + id);
         this.id = id;
     }
 

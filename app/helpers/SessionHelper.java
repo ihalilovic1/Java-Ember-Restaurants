@@ -1,5 +1,7 @@
 package helpers;
 
+import java.util.UUID;
+
 import static play.mvc.Controller.session;
 
 public class SessionHelper {
@@ -13,7 +15,7 @@ public class SessionHelper {
         session().clear();
     }
 
-    public static Integer getId() {
-        return Integer.parseInt(session().get("connected"));
+    public static UUID getId() {
+        return UUID.fromString(session().get("connected"));
     }
 }

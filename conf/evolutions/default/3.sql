@@ -11,50 +11,34 @@ insert into Countries(name)
     );
 
 insert into Cities(name, country)
-    values(
-        'Sarajevo',
-        1
-    );
+    select 'Sarajevo', C.id
+    from countries C
+    where name='Bosnia and Herzegovina';
 
 insert into Cities(name, country)
-    values(
-        'Visoko',
-        1
-    );
+    select 'Visoko', C.id
+    from countries C
+    where name='Bosnia and Herzegovina';
 
 insert into Cities(name, country)
-    values(
-        'Zenica',
-        1
-    );
+    select 'Zenica', C.id
+    from countries C
+    where name='Bosnia and Herzegovina';
 
 insert into Cities(name, country)
-    values(
-        'Zagreb',
-        2
-    );
+    select 'Zagreb', C.id
+    from countries C
+    where C.name='Croatia';
 
 insert into Users (firstName, lastName, email, phone, city, isAdmin, password)
-    values(
-        'Irhad',
-        'Halilovic',
-        'irhadhalilovic@gmail.com',
-        '062720716',
-        1,
-        true,
-        'admin'
-    );
+    select 'Irhad', 'Halilovic', 'irhadhalilovic@gmail.com', '062720716', C.id, true, 'admin'
+    from cities C
+    where C.name='Sarajevo';
 
 insert into Users (firstName, lastName, email, phone, city, isAdmin, password)
-    values(
-        'Novi',
-        'Korisnik',
-        'novi@gmail.com',
-        '123123123',
-        2,
-        false,
-        'regular'
-    );
+    select 'Novi', 'Korisnik', 'novi@gmail.com', '123123123', C.id, false, 'regular'
+    from cities C
+    where C.name='Visoko';
 
 insert into FoodTypes (name)
     values(
@@ -92,99 +76,53 @@ insert into FoodTypes (name)
     );
 
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
-    values(
-        'Njam Njam',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
-        43.8563,
-        18.4131,
-        1,
-        'assets/images/restaurant_logo.jpg',
-        '"assets/images/restaurant_cover.jpg',
-        2
-    );
+    select 'Njam Njam', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
+        43.8563, 18.4131, 1, 'assets/images/restaurant_logo.jpg', 'assets/images/restaurant_cover.jpg', C.id
+        from cities C
+        where C.name='Visoko';
 
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
-    values(
-        'Zeljo',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
-        43.8563,
-        18.4131,
-        2,
-        'assets/images/restaurant_logo.jpg',
-        '"assets/images/restaurant_cover.jpg',
-        1
-    );
+    select 'Zeljo', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
+        43.8563, 18.4131, 2, 'assets/images/restaurant_logo.jpg', '"assets/images/restaurant_cover.jpg', C.id
+        from cities C
+        where C.name='Sarajevo';
 
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
-    values(
-        'Mc Donalds',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
-        43.8563,
-        18.4131,
-        2,
-        'assets/images/restaurant_logo.jpg',
-        '"assets/images/restaurant_cover.jpg',
-        3
-    );
+    select 'Mc Donalds', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
+        43.8563, 18.4131, 2, 'assets/images/restaurant_logo.jpg', '"assets/images/restaurant_cover.jpg', C.id
+        from cities C
+        where C.name='Zagreb';
 
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
-    values(
-        'Cordoba',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
-        43.8563,
-        18.4131,
-        3,
-        'assets/images/restaurant_logo.jpg',
-        '"assets/images/restaurant_cover.jpg',
-        1
-    );
+    select 'Cordoba', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
+        43.8563, 18.4131, 3, 'assets/images/restaurant_logo.jpg', '"assets/images/restaurant_cover.jpg', C.id
+        from cities C
+        where C.name='Zenica';
 
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
-    values(
-        'Mrkva',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
-        43.8563,
-        18.4131,
-        4,
-        'assets/images/restaurant_logo.jpg',
-        '"assets/images/restaurant_cover.jpg',
-        4
-    );
+    select 'Mrkva', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
+        43.8563, 18.4131, 4, 'assets/images/restaurant_logo.jpg', '"assets/images/restaurant_cover.jpg', C.id
+        from cities C
+        where C.name='Sarajevo';
 
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
-    values(
-        'Java',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
-        43.8563,
-        18.4131,
-        5,
-        'assets/images/restaurant_logo.jpg',
-        '"assets/images/restaurant_cover.jpg',
-        3
-    );
+    select 'Java', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
+        43.8563, 18.4131, 5, 'assets/images/restaurant_logo.jpg', '"assets/images/restaurant_cover.jpg', C.id
+        from cities C
+        where C.name='Visoko';
 
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
-    values(
-        'Kimono',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
-        43.8563,
-        18.4131,
-        2,
-        'assets/images/restaurant_logo.jpg',
-        '"assets/images/restaurant_cover.jpg',
-        2
-    );
+    select 'Kimono', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
+        43.8563, 18.4131, 2, 'assets/images/restaurant_logo.jpg', '"assets/images/restaurant_cover.jpg', C.id
+        from cities C
+        where C.name='Zagreb';
 
 insert into Restaurants(name, description, latitude, longitude, priceRange, imageFileName, coverFileName, location)
-    values(
-        'Mrvica',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
-        43.8563,
-        18.4131,
-        1,
-        'assets/images/restaurant_logo.jpg',
-        '"assets/images/restaurant_cover.jpg',
-        1
-    );
+    select 'Mrvica', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ornare ut diam et mattis.',
+        43.8563, 18.4131, 1, 'assets/images/restaurant_logo.jpg', '"assets/images/restaurant_cover.jpg', C.id
+        from cities C
+        where C.name='Sarajevo';
 
 # --- !Downs
+
+TRUNCATE restaurants, foodtypes, users, cities, countries RESTART IDENTITY;

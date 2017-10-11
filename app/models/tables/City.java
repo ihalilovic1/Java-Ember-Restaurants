@@ -2,6 +2,7 @@ package models.tables;
 
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Table( name = "\"cities\"" )
@@ -9,8 +10,7 @@ public class City  extends AbstractModel {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
-    private Integer id;
+    private UUID id;
 
     @Column(name = "name")
     private String name;
@@ -29,11 +29,11 @@ public class City  extends AbstractModel {
         this.country = country;
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

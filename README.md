@@ -2,12 +2,21 @@
 
 Atlantbh internship project.
 
+### Prerequisites
+
+Database needs pgcrypto extension. It can be installed using pgadmin query tool by running
+the following:
+
+```
+CREATE EXTENSION pgcrypto;
+```
+
 ## TODO
 - [ ] Exception handling
 - [x] Set response body according to API table
 - [x] Change color of active navigation bar links
 - [ ] Form validation
-- [ ] Switch to PostgreSQL-specific UUID
+- [x] Switch to PostgreSQL-specific UUID
 
 ## Built With
 
