@@ -4,6 +4,66 @@
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
 
 /*
+  landing
+*/
+.landing-header {
+  height: 680px;
+  width: 100%;
+  background-size: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.landing-header img {
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: inherit;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.transparent-background {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: white;
+}
+
+.landing-header-label {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  text-align: center;
+  padding-top: 232px;
+  position: relative;
+  z-index: 2;
+}
+
+.free-reservation-label {
+  height: 60px;
+  font-size: 48px;
+  font-weight: 300;
+}
+
+.number-of-restaurants-label {
+  height: 25px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.row-full {
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+}
+
+.not-transparent {
+  background-color: black;
+  padding: 0;
+}
+
+/*
   form-error-text
 */
 .form-error-text {
@@ -23,7 +83,6 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #F9F9F9;
-
 }
 
 .content-container {
@@ -36,17 +95,31 @@ html, body {
 
 /*
     header component
+     
 */
 
 .custom-header {
     height: 85px;
     margin-bottom: 100px;
+    z-index: 3;
+}
+
+.custom-header-landing {
+  height: 85px;
+  margin-bottom: -85px;
+  z-index: 3;
 }
 
 .custom-header-link {
     color: black;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 600;
+}
+
+.custom-header-link-landing {
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
 }
 
 .custom-header-list {
@@ -70,6 +143,18 @@ html, body {
 
 .custom-header-link:visited {
     text-decoration: none;
+}
+
+.custom-header-link-landing:active {
+  color: rgb(253, 111, 96);
+}
+
+.custom-header-link-landing:hover {
+  color: rgb(253, 111, 96);
+}
+
+.custom-header-link-landing:visited {
+  text-decoration: none;
 }
 
 .custom-header-link-open {
