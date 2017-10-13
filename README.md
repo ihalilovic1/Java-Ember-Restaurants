@@ -17,6 +17,7 @@ CREATE EXTENSION pgcrypto;
 - [x] Change color of active navigation bar links
 - [ ] Form validation
 - [x] Switch to PostgreSQL-specific UUID
+- [ ] Make review_restaurant join table
 
 ## Built With
 

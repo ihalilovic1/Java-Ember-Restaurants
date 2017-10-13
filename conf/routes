@@ -2,7 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# User routes
+# User management
 POST    /api/v1/register                             controllers.UserController.register
 
 POST    /api/v1/login                                controllers.UserController.login
@@ -10,3 +10,7 @@ POST    /api/v1/login                                controllers.UserController.
 GET     /api/v1/logout                               controllers.UserController.logout
 
 GET     /api/v1/currentUser                          controllers.UserController.currentUser
+
+#Restaurant management
+
+POST /api/v1/getRestaurantDetails                     controllers.RestaurantControler.getRestaurantDetails(id: String)

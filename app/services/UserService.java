@@ -33,9 +33,9 @@ public class UserService extends AbstractService {
         cityCriteria.select( cityRoot );
         cityCriteria.where( builder.equal( cityRoot.get( "name" ), registerForm.getCity() ),
                 builder.equal( cityRoot.get( "country" ), country ) );
-        System.out.println("JJJJJJJJJJJJJJJJJJJJJJJJJJJ");
+
         City city = entityManager.createQuery(cityCriteria).getSingleResult();
-        System.out.println("FFFFFFFFFFFFFFFFFFFFFFFFF");
+
         User newUser = new User(registerForm.getFirstName(), registerForm.getLastName(), registerForm.getEmail(), registerForm.getPhone(),
                 city, false, registerForm.getPassword());
 
