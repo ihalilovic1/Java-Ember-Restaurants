@@ -25,11 +25,7 @@ public class Restaurant extends AbstractModel{
     @Column(name = "longitude")
     private Double longitude;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "reviews",
-            joinColumns = @JoinColumn(name = "restaurant"),
-            inverseJoinColumns = @JoinColumn(name = "userid"))
+    @OneToMany(mappedBy = "restaurant")
     private List<Review> restaurantReviews = new ArrayList<>();
 
     @Column(name = "priceRange")
