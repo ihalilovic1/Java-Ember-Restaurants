@@ -1,8 +1,10 @@
 package controllers;
 
+import helpers.MenuResponse;
 import helpers.RestaurantResponse;
 import models.tables.Restaurant;
 import play.db.jpa.Transactional;
+import play.libs.Json;
 import play.mvc.Result;
 import services.RestaurantService;
 
@@ -26,4 +28,22 @@ public class RestaurantControler extends AbstractController {
         }
     }
 
+    @Transactional
+    public Result getRestaurantMenu(String uuid, String type) {
+        try {
+            return ok(MenuResponse.makeResponseList(restaurantService.getRestaurantById(UUID.fromString(uuid)).filterRestaurantMenu(type)));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+    @Transactional
+    public Result getRestaurantsLocations() {
+        try {
+            return ok();
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+
+    }
 }

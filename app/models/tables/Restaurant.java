@@ -28,6 +28,9 @@ public class Restaurant extends AbstractModel{
     @OneToMany(mappedBy = "restaurant")
     private List<Review> restaurantReviews = new ArrayList<>();
 
+    @OneToMany(mappedBy = "restaurant")
+    private List<MenuItem> restaurantMenu = new ArrayList<>();
+
     @Column(name = "priceRange")
     private Double priceRange;
 
@@ -141,6 +144,10 @@ public class Restaurant extends AbstractModel{
         this.restaurantReviews = restaurantReviews;
     }
 
+    /*
+    TODO move following methods somwhere else
+     */
+
     public Integer getMark() {
         return getRestaurantReviews().stream()
                 .mapToInt(r -> r.getMark())
@@ -155,5 +162,19 @@ public class Restaurant extends AbstractModel{
         return getFoodType().stream()
                 .map(f -> f.getName())
                 .collect (Collectors.joining ("|"));
+    }
+
+    public List<MenuItem> filterRestaurantMenu(String type) {
+        return getRestaurantMenu().stream()
+                .filter(m -> m.getType().equals(type))
+                .collect(Collectors.toList());
+    }
+
+    public List<MenuItem> getRestaurantMenu() {
+        return restaurantMenu;
+    }
+
+    public void setRestaurantMenu(List<MenuItem> restaurantMenu) {
+        this.restaurantMenu = restaurantMenu;
     }
 }
