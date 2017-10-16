@@ -11,7 +11,7 @@ import services.RestaurantService;
 import javax.inject.Inject;
 import java.util.UUID;
 
-public class RestaurantControler extends AbstractController {
+public class RestaurantController extends AbstractController {
 
     private RestaurantService restaurantService;
 
@@ -40,7 +40,7 @@ public class RestaurantControler extends AbstractController {
     @Transactional
     public Result getRestaurantsLocations() {
         try {
-            return ok();
+            return ok(Json.toJson(restaurantService.getRestaurantLocations()));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }

@@ -1,15 +1,16 @@
 package services;
 
-import models.tables.FoodType;
-import models.tables.Restaurant;
-import models.tables.Review;
+import helpers.RestaurantLocationResponse;
+import models.tables.*;
+import org.hibernate.criterion.Projections;
+import org.hibernate.jpa.HibernateEntityManager;
 
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.Query;
+import javax.persistence.criteria.*;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class RestaurantService extends AbstractService {
 
@@ -23,23 +24,54 @@ public class RestaurantService extends AbstractService {
         }
     }
 
-    public List<Review> getRestaurantReviews(Restaurant restaurant) {
+    public List<Restaurant> getAllRestaurants() {
         try {
             EntityManager em = getEntityManager();
 
             CriteriaBuilder builder = em.getCriteriaBuilder();
 
-            CriteriaQuery<Review> reviewCriteria = builder.createQuery( Review.class );
-            Root<Review> reviewRoot = reviewCriteria.from( Review.class );
-            reviewCriteria.select( reviewRoot );
-            reviewCriteria.where( builder.equal( reviewRoot.get( "restaurant" ), restaurant ) );
+            CriteriaQuery<Restaurant> criteria = builder.createQuery( Restaurant.class );
+            Root<Restaurant> root = criteria.from( Restaurant.class );
+            criteria.select( root );
 
-            return em.createQuery( reviewCriteria ).getResultList();
+            return em.createQuery(criteria).getResultList();
         } catch (Exception ex) {
             throw ex;
         }
     }
 
+    public List<RestaurantLocationResponse> getRestaurantLocations() {
+
+        EntityManager em = getEntityManager();
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<RestaurantLocationResponse> criteriaQueryRestaurant = cb.createQuery(RestaurantLocationResponse.class);
+        Root<Restaurant> restaurantRoot = criteriaQueryRestaurant.from(Restaurant.class);
+
+        Root<City> cityRoot = criteriaQueryRestaurant.from(City.class);
+
+        Root<Country> countryRoot = criteriaQueryRestaurant.from(Country.class);
+
+        criteriaQueryRestaurant.select(
+                cb.construct(
+                        RestaurantLocationResponse.class,
+                        cityRoot.get("id").alias("id"),
+                        cityRoot.get("name").alias("city"),
+                        countryRoot.get("name").alias("country"),
+                        cb.count(restaurantRoot.get("id"))
+                )
+        );
+
+        criteriaQueryRestaurant.where(cb.equal(restaurantRoot.get("location"), cityRoot.get("id")),
+                cb.equal(cityRoot.get("country"), countryRoot.get("id")));
+
+        criteriaQueryRestaurant.groupBy(cityRoot.get("id"), cityRoot.get("name"), countryRoot.get("name"));
+
+        List<RestaurantLocationResponse> result = em.createQuery(criteriaQueryRestaurant).getResultList();
+
+        return  result;
+    }
 
 
 }
