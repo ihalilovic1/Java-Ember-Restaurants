@@ -1,5 +1,6 @@
 package services;
 
+import forms.ReviewForm;
 import helpers.RestaurantLocationResponse;
 import models.tables.*;
 import org.hibernate.criterion.Projections;
@@ -73,5 +74,32 @@ public class RestaurantService extends AbstractService {
         return  result;
     }
 
+    public void insertComment(ReviewForm reviewForm) {
+        EntityManager em = getEntityManager();
+
+        User userFK = new User();
+        userFK.setId(UUID.fromString(reviewForm.getIdUser()));
+
+        Restaurant restaurantFK = new Restaurant();
+        restaurantFK.setId(UUID.fromString(reviewForm.getIdRestaurant()));
+
+        Review newReview = new Review(reviewForm.getMark(), userFK, restaurantFK, reviewForm.getComment());
+
+        em.persist(newReview);
+    }
+
+    public List<FoodType> getAllCategories() {
+        EntityManager em = getEntityManager();
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<FoodType> criteria = cb.createQuery(FoodType.class);
+
+        Root<FoodType> root = criteria.from(FoodType.class);
+
+        criteria.select( root );
+
+        return em.createQuery(criteria).getResultList();
+    }
 
 }

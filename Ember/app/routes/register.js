@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
 
 const {
     inject: {
@@ -8,6 +9,7 @@ const {
 
 export default Ember.Route.extend({
     userService:    service('user-service'),
+    restaurantService:  service('restaurant-service'),
     
         actions: {
             register() {
@@ -22,5 +24,18 @@ export default Ember.Route.extend({
                         alert("Registration was not successfull");
                     })
             }
+        },
+
+        model() {
+            return RSVP.hash({
+                locations:    this.get('restaurantService').getRestaurantLocations()
+                                    .then(data => {
+                                        return data;
+                                    })
+                                    .catch(error => {
+                                        return null;
+                                    })
+            })
+            
         }
 });

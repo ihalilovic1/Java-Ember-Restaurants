@@ -18,3 +18,8 @@ POST /api/v1/getRestaurantDetails                     controllers.RestaurantCont
 POST /api/v1/getRestaurantMenu                        controllers.RestaurantController.getRestaurantMenu(id: String, type: String)
 
 GET /api/v1/getRestaurantsLocations                   controllers.RestaurantController.getRestaurantsLocations
+
+POST /api/v1/insertComment                            controllers.RestaurantController.insertComment
+
+GET /api/v1/getAllCategories                          controllers.RestaurantController.getAllCategories
+
