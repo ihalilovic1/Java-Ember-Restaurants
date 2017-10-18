@@ -60,6 +60,8 @@ public class RestaurantService extends AbstractService {
                 )
         );
 
+        criteriaQueryRestaurant.orderBy(cb.desc(cb.count(restaurantRoot.get("id"))));
+
         criteriaQueryRestaurant.where(cb.equal(restaurantRoot.get("location"), cityRoot.get("id")),
                 cb.equal(cityRoot.get("country"), countryRoot.get("id")));
 

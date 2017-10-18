@@ -1,7 +1,12 @@
 package helpers;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import play.libs.Json;
+
 import javax.persistence.Entity;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class RestaurantLocationResponse {
     private String id;
@@ -57,5 +62,9 @@ public class RestaurantLocationResponse {
         this.city = city;
         this.country = country;
         this.number = number;
+    }
+
+    public static ArrayNode makeResponseList(List<RestaurantLocationResponse> listItems) {
+        return (ArrayNode) Json.toJson(listItems);
     }
 }

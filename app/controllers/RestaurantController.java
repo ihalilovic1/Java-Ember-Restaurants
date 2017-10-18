@@ -2,6 +2,7 @@ package controllers;
 
 import forms.ReviewForm;
 import helpers.MenuResponse;
+import helpers.RestaurantLocationResponse;
 import helpers.RestaurantResponse;
 import models.tables.Restaurant;
 import play.data.Form;
@@ -49,7 +50,7 @@ public class RestaurantController extends AbstractController {
     @Transactional
     public Result getRestaurantsLocations() {
         try {
-            return ok(Json.toJson(restaurantService.getRestaurantLocations()));
+            return ok(RestaurantLocationResponse.makeResponseList(restaurantService.getRestaurantLocations()));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }

@@ -26,7 +26,15 @@ export default Ember.Route.extend({
                                         })              
                                         .catch(error => {
                                             return null;
-                                        })       
+                                        }),
+            popularLocations:       this.get('restaurantService').getRestaurantLocations()
+                                        .then(data => {
+                                            return data;
+                                        })              
+                                        .catch(error => {
+                                            return null;
+                                        }),
+            numberOfRestaurants:     this.get('restaurantService').getNumberOfRestaurants()
         })
         
     }

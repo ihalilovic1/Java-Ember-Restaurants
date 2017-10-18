@@ -2,10 +2,23 @@ import CustomAjax from './ajax';
 
 export default CustomAjax.extend({
     errorMessage: "",
+    
+    getNumberOfRestaurants() {
+        return new Promise((resolve, reject) => {
+            this.request('/allRestaurantsSortReservationsToday')
+                .then(data => {
+                    resolve(data.length);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        });
+        
+    },
 
     getRestaurantLocations() {
         return new Promise((resolve, reject) => {
-            this.request('/getRestaurantLocations')
+            this.request('/getRestaurantsLocations')
                 .then(data => {
                     resolve(data);
                 })
