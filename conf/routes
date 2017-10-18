@@ -23,3 +23,9 @@ POST /api/v1/insertComment                            controllers.RestaurantCont
 
 GET /api/v1/getAllCategories                          controllers.RestaurantController.getAllCategories
 
+GET /api/v1/allRestaurantsSortReservationsToday       controllers.RestaurantController.allRestaurantsSortReservationsToday
+
+#Reservation management
+
+POST /api/v1/makeReservation                          controllers.ReservationController.makeReservation
+

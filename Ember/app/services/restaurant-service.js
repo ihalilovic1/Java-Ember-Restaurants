@@ -52,6 +52,18 @@ export default CustomAjax.extend({
                 reject(error);
             })
         })
+    },
+
+    getPopularRestaurantsToday() {
+        return new Promise((resolve, reject) => {
+            this.request('/allRestaurantsSortReservationsToday')
+                .then(data => {
+                    resolve(data.slice(0,6));
+                })
+                .catch(error => {
+                    reject(error);
+                })
+        })
     }
   
     // Rest of the methods

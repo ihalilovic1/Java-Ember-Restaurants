@@ -3,15 +3,119 @@
 
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
 
+/*
+  dollar rating
+*/
+.dollar-rating {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.67;
+  padding-top: 3px;
+  font-family: 'Source Sans Pro', sans-serif;
+  float: left;
+
+}
+
+.highlighted-dollar {
+  color: #131d24;
+}
+
+.empty-dollar {
+  color: #D3D9DC;
+}
+
+/*
+  star-rating
+*/
+.star-rating {
+  float: left;
+}
+
+.highlighted-star {
+  color: #FD6F60;
+
+
+}
+
+.empty-star {
+  color: #D3D9DC;
+
+
+}
 
 /*
   restaurant tile
 */
+.restaurant-tile-votes-number {
+  opacity: 0.4;
+  font-family: SourceSansPro;
+  font-size: 16px;
+  color: #131d24;
+  font-family: 'Source Sans Pro', sans-serif;
+  float: left;
+  margin-left: 8px;
+  margin-right: 10px;
+}
 
+.restaurant-tile-rating {
+  min-width: 100%;
+  margin-bottom: 1px;
+  margin-top: 3px;
+  height: 16px;
+}
+
+.restaurant-tile-horizontal-line {
+  border: none;
+  outline: none;
+  height: 1px;
+  width: 100%;
+  background-color: #e5e5e5;
+  margin-top: 14px;
+  margin-bottom: 5px;
+}
+
+.restaurant-tile-button {
+  border-radius: 2px;
+  background-color: #f9f9f9;
+  border: solid 1px #e5e5e5;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #131d24;
+  min-width: 100%;
+  margin-top: 25px;
+}
+
+.restaurant-tile-container {
+  margin-bottom: 100px;
+  min-width: 100%;
+  
+}
+
+.restaurant-logo {
+  height: 260px;
+  
+}
+
+.restaurant-tile-name {
+  height: 31px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 24px;
+  color: #131d24;
+  padding-top: 10px;
+}
 
 /*
   landing
 */
+.landing-food-types {
+  opacity: 0.4;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  color: #131d24;
+  margin: 0;
+}
+
 .landing-header {
   height: 680px;
   width: 100%;
@@ -69,6 +173,20 @@
   padding: 0;
 }
 
+.landing-popular-restaurants {
+  margin-top: 73px;
+
+}
+
+.landing-popular-restaurants-label {
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;;
+  font-size: 30px;
+  font-weight: 300;
+  color: #131d24;
+  margin-bottom: 50px;
+}
+
 /*
   form-error-text
 */
@@ -81,7 +199,7 @@
     global
 */
 
-html, body, body > .ember-view {
+body, body > .ember-view {
   height: 100%;
 }
 

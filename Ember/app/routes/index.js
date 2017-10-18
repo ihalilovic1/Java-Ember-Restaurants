@@ -9,6 +9,7 @@ const {
 
 export default Ember.Route.extend({
     userService:    service('user-service'),
+    restaurantService:      service('restaurant-service'),
     
     model() {
         return RSVP.hash({
@@ -18,7 +19,14 @@ export default Ember.Route.extend({
                                 })
                                 .catch(error => {
                                     return null;
-                                })
+                                }),
+            popularRestaurants:     this.get('restaurantService').getPopularRestaurantsToday()
+                                        .then(data => {
+                                            return data;
+                                        })              
+                                        .catch(error => {
+                                            return null;
+                                        })       
         })
         
     }

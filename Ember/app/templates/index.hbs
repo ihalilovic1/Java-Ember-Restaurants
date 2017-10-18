@@ -9,4 +9,26 @@
         </div>
         <img class="img-fluid" src="https://drive.google.com/uc?export=view&id=0B2kerAVz5owdQkFEeUJPb0FHajA">
     </div>
+    <div class="container landing-popular-restaurants">
+        <div class="row">
+            <div class="col-md">
+                <div class="landing-popular-restaurants-label">Popular for Lunch Today</div>
+            </div>
+        </div>
+        <div class="row">
+
+            {{#if model.popularRestaurants}} 
+                {{#each model.popularRestaurants as |restaurant|}}
+                        <div class="col">
+                            {{restaurant-tile restaurant=restaurant}}
+                        </div>
+                {{/each}} 
+            {{/if}}
+
+        </div>
+
+    </div>
+
+
+    
 </div>

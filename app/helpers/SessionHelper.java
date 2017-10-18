@@ -18,4 +18,8 @@ public class SessionHelper {
     public static UUID getId() {
         return UUID.fromString(session().get("connected"));
     }
+
+    public static Boolean isConnected() {
+        return session().containsKey("connected");
+    }
 }

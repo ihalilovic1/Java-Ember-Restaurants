@@ -161,7 +161,7 @@ public class Restaurant extends AbstractModel{
     public String getFoodTypesAsString() {
         return getFoodType().stream()
                 .map(f -> f.getName())
-                .collect (Collectors.joining ("|"));
+                .collect (Collectors.joining (" | "));
     }
 
     public List<MenuItem> filterRestaurantMenu(String type) {

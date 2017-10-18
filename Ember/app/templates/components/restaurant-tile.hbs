@@ -1,1 +1,15 @@
-{{yield}}
+<div class="restaurant-tile-container">
+    <img class="image-fluid restaurant-logo" src="https://drive.google.com/uc?export=view&id=0B2kerAVz5owdWEo1dEY1U1I0TXM">
+    <h3 class="restaurant-tile-name">{{restaurant.restaurantName}}</h3>
+
+    <p class="restaurant-tile-rating">{{star-rating rating=restaurant.mark}}
+        <span class="restaurant-tile-votes-number">({{restaurant.votes}})</span>
+        {{dollar-rating rating=restaurant.priceRange}}
+    </p>
+    <hr class="restaurant-tile-horizontal-line">
+    <div class="landing-food-types">
+         {{restaurant.foodType}}
+    </div>
+
+    <button type="button" class="restaurant-tile-button btn-block btn">Reserve Now</button>
+</div>

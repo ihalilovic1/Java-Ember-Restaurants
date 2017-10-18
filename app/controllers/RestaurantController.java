@@ -78,4 +78,14 @@ public class RestaurantController extends AbstractController {
         }
     }
 
+    @Transactional
+    public Result allRestaurantsSortReservationsToday() {
+        try {
+            return ok(RestaurantResponse.makeResponseList(restaurantService.getAllRestaurants()));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+
 }

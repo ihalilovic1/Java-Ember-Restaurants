@@ -1,8 +1,12 @@
 package helpers;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import models.tables.Restaurant;
 import play.libs.Json;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RestaurantResponse {
 
@@ -134,8 +138,21 @@ public class RestaurantResponse {
     }
 
     public static ObjectNode makeResponse(Restaurant restaurant) {
-        return (ObjectNode) Json.toJson(new RestaurantResponse(restaurant.getId().toString(), restaurant.getName(), restaurant.getDescription(),
-                restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getMark(), restaurant.getNumberOfVotes(), restaurant.getPriceRange(),
-                restaurant.getImageFileName(), restaurant.getCoverFileName(), restaurant.getLocation().getId().toString(), restaurant.getFoodTypesAsString()));
+        return (ObjectNode) Json.toJson(new RestaurantResponse(restaurant.getId().toString(), restaurant.getName(),
+                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getMark(),
+                restaurant.getNumberOfVotes(), restaurant.getPriceRange(), restaurant.getImageFileName(),
+                restaurant.getCoverFileName(), restaurant.getLocation().getId().toString(), restaurant.getFoodTypesAsString()));
+    }
+
+    public static RestaurantResponse makeResponseObject(Restaurant restaurant) {
+        return new RestaurantResponse(restaurant.getId().toString(), restaurant.getName(),
+                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getMark(),
+                restaurant.getNumberOfVotes(), restaurant.getPriceRange(), restaurant.getImageFileName(),
+                restaurant.getCoverFileName(), restaurant.getLocation().getId().toString(), restaurant.getFoodTypesAsString());
+    }
+
+    public static ArrayNode makeResponseList(List<Restaurant> listItems) {
+        return (ArrayNode) Json.toJson(listItems.stream()
+                .map(m -> RestaurantResponse.makeResponseObject(m)).collect(Collectors.toList()));
     }
 }

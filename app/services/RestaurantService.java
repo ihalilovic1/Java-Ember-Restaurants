@@ -3,15 +3,11 @@ package services;
 import forms.ReviewForm;
 import helpers.RestaurantLocationResponse;
 import models.tables.*;
-import org.hibernate.criterion.Projections;
-import org.hibernate.jpa.HibernateEntityManager;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.criteria.*;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class RestaurantService extends AbstractService {
 
