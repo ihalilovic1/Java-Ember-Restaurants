@@ -1,5 +1,6 @@
 package controllers;
 
+import forms.RestaurantUUIDForm;
 import forms.ReviewForm;
 import helpers.MenuResponse;
 import helpers.RestaurantLocationResponse;
@@ -29,8 +30,11 @@ public class RestaurantController extends AbstractController {
     }
 
     @Transactional
-    public Result getRestaurantDetails(String uuid) {
+    public Result getRestaurantDetails() {
         try {
+            Form<RestaurantUUIDForm> restaurantUUIDForm = formFactory.form(RestaurantUUIDForm.class);
+            String uuid = restaurantUUIDForm.bindFromRequest().get().getId();
+
             Restaurant restaurant = restaurantService.getRestaurantById(UUID.fromString(uuid));
             return ok(RestaurantResponse.makeResponse(restaurant));
         } catch (Exception ex) {

@@ -54,9 +54,9 @@ export default CustomAjax.extend({
                 xhrFields: {
                     withCredentials: true,
                   },
-                data: {
-                    id: id
-                }
+                  data: {
+                      id: id
+                  }
             }).then(data => {
                 resolve(data);
             })

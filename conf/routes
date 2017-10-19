@@ -10,10 +10,10 @@ POST    /api/v1/login                                controllers.UserController.
 GET     /api/v1/logout                               controllers.UserController.logout
 
 GET     /api/v1/currentUser                          controllers.UserController.currentUser
-    
+
 #Restaurant management
 
-POST /api/v1/getRestaurantDetails                     controllers.RestaurantController.getRestaurantDetails(id: String)
+POST /api/v1/getRestaurantDetails                     controllers.RestaurantController.getRestaurantDetails
 
 POST /api/v1/getRestaurantMenu                        controllers.RestaurantController.getRestaurantMenu(id: String, type: String)
 

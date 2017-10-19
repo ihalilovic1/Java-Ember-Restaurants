@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
   this.route('register');
   this.route('restaurants');
+  this.route('restaurant', { path: '/restaurant/:restaurant_id' });
 });
 
 export default Router;
