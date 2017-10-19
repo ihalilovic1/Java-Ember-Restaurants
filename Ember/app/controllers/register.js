@@ -1,15 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    countryIndex:   0,
-    cityIndex:      0,
+    selectedCountry:   null,
+    selectedCity:      null,
     
     actions:{
         updateCountryValue: function(value) {
-            this.set('countryIndex', value);
+            this.set('selectedCountry', value);
         },
         updateCityValue: function(value) {
-            this.set('cityIndex', value);
+            this.set('selectedCity', value);
         }
     }
 });

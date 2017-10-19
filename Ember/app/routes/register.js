@@ -13,16 +13,22 @@ export default Ember.Route.extend({
     
         actions: {
             register() {
-                //alert((document.getElementById('country')).options[this.get('controller').countryIndex].text);
+                //(document.getElementById('city')).options[0].text
+                let selectedCountry = this.get('controller').selectedCountry ? 
+                                        this.get('controller').selectedCountry : 
+                                        (document.getElementById('country')).options[0].text;
+                let selectedCity = this.get('controller').selectedCity ? 
+                                    this.get('controller').selectedCity : 
+                                    (document.getElementById('city')).options[0].text;
+
                 this.get('userService').register(this.get('controller.firstName'), this.get('controller.lastName'), this.get('controller.email'),
-                    this.get('controller.phone'), (document.getElementById('country')).options[this.get('controller').countryIndex].text,
-                    (document.getElementById('city')).options[this.get('controller').countryIndex].text, this.get('controller.password'))
-                    .then(data => {
-                        this.transitionTo('index');
-                    })
-                    .catch(error => {
-                        alert("Registration was not successfull");
-                    })
+                this.get('controller.phone'), selectedCountry, selectedCity, this.get('controller.password'))
+                .then(data => {
+                    this.transitionTo('index');
+                })
+                .catch(error => {
+                    alert("Registration was not successful");
+                })   
             }
         },
 
@@ -34,7 +40,7 @@ export default Ember.Route.extend({
                                     })
                                     .catch(error => {
                                         return null;
-                                    })
+                                    })               
             })
             
         }

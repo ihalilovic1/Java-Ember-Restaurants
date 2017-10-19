@@ -83,21 +83,18 @@
       <div class="col-md-2 create-acc-dropdown-left-col">
         <div class="form-group">
             <select id="country" class="form-control create-acc-input create-acc-dropdown" onchange={{action "updateCountryValue" value="target.value"}}>
-                <option value="0" selected>Bosnia and Herzegovina</option>
-                <option value="1">A</option>
-                <option value="2">B</option>
-                <option value="3">C</option>
-                <option value="4">D</option>
-                <option value="5">E</option>
-                <option value="6">F</option>
-                <option value="7">G</option>
+              {{#each model.locations as |location|}}
+  
+                  <option>{{location.country}}</option>
+          
+              {{/each}}
             </select>
         </div>
       </div>
       <div class="col-md-2 create-acc-dropdown-right-col">
           <select id="city" class="form-control create-acc-input create-acc-dropdown" onchange={{action "updateCityValue" value="target.value"}}>
               {{#each model.locations as |location|}}
-                <option value="0">{{location.city}}</option>
+                <option>{{location.city}}</option>
               {{/each}}
             </select>
       </div>

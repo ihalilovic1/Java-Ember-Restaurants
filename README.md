@@ -18,6 +18,7 @@ CREATE EXTENSION pgcrypto;
 - [ ] Form validation
 - [x] Switch to PostgreSQL-specific UUID
 - [ ] Implement 'remember me' option in backend
+- [ ] Remove duplicates from registration form country list
 
 ## Built With
 
