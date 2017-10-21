@@ -4,6 +4,169 @@
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
 
 /*
+  single restaurant
+*/
+.single-restaurant-description-label {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  color: rgba(19, 29, 36, 0.4);
+}
+ 
+.single-restaurant-description {
+  font-size: 18px;
+  color: #1a1a1a;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.booked-x-times-label {
+  height: 17px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #131d24;
+  float: right;
+ 
+}
+
+.single-restaurant-content-box {
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+
+  padding: 20px 25px 20px 25px;
+}
+
+.single-restaurant-content {
+  margin-top: -15px;
+}
+
+.single-restaurant-content-label {
+  font-size: 20px;
+  color: rgba(19, 29, 36, 0.4);
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.single-restaurant-reservation {
+  
+}
+
+.single-restaurant-links{
+  display: block;
+  padding-top: 30px;
+}
+
+.single-restaurant-links li{
+  padding-top: 10px;
+  display: block;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #131d24;
+  
+}
+
+.single-restaurant-links a{
+  text-decoration: none;
+  color: inherit;
+  opacity: 0.4;
+}
+
+.single-restaurant-links li a:target {
+  opacity: 1;
+}
+
+.single-restaurant-rate-button {
+  float: right;
+  border-radius: 3px;
+  background-color: white;
+  font-size: 16px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+  color: #131d24;
+  height: 36px;
+  max-width: 160px;
+  width: 100%;
+}
+
+.single-restaurant-price {
+  float: left;
+}
+
+.single-restaurant-logo {
+  max-width: 210px;
+  max-height: 182px;
+
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  box-sizing: border-box;
+
+  border-radius: 8px;
+  background-color: #d8d8d8;
+  box-shadow:rgba(0, 0, 0, 0.1);
+  border: solid 6px #ffffff;
+}
+
+.single-restaurant-header {
+  height: 340px;
+  width: 100%;
+  background-size: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.single-restaurant-header img {
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0; 
+  height: fit-content;
+  width: inherit;
+}
+
+.single-restaurant-header-label {
+  margin-top: -100px;
+  position: relative;
+  z-index: 2;
+}
+
+.single-restaurant-name {
+  font-size: 30px;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+}
+
+.single-restaurant-details {
+  margin-left: 0px;
+}
+
+.single-restaurant-details .highlighted-dollar{
+  color: white;
+}
+
+.single-restaurant-details .empty-dollar{
+  color: grey;
+}
+
+.single-restaurant-text {
+  margin-left: 10px;
+  margin-right: 10px;
+  opacity: 0.4;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  float: left;
+}
+
+
+/*
   dollar rating
 */
 .dollar-rating {
@@ -13,7 +176,8 @@
   padding-top: 3px;
   font-family: 'Source Sans Pro', sans-serif;
   float: left;
-
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 .highlighted-dollar {
@@ -33,13 +197,13 @@
 
 .highlighted-star {
   color: #FD6F60;
-
+  margin-right: 4px;
 
 }
 
 .empty-star {
   color: #D3D9DC;
-
+  margin-right: 4px;
 
 }
 
@@ -48,7 +212,6 @@
 */
 .restaurant-tile-votes-number {
   opacity: 0.4;
-  font-family: SourceSansPro;
   font-size: 16px;
   color: #131d24;
   font-family: 'Source Sans Pro', sans-serif;

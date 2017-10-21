@@ -1,13 +1,95 @@
 {{header-component home=true}}
 
-    <div class="col-md landing-header not-transparent">
-
-        <div class="landing-header-label">
-
+<div class="col-md single-restaurant-header not-transparent">
+    <img class="img-fluid" src="{{model.restaurant.coverFileName}}">
+</div>
+<div class="container single-restaurant-header-label">
+    <div class="row">
+        <div class="col-sm-3">
+            <img class="img-fluid single-restaurant-logo" src="{{model.restaurant.imageFileName}}">
         </div>
-        <img class="img-fluid" src="{{model.restaurant.coverFileName}}">
+        <div class="col-sm-9 single-restaurant-details">
+            <div class="single-restaurant-name">{{model.restaurant.restaurantName}}</div>
+            <div>
+                <span>{{star-rating rating=model.restaurant.mark}}</span>
+                <span class="single-restaurant-text">({{model.restaurant.votes}})</span>
+                <span class="single-restaurant-price">{{dollar-rating rating=model.restaurant.priceRange}}</span>
+                <span class="single-restaurant-text">{{model.restaurant.foodType}}</span>
+
+                <span class="single-restaurant-rate-button">
+                    <button type="button" class="btn-block btn single-restaurant-rate-button">{{fa-icon "star" class="highlighted-star"}} Rate this place</button>
+                </span>
+            </div>
+        </div>
     </div>
-    <h1>
-        {{model.restaurant.restaurantName}}
-    </h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul class="single-restaurant-links">
+                <li><a id="reservation" href="#reservation">Reservation</a></li>
+                <li><a id="about" href="#about">About</a></li>
+                <li><a id="menu" href="#menu">Menu</a></li>
+                <li><a id="photos" href="#photos">Photos</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-sm-9">
+            <div class="container-fluid single-restaurant-content">
+                <div id="reservation" class="row single-restaurant-reservation single-restaurant-content-box">
+                    <div class="col-sm-6">
+                        <p class="single-restaurant-content-label">Make a free reservation</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <span class="booked-x-times-label">Booked 72 times today</span>
+                    </div>
+                    
+                </div>
+
+                <div id="about" class="row single-restaurant-about single-restaurant-content-box">
+                    <div class="col-sm-12">
+                        <p class="single-restaurant-content-label">About {{model.restaurant.restaurantName}}</p>
+
+                        <br>
+                        <div class="map">
+
+                        </div>
+
+                        <p class="single-restaurant-description-label">Description: </p>
+
+                        <div class="single-restaurant-description">
+                            {{model.restaurant.description}}
+                        </div>
+
+
+                    </div>
+                    
+                </div>
+
+                <div id="menu" class="row single-restaurant-menu single-restaurant-content-box">
+                    <div class="col-sm-12">
+                        <span class="single-restaurant-content-label">Menu:</span>
+                        <ul class="nav menu-options">
+                            <li class="active"><a href="#breakfast" data-toggle="tab">Breakfast</a></li>
+                            <li><a href="#lunch" data-toggle="tab">Lunch</a></li>
+                            <li><a href="#dinner" data-toggle="tab">Dinner</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+
+                <div id="photos" class="row single-restaurant-photos single-restaurant-content-box">
+                    <div class="col-sm-6">
+                        <p class="single-restaurant-content-label">Restaurants Photo</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 {{outlet}}
