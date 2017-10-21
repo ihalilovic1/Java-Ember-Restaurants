@@ -19,7 +19,7 @@ public class MenuResponse {
 
     private Double price;
 
-    private String descrription;
+    private String description;
 
     public MenuResponse() {
     }
@@ -64,21 +64,21 @@ public class MenuResponse {
         this.price = price;
     }
 
-    public String getDescrription() {
-        return descrription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescrription(String descrription) {
-        this.descrription = descrription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public MenuResponse(String id, String idRestaurant, String type, String name, Double price, String descrription) {
+    public MenuResponse(String id, String idRestaurant, String type, String name, Double price, String description) {
         this.id = id;
         this.idRestaurant = idRestaurant;
         this.type = type;
         this.name = name;
         this.price = price;
-        this.descrription = descrription;
+        this.description = description;
     }
 
     public static ObjectNode makeResponse(MenuItem menuItem) {
