@@ -28,26 +28,7 @@ export default CustomAjax.extend({
                 });
         });
     },
-    getRestaurantMenu(id, type) {
-        return new Promise((resolve, reject) => {
-            this.post('/getRestaurantMenu', {
-                xhrFields: {
-                    withCredentials: true,
-                  },
-                data: {
-                    id: id,
-                    type: type
-                }
-            }).then(data => {
-                resolve(data);
-            })
-            .catch(error => {
-                this.set('errorMessage', error);
-                reject(error);
-            })
-        })
-    },
-
+    
     getRestaurantDetails(id) {
         return new Promise((resolve, reject) => {
             this.post('/getRestaurantDetails', {
@@ -77,7 +58,28 @@ export default CustomAjax.extend({
                     reject(error);
                 })
         })
+    },
+
+    getRestaurantMenu(idRestaurant, type) {
+        return new Promise((resolve, reject) => {
+            this.post('/getRestaurantMenu', {
+                xhrFields: {
+                    withCredentials: true,
+                  },
+                  data: {
+                    idRestaurant: idRestaurant,
+                    type: type
+                  }
+            }).then(data => {
+                resolve(data);
+            })
+            .catch(error => {
+                this.set('errorMessage', error);
+                reject(error);
+            })
+        })
     }
+    
   
     // Rest of the methods
   });

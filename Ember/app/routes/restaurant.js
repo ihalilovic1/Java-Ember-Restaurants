@@ -18,7 +18,29 @@ export default Ember.Route.extend({
                                 })              
                                 .catch(error => {
                                     return null;
-                                })
+                                }),
+            breakfast:          this.get('restaurantService').getRestaurantMenu(params.restaurant_id, "Breakfast")
+                                    .then(data => {
+                                        return data;
+                                    })
+                                    .catch(error => {
+                                        
+                                        return null;
+                                    }),
+            lunch:          this.get('restaurantService').getRestaurantMenu(params.restaurant_id, "Lunch")
+                                    .then(data => {
+                                        return data;
+                                    })
+                                    .catch(error => {
+                                        return null;
+                                    }),
+            dinner:          this.get('restaurantService').getRestaurantMenu(params.restaurant_id, "Dinner")
+                                    .then(data => {
+                                        return data;
+                                    })
+                                    .catch(error => {
+                                        return null;
+                                    }),
         })
     }
 });

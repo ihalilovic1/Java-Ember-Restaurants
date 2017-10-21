@@ -15,7 +15,7 @@ GET     /api/v1/currentUser                          controllers.UserController.
 
 POST /api/v1/getRestaurantDetails                     controllers.RestaurantController.getRestaurantDetails
 
-POST /api/v1/getRestaurantMenu                        controllers.RestaurantController.getRestaurantMenu(id: String, type: String)
+POST /api/v1/getRestaurantMenu                        controllers.RestaurantController.getRestaurantMenu
 
 GET /api/v1/getRestaurantsLocations                   controllers.RestaurantController.getRestaurantsLocations
 

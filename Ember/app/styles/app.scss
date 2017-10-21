@@ -50,7 +50,29 @@
 }
 
 .single-restaurant-reservation {
-  
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.single-restaurant-menu .single-restaurant-content-label {
+  font-family: 'Source Sans Pro', sans-serif;
+  float:left;
+  margin-right: 25px;
+}
+
+.single-restaurant-nav-pills li{
+  height: 34px;
+  border-radius: 2px;
+}
+
+.single-restaurant-nav-pills li a {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fd6f60;
+
+}
+
+.single-restaurant-nav-pills .nav-item .active {
+  background-color: #fd6f60;
 }
 
 .single-restaurant-links{

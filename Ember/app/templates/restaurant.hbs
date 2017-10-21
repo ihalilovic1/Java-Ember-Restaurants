@@ -70,13 +70,50 @@
                 <div id="menu" class="row single-restaurant-menu single-restaurant-content-box">
                     <div class="col-sm-12">
                         <span class="single-restaurant-content-label">Menu:</span>
-                        <ul class="nav menu-options">
-                            <li class="active"><a href="#breakfast" data-toggle="tab">Breakfast</a></li>
-                            <li><a href="#lunch" data-toggle="tab">Lunch</a></li>
-                            <li><a href="#dinner" data-toggle="tab">Dinner</a></li>
+                        <ul class="nav nav-pills single-restaurant-nav-pills" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="pill" href="#breakfast" role="tab">Breakfast</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#lunch" role="tab">Lunch</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#dinner" role="tab">Dinner</a>
+                            </li>
                         </ul>
+                        <br>
+                        <hr>
+                        <div class="tab-content">
+                            <div id="breakfast" role="tabpanel" class="tab-pane fade show active">
+                                {{#if model.breakfast}}
+                                    {{#each model.breakfast as |meal|}}
+                                        <p>{{meal.name}} ${{meal.price}}</p>
+                                        <p>{{meal.description}}</p>
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+
+                            <div id="lunch" role="tabpanel" class="tab-pane fade">
+                                {{#if model.lunch}}
+                                    {{#each model.lunch as |meal|}}
+                                        <p>{{meal.name}} ${{meal.price}}</p>
+                                        <p>{{meal.description}}</p>
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+
+                            <div id="dinner" role="tabpanel" class="tab-pane fade">
+                                {{#if model.dinner}}
+                                    {{#each model.dinner as |meal|}}
+                                        <p>{{meal.name}} ${{meal.price}}</p>
+                                        <p>{{meal.description}}</p>
+                                    {{/each}}
+                                {{/if}}
+                            </div>
+
+                        </div>
+                   
                     </div>
-                    
                 </div>
 
                 <div id="photos" class="row single-restaurant-photos single-restaurant-content-box">
