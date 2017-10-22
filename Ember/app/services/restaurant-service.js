@@ -3,6 +3,28 @@ import CustomAjax from './ajax';
 export default CustomAjax.extend({
     errorMessage: "",
     
+    insertComment(mark, idUser, idRestaurant, comment) {
+        return new Promise((resolve, reject) => {
+            this.post('/insertComment', {
+                xhrFields: {
+                    withCredentials: true,
+                  },
+                  data: {
+                    mark: mark,
+                    idUser: idUser,
+                    idRestaurant: idRestaurant,
+                    comment: comment
+                  }
+            }).then(data => {
+                resolve(data);
+            })
+            .catch(error => {
+                this.set('errorMessage', error);
+                reject(error);
+            })
+        })
+    },
+
     getNumberOfRestaurants() {
         return new Promise((resolve, reject) => {
             this.request('/allRestaurantsSortReservationsToday')

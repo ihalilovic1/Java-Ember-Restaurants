@@ -16,12 +16,55 @@
                 <span class="single-restaurant-price">{{dollar-rating rating=model.restaurant.priceRange}}</span>
                 <span class="single-restaurant-text">{{model.restaurant.foodType}}</span>
 
-                <span class="single-restaurant-rate-button">
-                    <button type="button" class="btn-block btn single-restaurant-rate-button">{{fa-icon "star" class="highlighted-star"}} Rate this place</button>
-                </span>
+                {{#if model.currentUser}}
+                    <span class="single-restaurant-rate-button">
+                        <button type="button" class="btn-block btn single-restaurant-rate-button" data-toggle="modal" data-target="#insertComment">{{fa-icon "star" class="highlighted-star"}} Rate this place</button>
+                    </span>
+                {{/if}}
             </div>
         </div>
     </div>
+</div>
+
+<div id="insertComment" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="container rating-modal">
+            <div class="row">
+                <div class="col">
+                    <h4 class="modal-title rating-modal-header">Rate this place</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span class="modal-rating-star">
+                        {{fa-icon "star" class=starOne click=(action "oneStar") size=2}}
+                        {{fa-icon "star" class=starTwo click=(action "twoStar") size=2}}
+                        {{fa-icon "star" class=starThree click=(action "threeStar") size=2}}
+                        {{fa-icon "star" class=starFour click=(action "fourStar") size=2}}
+                        {{fa-icon "star" class=starFive click=(action "fiveStar") size=2}}
+                    </span>
+                    
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-12">
+                    {{textarea class="rating-modal-textarea" value=userComment placeholder="Write a review" required=""}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-block rating-modal-save" data-dismiss="modal" {{action 'sendReview' model.currentUser model.restaurant}}>Save</button>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <div class="container">

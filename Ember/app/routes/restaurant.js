@@ -9,6 +9,19 @@ const {
 
 export default Ember.Route.extend({
     restaurantService:      service('restaurant-service'),
+    userService:    service('user-service'),
+
+    actions: {
+        sendReview(currentUser, restaurant) {
+            this.get('restaurantService').insertComment(this.get('controller.userRating'), 
+                        currentUser.id, restaurant.id, this.get('controller').userComment)
+                .then(data => {
+                    this.refresh();
+                })
+                .catch(error => {
+                })
+        }
+    },
 
     model(params) {
         return RSVP.hash({
@@ -41,6 +54,13 @@ export default Ember.Route.extend({
                                     .catch(error => {
                                         return null;
                                     }),
+            currentUser:    this.get('userService').getCurrentUser()
+                                .then(data => {
+                                    return data;
+                                })
+                                .catch(error => {
+                                    return null;
+                                })
         })
     }
 });
