@@ -1,6 +1,7 @@
 package controllers;
 
 import helpers.SessionHelper;
+import models.tables.Reservation;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.Transactional;
@@ -27,13 +28,23 @@ public class ReservationController extends AbstractController {
 
     @Transactional
     public Result makeReservation() {
+        Form<ReservationForm> reservationForm = formFactory.form(ReservationForm.class);
+        ReservationForm form = reservationForm.bindFromRequest().get();
         if(SessionHelper.isConnected()) {
-            Form<ReservationForm> reservationForm = formFactory.form(ReservationForm.class);
 
-            return ok(Json.toJson(reservationForm.bindFromRequest().get().getPersons()));
+            return ok(Json.toJson(form.getPersons()));
         } else {
             return badRequest("Not logged in");
         }
 
     }
+
+    @Transactional
+    public  Result checkReservationAvailability() {
+        Form<ReservationForm> reservationForm = formFactory.form(ReservationForm.class);
+        ReservationForm form = reservationForm.bindFromRequest().get();
+
+        return ok();
+    }
+
 }
