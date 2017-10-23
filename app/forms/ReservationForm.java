@@ -1,5 +1,10 @@
-package controllers;
+package forms;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+
+
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -32,7 +37,21 @@ public class ReservationForm {
     }
 
     public String getReservationDate() {
-        return reservationDate;
+        String newDate = reservationDate;
+        newDate.replace(' ', '-');
+        newDate.replace(",", "");
+        return newDate;
+    }
+
+    public String getTimestampString() {
+        return getReservationDate() + ' ' + getReservationHour();
+    }
+
+    public DateTime getDateTime() {
+
+        DateTime dateTime = DateTime.parse(getTimestampString(), DateTimeFormat.forPattern("mmm dd, yyyy hh:mm a"));
+
+        return  dateTime;
     }
 
     public void setReservationDate(String reservationDate) {

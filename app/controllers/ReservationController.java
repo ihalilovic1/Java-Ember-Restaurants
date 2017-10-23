@@ -1,7 +1,7 @@
 package controllers;
 
+import forms.ReservationForm;
 import helpers.SessionHelper;
-import models.tables.Reservation;
 import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.Transactional;

@@ -11,7 +11,7 @@ public class RestaurantTable extends AbstractModel {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "restaurantId",
+    @JoinColumn(name = "restaurantid",
             foreignKey = @ForeignKey(name = "restauranttables_restaurantid_fkey")
     )
     private Restaurant restaurantId;
