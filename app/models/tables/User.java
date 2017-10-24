@@ -54,7 +54,6 @@ public class User extends AbstractModel {
     }
 
     public void setId(UUID id) {
-        System.out.println("AAAAAAAAAAAAAAAAAAA" + id);
         this.id = id;
     }
 

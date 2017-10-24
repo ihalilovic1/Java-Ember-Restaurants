@@ -4,6 +4,16 @@
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
 
 /*
+  complete reservation
+*/
+.complete-reservation-title {
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-top: 60px;
+  margin-bottom: 49px;
+}
+
+/*
   modal
 */
 .rating-modal-star {
@@ -585,11 +595,13 @@ html, body {
     background-color: #131d24;
     width: 100%;
     padding-top: 50px;
+    position: relative;
+    
+    
   }
   footer {
-    bottom: 0;
-    position: relative;
-    margin-top: -150px;
+    
+    
     height: 150px;
     width: 100%;
     clear: both;

@@ -83,9 +83,9 @@
       <div class="col-md-2 create-acc-dropdown-left-col">
         <div class="form-group">
             <select id="country" class="form-control create-acc-input create-acc-dropdown" onchange={{action "updateCountryValue" value="target.value"}}>
-              {{#each model.locations as |location|}}
+              {{#each model.uniqueCountries as |location|}}
   
-                  <option>{{location.country}}</option>
+                  <option>{{location}}</option>
           
               {{/each}}
             </select>

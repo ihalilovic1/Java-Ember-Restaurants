@@ -10,7 +10,7 @@ const {
 export default Ember.Route.extend({
     userService:    service('user-service'),
     restaurantService:  service('restaurant-service'),
-    
+
         actions: {
             register() {
                 //(document.getElementById('city')).options[0].text
@@ -36,11 +36,16 @@ export default Ember.Route.extend({
             return RSVP.hash({
                 locations:    this.get('restaurantService').getRestaurantLocations()
                                     .then(data => {
+                                        this.set('allLocations', data);
                                         return data;
                                     })
                                     .catch(error => {
                                         return null;
-                                    })               
+                                    }),
+
+                allCountries: Ember.computed.mapBy('locations', 'country'),
+
+                uniqueCountries:    Ember.computed.uniq('allCountries')          
             })
             
         }
