@@ -102,7 +102,7 @@ public class ReservationService extends AbstractService {
 
         List<RestaurantTable> tableList = getAllRestaurantTables(restaurant, reservationForm.getPersons());
 
-        AvailableTableResponse availableTableResponse = new AvailableTableResponse();
+        AvailableTableResponse availableTableResponse = new AvailableTableResponse(restaurant);
 
         return availableTableResponse;
     }
