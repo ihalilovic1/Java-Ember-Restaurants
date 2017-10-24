@@ -90,4 +90,5 @@ public class Reservation extends AbstractModel {
     public void setConfirmed(Boolean confirmed) {
         isConfirmed = confirmed;
     }
+
 }

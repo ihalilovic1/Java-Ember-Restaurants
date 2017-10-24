@@ -4,7 +4,6 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
 
-import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,19 +36,20 @@ public class ReservationForm {
     }
 
     public String getReservationDate() {
-        String newDate = reservationDate;
-        newDate.replace(' ', '-');
-        newDate.replace(",", "");
-        return newDate;
+        return reservationDate;
     }
 
     public String getTimestampString() {
-        return getReservationDate() + ' ' + getReservationHour();
+        String newDate = reservationDate;
+        newDate.replace(' ', '-');
+        newDate.replace(",", "");
+        return newDate + ' ' + getReservationHour();
     }
 
     public DateTime getDateTime() {
 
-        DateTime dateTime = DateTime.parse(getTimestampString(), DateTimeFormat.forPattern("mmm dd, yyyy hh:mm a"));
+        DateTime dateTime = DateTime.parse(getReservationDate() + " " + getReservationHour(),
+                                            DateTimeFormat.forPattern("MMM dd, yyyy hh:mm a"));
 
         return  dateTime;
     }

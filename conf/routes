@@ -31,4 +31,3 @@ POST /api/v1/makeReservation                          controllers.ReservationCon
 
 POST /api/v1/checkReservationAvailability            controllers.ReservationController.checkReservationAvailability
 
-
