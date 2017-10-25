@@ -6,11 +6,35 @@
 /*
   complete reservation
 */
+.complete-reservation-image {
+  float: left;
+
+  max-width: 130px;
+  max-height: 113px;
+
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+
+}
+
 .complete-reservation-title {
   text-align: center;
   font-family: 'Source Sans Pro', sans-serif;
   margin-top: 60px;
   margin-bottom: 49px;
+}
+
+.complete-reservation-counter {
+  height: 34px;
+  border-radius: 2px;
+  background-color: #fd6f60;
+  float: right;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  text-align: center;
 }
 
 /*
