@@ -30,9 +30,21 @@
                 <li class="nav-item">
                     {{#link-to 'login' id="login-link" class="nav-link header-link custom-header-link"}}
                         {{#if login}}
-                            <span class="custom-header-link-open">Login</span>
+                            <span class="custom-header-link-open">
+                                {{#if currentUser}}
+                                   <span {{action 'logOut'}}>Logout</span>
+                                {{else}}
+                                    Login
+                                {{/if}}
+                            </span>
                         {{else}}
-                            <span class="{{if home "custom-header-link-landing"}}">Login</span>
+                            <span class="{{if home "custom-header-link-landing"}}">
+                                {{#if currentUser}}
+                                    <span {{action 'logOut'}}>Logout</span>
+                                {{else}}
+                                    Login
+                                {{/if}}
+                            </span>
                         {{/if}}
                     {{/link-to}}
                 </li>

@@ -72,8 +72,19 @@ export default CustomAjax.extend({
                 reject(error);
             })
         })
+    },
+
+    logout() {
+        return new Promise((resolve, reject) => {
+            this.request('/logout')
+                .then(data => {
+                    resolve(data);
+                })
+                .catch(error => {
+                    reject(error);
+                })
+        })
     }
-  
-    // Rest of the methods
+    
   });
   
