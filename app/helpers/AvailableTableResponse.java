@@ -1,7 +1,10 @@
 package helpers;
 
 import models.tables.Restaurant;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,5 +69,17 @@ public class AvailableTableResponse {
 
     public void setRestaurantImageFileName(String restaurantImageFileName) {
         this.restaurantImageFileName = restaurantImageFileName;
+    }
+
+    public void addTime(Timestamp timestamp) {
+        tablesLeft++;
+
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("hh:mm a");
+
+        String timeString = formatter.print(timestamp.getTime());
+
+        if(!bestTime.contains(timeString)) {
+            bestTime.add(timeString);
+        }
     }
 }

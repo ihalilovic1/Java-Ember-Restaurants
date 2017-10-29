@@ -1,6 +1,8 @@
 package controllers;
 
 import forms.ReservationForm;
+import helpers.AvailableTableResponse;
+import helpers.ErrorResponse;
 import helpers.ReservationResponse;
 import helpers.SessionHelper;
 import models.tables.Reservation;
@@ -57,7 +59,7 @@ public class ReservationController extends AbstractController {
     @Transactional
     public Result confirmReservation(String reservationId) {
         try {
-            return ok(Json.toJson(reservationId));
+            return ok(Json.toJson(reservationService.confirmReservation(UUID.fromString(reservationId))));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
@@ -65,17 +67,25 @@ public class ReservationController extends AbstractController {
 
     @Transactional
     public  Result checkReservationAvailability() {
-        Form<ReservationForm> reservationForm = formFactory.form(ReservationForm.class);
-        ReservationForm form = reservationForm.bindFromRequest().get();
+        try {
+            Form<ReservationForm> reservationForm = formFactory.form(ReservationForm.class);
+            ReservationForm form = reservationForm.bindFromRequest().get();
 
-        if(SessionHelper.isConnected()) {
-            User currentUser = new User();
-            currentUser.setId(SessionHelper.getId());
-
-            return ok();
-        } else {
-            return badRequest("Not logged in");
+            if(SessionHelper.isConnected()) {
+                User currentUser = new User();
+                currentUser.setId(SessionHelper.getId());
+                AvailableTableResponse availableTables = reservationService.checkReservationAvailability(form ,currentUser);
+                if(availableTables.getTablesLeft() == 0) {
+                    return badRequest(Json.toJson(ErrorResponse.error("No available tables!")));
+                }
+                return ok(Json.toJson(availableTables));
+            } else {
+                return badRequest("Not logged in");
+            }
+        } catch (Exception ex) {
+            return badRequest();
         }
+
     }
 
 }

@@ -13,6 +13,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 
 public class ReservationService extends AbstractService {
 
-    private static Long ONE_HOUR = TimeUnit.HOURS.toMillis(1);
+    private static Long FIFTEEN_MINUTES = TimeUnit.MINUTES.toMillis(15);
     private static Long TWO_HOURS = TimeUnit.HOURS.toMillis(2);
     private static Long FIVE_MINUTES = TimeUnit.MINUTES.toMillis(5);
 
@@ -107,9 +108,59 @@ public class ReservationService extends AbstractService {
 
         List<RestaurantTable> tableList = getAllRestaurantTables(restaurant, reservationForm.getPersons());
 
+        List<Timestamp> timestampList = new ArrayList<>();
+        Timestamp reservationTime = new Timestamp(reservationForm.getDateTime().getMillis());
+        timestampList.add(reservationTime);
+
+
+        for(int i = 1; i < 7; i++) {
+            timestampList.add(new Timestamp(reservationTime.getTime() + i*FIFTEEN_MINUTES));
+            timestampList.add(new Timestamp(reservationTime.getTime() - i*FIFTEEN_MINUTES));
+        }
+
+
         AvailableTableResponse availableTableResponse = new AvailableTableResponse(restaurant);
 
+        for(RestaurantTable table : tableList ) {
+            for (Timestamp time : timestampList) {
+                if(isTableFree(table, time)) {
+                    availableTableResponse.addTime(time);
+                    break;
+                }
+            }
+        }
+
         return availableTableResponse;
+    }
+
+    public Reservation getReservation(UUID id) {
+        try {
+            EntityManager entityManager = getEntityManager();
+
+            return entityManager.find(Reservation.class, id);
+        } catch (Exception ex) {
+            throw new IllegalArgumentException("Reservation not found");
+        }
+
+    }
+
+    public Boolean confirmReservation(UUID id) {
+        try {
+            Timestamp timestampNow = new Timestamp(DateTime.now().getMillis());
+            timestampNow.setTime(timestampNow.getTime() - FIVE_MINUTES);
+
+            Reservation reservation = getReservation(id);
+            if(reservation.getConfirmed() || reservation.getTimeAdded().before(timestampNow)) {
+                return false;
+            } else {
+                reservation.setConfirmed(true);
+                getEntityManager().flush();
+                return true;
+            }
+        } catch (Exception ex) {
+            throw ex;
+        }
+
     }
 
 }
