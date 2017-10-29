@@ -52,7 +52,15 @@ public class ReservationController extends AbstractController {
             return badRequest(ex.getLocalizedMessage());
         }
 
+    }
 
+    @Transactional
+    public Result confirmReservation(String reservationId) {
+        try {
+            return ok(Json.toJson(reservationId));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
     }
 
     @Transactional

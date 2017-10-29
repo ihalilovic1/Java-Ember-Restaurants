@@ -22,6 +22,7 @@ public class ReservationService extends AbstractService {
 
     private static Long ONE_HOUR = TimeUnit.HOURS.toMillis(1);
     private static Long TWO_HOURS = TimeUnit.HOURS.toMillis(2);
+    private static Long FIVE_MINUTES = TimeUnit.MINUTES.toMillis(5);
 
     public Reservation makeReservation(ReservationForm reservationForm, User user) {
         //get all tables from wanted restaurant with wanted num of persons
@@ -40,7 +41,7 @@ public class ReservationService extends AbstractService {
 
 
         Reservation newReservation = new Reservation(restaurantTables.get(0), user, reservationTime,
-                                            new Timestamp(DateTime.now().getMillis()), true);
+                                            new Timestamp(DateTime.now().getMillis()), false);
         EntityManager entityManager = getEntityManager();
 
         entityManager.persist(newReservation);
@@ -68,13 +69,16 @@ public class ReservationService extends AbstractService {
 
     public Boolean isTableFree(RestaurantTable table, Timestamp when) {
 
-
         //Table is free 2 hours before reservation time and two hours after reservation time
+        //Table is free it reservation is not confirmed 5 minutes after it is added to db
         Timestamp intervalStart = new Timestamp(when.getTime());
         intervalStart.setTime(when.getTime() - TWO_HOURS);
 
         Timestamp intervalEnd = new Timestamp(when.getTime());
         intervalEnd.setTime(when.getTime() + TWO_HOURS);
+
+        Timestamp timestampNow = new Timestamp(DateTime.now().getMillis());
+        timestampNow.setTime(timestampNow.getTime() - FIVE_MINUTES);
 
         EntityManager em = getEntityManager();
 
@@ -86,7 +90,8 @@ public class ReservationService extends AbstractService {
 
         criteria.select(root.get("idTable"));
 
-        criteria.where(cb.equal(root.get("idTable"), table), cb.between(root.get("reservationTime"), intervalStart, intervalEnd));
+        criteria.where(cb.equal(root.get("idTable"), table), cb.between(root.get("reservationTime"), intervalStart, intervalEnd),
+                        cb.or(cb.isTrue(root.get("isConfirmed")), cb.greaterThanOrEqualTo(root.get("timeAdded"), timestampNow)));
 
         //TODO use count instead of entity loading
 

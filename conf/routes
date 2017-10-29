@@ -29,5 +29,7 @@ GET /api/v1/allRestaurantsSortReservationsToday       controllers.RestaurantCont
 
 POST /api/v1/makeReservation                          controllers.ReservationController.makeReservation
 
+POST /api/v1/confirmReservation/:reservationId                       controllers.ReservationController.confirmReservation(reservationId)
+
 POST /api/v1/checkReservationAvailability            controllers.ReservationController.checkReservationAvailability
 
