@@ -87,7 +87,16 @@
                     <div class="col-sm-6">
                         <span class="booked-x-times-label">Booked 72 times today</span>
                     </div>
-                    
+                    <div class="search-bar-container">
+                        {{search-bar findTableAction="findTable" restaurantId=model.restaurant.id}}
+                    </div>
+                    <div class="found-tables">
+                        {{#if foundTables}}
+                            {{#each foundTables.bestTime as |time|}}
+                                <p>{{time}}</p>
+                            {{/each}}
+                        {{/if}}
+                    </div>
                 </div>
 
                 <div id="about" class="row single-restaurant-about single-restaurant-content-box">

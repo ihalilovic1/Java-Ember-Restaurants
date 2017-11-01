@@ -722,3 +722,36 @@ html, body {
     height: 53px;
     border: solid 1px #e1e1e1;
   }
+
+  /*
+  search-bar
+  */
+  .found-tables {
+    clear: both;
+  }
+
+.search-bar-form {
+}
+
+.search-bar-container {
+}
+
+.find-table-button {
+    height: 56px;
+    width: 163px;
+    border-radius: 3px;
+    background-color: #fd6f60;
+
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+}
+
+.find-table-field {
+  width: 160px;
+  height: 56px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #e3e3e3;
+}

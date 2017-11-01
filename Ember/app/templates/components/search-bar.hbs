@@ -1,0 +1,17 @@
+<div class="search-bar-form">
+    <form class="form-inline" {{action 'findTables' on='submit' }}>
+        <select class="find-table-field form-control" onchange={{action 'setNumberOfPeople' value="target.value"}}>>
+            <option value="2" selected>2 people</option>
+            <option value="3">3 people</option>
+            <option value="4">4 people</option>
+            <option value="5">5 people</option>
+            <option value="6">6 people</option>
+        </select>
+
+        {{input type="date" value=date}} 
+        
+        {{input type="time" value=time}}
+
+        <button class="btn-block find-table-button">Find a table</button>
+    </form>
+</div>

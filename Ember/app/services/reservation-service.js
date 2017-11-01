@@ -38,7 +38,7 @@ export default CustomAjax.extend({
                     idRestaurant: idRestaurant
                   }
             }).then(data => {
-                    resolve(data.length);
+                    resolve(data);
                 })
                 .catch(error => {
                     reject(error);

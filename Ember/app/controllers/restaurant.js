@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
     four: false,
     five: false,
 
+    foundTables: null,
+
     userRating: Ember.computed('one', 'two', 'three', 'four', 'five', function() {
         if(this.get('five')){
             return 5;

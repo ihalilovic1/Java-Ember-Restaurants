@@ -10,6 +10,43 @@ const {
 export default Ember.Route.extend({
     restaurantService:      service('restaurant-service'),
     userService:    service('user-service'),
+    reservationService:     service('reservation-service'),
+
+    formatDate: function(date) {
+        var monthNames = [
+          "Jan", "Feb", "Mar",
+          "Apr", "May", "Jun", "Jul",
+          "Aug", "Sep", "Oct",
+          "Nov", "Dec"
+        ];
+      
+        var day = date.getDate();
+        var monthIndex = date.getMonth();
+        var year = date.getFullYear();
+      
+        return monthNames[monthIndex] + ' ' + day + ', ' + year;
+    },
+
+    formatTime: function(time) {
+        var hours = [
+            "12", "01", "02", "03",
+            "04", "05", "06", "07",
+            "08", "09", "10",
+            "11"
+          ];
+
+        var array = time.split(":");
+      
+        var hour = array[0];
+        var minute = array[1];
+        var a = 'AM';
+
+        if(hour >= 12) {
+            a = 'PM';
+            hour = hours[hour % 12];
+        }
+        return hour + ':' + minute + ' ' + a;
+    },
 
     actions: {
         sendReview(currentUser, restaurant) {
@@ -20,6 +57,20 @@ export default Ember.Route.extend({
                 })
                 .catch(error => {
                 })
+        },
+
+        findTable(numberOfPeople, date, time, restaurantId) {
+            var dateString = this.formatDate(new Date(date));
+            var timeString = this.formatTime(time);
+            this.set('controller.foundTables', null);
+            this.get('reservationService').checkReservationAvailability(numberOfPeople, dateString, timeString, restaurantId)
+                .then(data => {
+                    this.set('controller.foundTables', data);
+                })
+                .catch(error => {
+                    this.set('controller.foundTables', null);
+                })
+                        
         }
     },
 
@@ -60,7 +111,7 @@ export default Ember.Route.extend({
                                 })
                                 .catch(error => {
                                     return null;
-                                })
+                                }),
         })
     }
 });
