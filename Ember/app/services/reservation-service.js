@@ -58,6 +58,42 @@ export default CustomAjax.extend({
                     reject(error);
                 });
         });
+    },
+
+    getReservation(id) {
+        return new Promise((resolve, reject) => {
+            this.post('/getReservation', {
+                xhrFields: {
+                    withCredentials: true,
+                  },
+                  data: {
+                    id: id
+                  }
+            }).then(data => {
+                    resolve(data);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        })
+    },
+
+    confirmReservation(id) {
+        return new Promise((resolve, reject) => {
+            this.post('/confirmReservation', {
+                xhrFields: {
+                    withCredentials: true,
+                  },
+                  data: {
+                    id: id
+                  }
+            }).then(data => {
+                    resolve(data);
+                })
+                .catch(error => {
+                    reject(error);
+                });
+        })
     }
     
   });

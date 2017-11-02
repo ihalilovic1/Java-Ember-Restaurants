@@ -92,9 +92,17 @@
                     </div>
                     <div class="found-tables">
                         {{#if foundTables}}
-                            {{#each foundTables.bestTime as |time|}}
-                                <p>{{time}}</p>
-                            {{/each}}
+                            <p class="found-tables-label">Availability on {{selectedDate}} around {{selectedTime}} for {{selectedPeople}}: </p>
+                            <div>
+                                <i class="fa fa-info-circle" aria-hidden="true"></i> <span class="tables-left-label">{{foundTables.tablesLeft}} tables left</span>
+                            </div>
+                            <p class="found-tables-label">Select the best time that fits you:</p>
+                            <div>
+                                {{#each foundTables.bestTime as |time|}}
+                                    <button class="reservation-time-button" {{action "makeReservation" time foundTables.idRestaurant}}>{{time}}</button>
+                                {{/each}}
+                            </div>
+                            
                         {{/if}}
                     </div>
                 </div>

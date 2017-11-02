@@ -33,3 +33,4 @@ POST /api/v1/confirmReservation/:reservationId                       controllers
 
 POST /api/v1/checkReservationAvailability            controllers.ReservationController.checkReservationAvailability
 
+POST /api/v1/getReservation                          controllers.ReservationController.getReservation

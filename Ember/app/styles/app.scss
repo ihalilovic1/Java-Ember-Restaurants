@@ -726,14 +726,33 @@ html, body {
   /*
   search-bar
   */
+.reservation-time-button {
+  height: 34px;
+  border-radius: 2px;
+  background-color: #fd6f60;
+
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
   .found-tables {
     clear: both;
   }
 
-.search-bar-form {
-}
+  .found-tables-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    color: #131d24;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
 
-.search-bar-container {
+.tables-left-label {
+  font-size: 14px;
+  color: #131d24;
 }
 
 .find-table-button {

@@ -1,6 +1,7 @@
 package controllers;
 
 import forms.ReservationForm;
+import forms.RestaurantUUIDForm;
 import helpers.AvailableTableResponse;
 import helpers.ErrorResponse;
 import helpers.ReservationResponse;
@@ -84,6 +85,19 @@ public class ReservationController extends AbstractController {
             }
         } catch (Exception ex) {
             return badRequest();
+        }
+
+    }
+
+    @Transactional
+    public Result getReservation() {
+        try {
+            Form<RestaurantUUIDForm> reservationUUIDForm = formFactory.form(RestaurantUUIDForm.class);
+            UUID id = UUID.fromString(reservationUUIDForm.bindFromRequest().get().getId());
+
+            return ok(ReservationResponse.makeResponse(reservationService.getReservation(id)));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
         }
 
     }

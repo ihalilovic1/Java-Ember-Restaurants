@@ -62,6 +62,10 @@ export default Ember.Route.extend({
         findTable(numberOfPeople, date, time, restaurantId) {
             var dateString = this.formatDate(new Date(date));
             var timeString = this.formatTime(time);
+            this.set('controller.selectedDate', dateString);
+            this.set('controller.selectedTime', timeString);
+            this.set('controller.selectedPeople', numberOfPeople);
+
             this.set('controller.foundTables', null);
             this.get('reservationService').checkReservationAvailability(numberOfPeople, dateString, timeString, restaurantId)
                 .then(data => {
@@ -71,6 +75,16 @@ export default Ember.Route.extend({
                     this.set('controller.foundTables', null);
                 })
                         
+        },
+
+        makeReservation(time, restaurantId) {
+            this.get('reservationService').makeReservation(this.get('controller.selectedPeople'), this.get('controller.selectedDate'), time, restaurantId)
+                .then(data => {
+                    this.transitionTo('complete-reservation', restaurantId, data.id);
+                })
+                .catch(error => {
+                    alert(error);
+                })
         }
     },
 
