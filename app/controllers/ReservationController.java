@@ -58,9 +58,12 @@ public class ReservationController extends AbstractController {
     }
 
     @Transactional
-    public Result confirmReservation(String reservationId) {
+    public Result confirmReservation() {
         try {
-            return ok(Json.toJson(reservationService.confirmReservation(UUID.fromString(reservationId))));
+            Form<RestaurantUUIDForm> reservationUUIDForm = formFactory.form(RestaurantUUIDForm.class);
+            UUID id = UUID.fromString(reservationUUIDForm.bindFromRequest().get().getId());
+
+            return ok(Json.toJson(reservationService.confirmReservation(id)));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }

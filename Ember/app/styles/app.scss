@@ -17,7 +17,40 @@
   width: 100%;
   height: auto;
   margin-top: 20px;
+}
 
+.complete-reservation-details-name {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  color: #fd6f60;
+  font-weight: 600;
+}
+
+.complete-reservation-details {
+  float: left;
+  margin-top: 20px;
+  padding: 0;
+}
+
+.complete-reservation-details-label {
+  opacity: 0.4;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #171717;
+  margin-bottom: 0;
+}
+
+.complete-reservation-detail {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  color: #131d24;
+  font-weight: 600;
+}
+
+.complete-reservation-details-table {
+  margin-top: 20px;
+  width: 80%;
 }
 
 .complete-reservation-title {
@@ -27,13 +60,26 @@
   margin-bottom: 49px;
 }
 
+.complete-reservation-button {
+  border-radius: 3px;
+  background-color: #fd6f60;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+ margin-top: 20px;
+}
+
+
 .complete-reservation-counter {
   height: 34px;
   border-radius: 2px;
-  background-color: #fd6f60;
+  background-color: #FFC6C0;
   float: right;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding: 8px 5px;
+  color: #716062;
+  margin: 0;
+  
   text-align: center;
 }
 
@@ -417,13 +463,6 @@
   font-weight: 600;
 }
 
-.row-full {
-  width: 100vw;
-  position: relative;
-  margin-left: -50vw;
-  left: 50%;
-}
-
 .not-transparent {
   background-color: black;
   padding: 0;
@@ -478,29 +517,6 @@
 */
 .form-error-text {
   color: red;
-}
-
-
-/*
-    global
-*/
-
-body, body > .ember-view {
-  height: 100%;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: #F9F9F9;
-}
-
-.content-container {
-  margin-bottom: 200px;
-  height: 100%;
-  min-height:100%;
-  clear: both;
-  vertical-align: middle;
 }
 
 /*
@@ -572,6 +588,24 @@ html, body {
 }
 
 /*
+    global
+*/
+
+html, body, body > .ember-view {
+  height: 100%;
+  min-height: 100%;
+}
+
+html, body {
+  background-color: #F9F9F9;
+}
+
+.content-container {
+  margin-bottom: 50px;
+  height: 100%;
+}
+
+/*
     footer
 */
 .footer-left-side {
@@ -610,29 +644,15 @@ html, body {
     font-size: 16px;
     font-weight: 600;
     color: #ffffff;
-    color: var(--white-three);
     float: right;
   }
 
   .footer-container {
     height: 150px;
     background-color: #131d24;
-    width: 100%;
     padding-top: 50px;
-    position: relative;
-    
-    
   }
-  footer {
-    
-    
-    height: 150px;
-    width: 100%;
-    clear: both;
-    margin-bottom: 0;
-    padding: 0;
-  }
-
+ 
   /*
     register
   */

@@ -55,7 +55,14 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         
-                        <button class="btn login-submit btn-block">Login</button>
+                        <button id="login" class="btn login-submit btn-block">
+                            {{#if loading}}
+                                <span class='fa fa-circle-o-notch fa-spin'></span> Logging in
+                            {{else}}
+                                Login
+                            {{/if}}
+                        </button>
+                        
                     </div>
                 </div>
                 <div class="col-4">

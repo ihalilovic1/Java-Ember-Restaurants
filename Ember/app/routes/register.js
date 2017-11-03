@@ -13,7 +13,7 @@ export default Ember.Route.extend({
 
         actions: {
             register() {
-                //(document.getElementById('city')).options[0].text
+                this.set('controller.loading', true);
                 let selectedCountry = this.get('controller').selectedCountry ? 
                                         this.get('controller').selectedCountry : 
                                         (document.getElementById('country')).options[0].text;
@@ -24,9 +24,11 @@ export default Ember.Route.extend({
                 this.get('userService').register(this.get('controller.firstName'), this.get('controller.lastName'), this.get('controller.email'),
                 this.get('controller.phone'), selectedCountry, selectedCity, this.get('controller.password'))
                 .then(data => {
+                    this.set('controller.loading', false);
                     this.transitionTo('index');
                 })
                 .catch(error => {
+                    this.set('controller.loading', false);
                     alert("Registration was not successful");
                 })   
             }

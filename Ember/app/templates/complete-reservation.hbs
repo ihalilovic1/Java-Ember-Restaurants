@@ -7,15 +7,61 @@
     </div>
 
     <div class="row single-restaurant-content-box">
-        <div class="col-md">
-            <div class="single-restaurant-content-label">Reservation Details</div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md">
+                    <div class="single-restaurant-content-label">Reservation Details</div>
+                </div>
+            
+                <div class="col-md-4">
+                    <span class="complete-reservation-counter fa fa-clock-o" > You have 2:54 minutes to complete reservation</span>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="img-fluid complete-reservation-image" src="{{model.restaurant.imageFileName}}" alt="single restaurant img">
+                </div>
 
-            <img class="img-fluid complete-reservation-image" src="https://drive.google.com/uc?export=view&id=0B2kerAVz5owdWEo1dEY1U1I0TXM" alt="single restaurant img">
-        </div>
+                
+                <div class="col-md complete-reservation-details">
+                    <h1 class="complete-reservation-details-label">RESTAURANT</h1>
+                    <h1 class="complete-reservation-details-name">{{model.restaurant.restaurantName}}</h1>
 
-        <div class="col-md-4 complete-reservation-counter">
-                <span class="fa fa-clock-o no-padding" > You have 2:54 minutes to complete reservation</span>
+                    <table class="complete-reservation-details-table">
+                        <tr>
+                            <td>
+                                <h1 class="complete-reservation-details-label">GUESTS</h1>
+                                <p class="complete-reservation-detail">{{model.reservation.persons}}</p>
+                            </td>
+                            <td>
+                                <h1 class="complete-reservation-details-label">DATE</h1>
+                                <p class="complete-reservation-detail">{{format-date model.reservation.reservationDateTime}}</p>
+                            </td>
+                            <td>
+                                <h1 class="complete-reservation-details-label">TIME</h1>
+                                <p class="complete-reservation-detail">{{format-time model.reservation.reservationDateTime}}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
+        
     </div>
     
+    <div class="row">
+        <div class="col-md">
+
+        </div>
+
+        <div class="col-md-3">
+            <button {{action "completeReservation" model.reservation.id}} class="btn btn-block complete-reservation-button">Complete Reservation</button>
+        </div>
+
+        <div class="col-md">
+
+        </div>
+    </div>
+
 </div>

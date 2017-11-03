@@ -138,7 +138,13 @@
       <div class="col-md-4">
         <div class="form-group">
 
-            <button id="signup" name="signup" class="btn create-acc-submit btn-block">Create Account</button>
+            <button id="signup" name="signup" class="btn create-acc-submit btn-block">
+              {{#if loading}}
+                <span class='fa fa-circle-o-notch fa-spin'></span> Creating Account
+              {{else}}
+                Create Account
+              {{/if}}
+            </button>
         </div>
       </div>
       <div class="col-4">

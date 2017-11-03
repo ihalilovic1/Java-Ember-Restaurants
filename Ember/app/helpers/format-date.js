@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export function formatDate(params/*, hash*/) {
-  alert('formating');
   var monthNames = [
     "Jan", "Feb", "Mar",
     "Apr", "May", "Jun", "Jul",
@@ -9,9 +8,11 @@ export function formatDate(params/*, hash*/) {
     "Nov", "Dec"
   ];
 
-  var day = params[0].getDate();
-  var monthIndex = params[0].getMonth();
-  var year = params[0].getFullYear();
+  var date = new Date(params[0]);
+
+  var day = date.getDate();
+  var monthIndex = date.getMonth();
+  var year = date.getFullYear();
 
   return monthNames[monthIndex] + ' ' + day + ', ' + year;
 }

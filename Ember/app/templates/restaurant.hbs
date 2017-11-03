@@ -88,7 +88,7 @@
                         <span class="booked-x-times-label">Booked 72 times today</span>
                     </div>
                     <div class="search-bar-container">
-                        {{search-bar findTableAction="findTable" restaurantId=model.restaurant.id}}
+                        {{search-bar loading=findingTable findTableAction="findTable" restaurantId=model.restaurant.id}}
                     </div>
                     <div class="found-tables">
                         {{#if foundTables}}

@@ -6,7 +6,6 @@ export default Ember.Component.extend({
     date: "",
     time: "",
     
-
     actions: {
         findTables() {
             this.sendAction('findTableAction', this.get('numberOfPeople') + ' people', this.get('date'), this.get('time'), this.get('restaurantId'));

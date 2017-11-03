@@ -12,6 +12,13 @@
         
         {{input type="time" value=time}}
 
-        <button class="btn-block find-table-button">Find a table</button>
+        <button class="btn-block find-table-button">
+            {{#if loading}}
+                <span class='fa fa-circle-o-notch fa-spin'></span> Find a table
+            {{else}}
+                Find a table
+            {{/if}}
+            
+        </button>
     </form>
 </div>

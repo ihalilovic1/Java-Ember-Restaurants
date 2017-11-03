@@ -11,16 +11,20 @@ export default Ember.Route.extend({
 
     actions: {
         login() {
+            this.set('controller.loading', true);
+
             this.get('userService').login(this.get('controller.email'), this.get('controller.password'))
                 .then(data => {
                     this.set('controller.loginErrors', false);
+                    this.set('controller.loading', false);
                     this.transitionTo('index');
                 })
                 .catch((error) => {
                     alert("Login was not successfull");
                     this.set('controller.loginErrors', true);
                     this.set('controller.errorMessage', error);
-                })
+                    this.set('controller.loading', false);
+                });
         }
     }
 });

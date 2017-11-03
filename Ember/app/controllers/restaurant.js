@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
     five: false,
 
     foundTables: null,
+    findingTable: false,
 
     userRating: Ember.computed('one', 'two', 'three', 'four', 'five', function() {
         if(this.get('five')){
