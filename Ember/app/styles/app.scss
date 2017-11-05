@@ -4,6 +4,14 @@
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
 
 /*
+  restaurants
+*/
+
+.restaurant-searchbar-container {
+  margin: auto;
+}
+
+/*
   complete reservation
 */
 .complete-reservation-image {
@@ -746,6 +754,43 @@ html, body {
   /*
   search-bar
   */
+.search-bar-form {
+  clear: both;
+  margin: 20px auto;
+
+  display: inline-block;
+  width: 80%;
+}
+
+.find-table-button {
+  height: 56px;
+  width: 160px;
+  background-color: #fd6f60;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.find-table-textfield {
+  width: 50%;
+  display: block;
+  padding: 0 20px;
+  font-family: 'Source Sans Pro', sans-serif, FontAwesome;
+}
+
+
+.find-table-field {
+  display: inline;
+  height: 56px;
+  background-color: #ffffff;
+  border: solid 1px #e3e3e3;
+  margin: 0;
+
+}
+
 .reservation-time-button {
   height: 34px;
   border-radius: 2px;
@@ -775,22 +820,7 @@ html, body {
   color: #131d24;
 }
 
-.find-table-button {
-    height: 56px;
-    width: 163px;
-    border-radius: 3px;
-    background-color: #fd6f60;
-
-    font-size: 18px;
-    font-weight: 600;
-    font-family: 'Source Sans Pro', sans-serif;
-    color: #ffffff;
+.search-bar-container {
+  width: 100%;
 }
 
-.find-table-field {
-  width: 160px;
-  height: 56px;
-  border-radius: 3px;
-  background-color: #ffffff;
-  border: solid 1px #e3e3e3;
-}

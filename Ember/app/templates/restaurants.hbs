@@ -1,8 +1,40 @@
 {{header-component restaurants=true user=model.currentUser}}
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <p>Work in progress!!!</p>
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md restaurant-searchbar-container">
+            {{search-bar textSearch=true}}
+            </div>
         </div>
-    </div> 
+    </div>
+
+    <div class="container">
+            <div class="row">
+                {{#each model.popularRestaurants as |restaurant|}}
+                    <div class="col">
+                        {{restaurant-tile restaurant=restaurant}}
+                    </div>
+                {{/each}} 
+            </div>
+        </div>  
+
+    {{#if model.popularLocations}}
+        <div class="container landing-popular-locations">
+            <div class="row">
+                <div class="col-md">
+                    <div class="landing-popular-locations-label">Popular Locations</div>
+                </div>
+            </div>
+
+            <div class="row">
+                {{#each model.popularLocations as |location|}}
+                    <div class="col-md-3">
+                        <div class="landing-popular-location-city">{{location.city}}</div>
+                        <div class="landing-popular-location-number">{{location.number}} restaurants</div>
+                    </div>
+                {{/each}}
+            </div>
+
+        </div>
+    {{/if}}
 </div>

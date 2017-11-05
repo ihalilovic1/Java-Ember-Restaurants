@@ -6,6 +6,10 @@
         <div class="landing-header-label">
             <div class="free-reservation-label">Make a free reservation</div>
             <div class="number-of-restaurants-label">Choose your table from {{model.numberOfRestaurants}} restaurants near you</div>
+            <div class="landing-search-bar">
+                {{search-bar textSearch=true loading=findingTable findTableAction="searchRestaurants"}}
+            </div>
+
         </div>
         <img class="img-fluid" src="https://drive.google.com/uc?export=view&id=0B2kerAVz5owdQkFEeUJPb0FHajA">
     </div>

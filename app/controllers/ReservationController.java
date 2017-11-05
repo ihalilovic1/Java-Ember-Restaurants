@@ -63,7 +63,12 @@ public class ReservationController extends AbstractController {
             Form<RestaurantUUIDForm> reservationUUIDForm = formFactory.form(RestaurantUUIDForm.class);
             UUID id = UUID.fromString(reservationUUIDForm.bindFromRequest().get().getId());
 
-            return ok(Json.toJson(reservationService.confirmReservation(id)));
+            if(SessionHelper.isConnected()) {
+                return ok(Json.toJson(reservationService.confirmReservation(id)));
+            } else {
+                return badRequest("Not logged in");
+            }
+
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
@@ -75,17 +80,13 @@ public class ReservationController extends AbstractController {
             Form<ReservationForm> reservationForm = formFactory.form(ReservationForm.class);
             ReservationForm form = reservationForm.bindFromRequest().get();
 
-            if(SessionHelper.isConnected()) {
-                User currentUser = new User();
-                currentUser.setId(SessionHelper.getId());
-                AvailableTableResponse availableTables = reservationService.checkReservationAvailability(form ,currentUser);
-                if(availableTables.getTablesLeft() == 0) {
-                    return badRequest(Json.toJson(ErrorResponse.error("No available tables!")));
-                }
-                return ok(Json.toJson(availableTables));
-            } else {
-                return badRequest("Not logged in");
+            AvailableTableResponse availableTables = reservationService.checkReservationAvailability(form);
+
+            if(availableTables.getTablesLeft() == 0) {
+                return badRequest(Json.toJson(ErrorResponse.error("No available tables!")));
             }
+            return ok(Json.toJson(availableTables));
+
         } catch (Exception ex) {
             return badRequest();
         }

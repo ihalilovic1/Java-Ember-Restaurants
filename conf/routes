@@ -13,6 +13,8 @@ GET     /api/v1/currentUser                          controllers.UserController.
 
 #Restaurant management
 
+POST /api/v1/getRestaurantsByFilter                  controllers.RestaurantController.getRestaurantsByFilter
+
 POST /api/v1/getRestaurantDetails                     controllers.RestaurantController.getRestaurantDetails
 
 POST /api/v1/getRestaurantMenu                        controllers.RestaurantController.getRestaurantMenu

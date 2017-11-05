@@ -1,6 +1,7 @@
 package controllers;
 
 import forms.MenuForm;
+import forms.RestaurantFilterForm;
 import forms.RestaurantUUIDForm;
 import forms.ReviewForm;
 import helpers.MenuResponse;
@@ -96,5 +97,22 @@ public class RestaurantController extends AbstractController {
         }
     }
 
+    @Transactional
+    public Result getRestaurantsByFilter() {
+        try {
+            Form<RestaurantFilterForm> restaurantFilterForm = formFactory.form(RestaurantFilterForm.class);
+            RestaurantFilterForm form = restaurantFilterForm.bindFromRequest().get();
+
+            if(form.getSearchText() == null) {
+                return ok("No search text");
+            } else {
+                return ok(form.getSearchText());
+            }
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+
+
+    }
 
 }

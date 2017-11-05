@@ -101,7 +101,7 @@ public class ReservationService extends AbstractService {
         return restaurantTables.isEmpty();
     }
 
-    public AvailableTableResponse checkReservationAvailability(ReservationForm reservationForm, User user) {
+    public AvailableTableResponse checkReservationAvailability(ReservationForm reservationForm) {
 
         Restaurant restaurant = new Restaurant();
         restaurant.setId(UUID.fromString(reservationForm.getIdRestaurant()));

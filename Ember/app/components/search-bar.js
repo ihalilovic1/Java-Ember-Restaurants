@@ -8,7 +8,13 @@ export default Ember.Component.extend({
     
     actions: {
         findTables() {
-            this.sendAction('findTableAction', this.get('numberOfPeople') + ' people', this.get('date'), this.get('time'), this.get('restaurantId'));
+            if(this.get('textSearch')) {
+                this.sendAction('findTableAction', this.get('numberOfPeople') + ' people', this.get('date'), this.get('time'), this.get('textSearch'));
+            } else if(this.get('restaurantId')){
+                this.sendAction('findTableAction', this.get('numberOfPeople') + ' people', this.get('date'), this.get('time'), this.get('restaurantId'));
+            } else {
+                this.sendAction('findTableAction', this.get('numberOfPeople') + ' people', this.get('date'), this.get('time'));
+            }
         },
 
         setNumberOfPeople(value) {
