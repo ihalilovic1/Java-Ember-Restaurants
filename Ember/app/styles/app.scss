@@ -4,6 +4,47 @@
 @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro';
 
 /*
+  pagination
+*/
+
+.pagination-container {
+  text-align: center;
+}
+
+.pagination-list {
+  display: inline-block;
+  list-style: none;
+}
+
+.pagination-list > :first-child button, .pagination-list > :last-child button {
+  background: transparent;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+  color: rgba(46, 57, 63, 0.6);
+  border: none;
+}
+
+.pagination-item {
+  display: inline-block;
+  padding: 8px;
+}
+
+.pagination-item button {
+  width: auto;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #eaeaee;
+}
+
+.pagination-item button.selected {
+  background-color: #fd6f60;
+  color: #ffffff;
+}
+/*
   restaurants
 */
 
@@ -471,7 +512,6 @@
 .restaurant-tile-container {
   margin-bottom: 100px;
   min-width: 100%;
-  
 }
 
 .restaurant-logo {
@@ -671,7 +711,7 @@
     global
 */
 
-html, body, body > .ember-view {
+ body, body > .ember-view {
   height: 100%;
   min-height: 100%;
 }

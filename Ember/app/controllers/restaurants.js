@@ -1,11 +1,30 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    queryParams: {
+        cuisines: 'cuisines',
+        priceFilter: 'priceFilter',
+        ratingFilter: 'ratingFilter',
+        pageNumber: 'pageNumber'
+    },
 
     cuisines: [],
-    rating:     null,
+    ratingFilter: null,
+    priceFilter: null,
+    pageNumber: 1,
 
-    restaurantsList: Ember.computed('cuisines', 'rating', function() {
-        alert("Updating list");
-    })
+    actions: {
+        priceFilter(price) {
+            this.set('priceFilter', price);
+        },
+
+        ratingFilter(rating) {
+            this.set('ratingFilter', rating);
+        },
+
+        updatePage(page) {
+            alert(page);
+        }
+
+    }
 });
