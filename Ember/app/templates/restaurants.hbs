@@ -3,38 +3,97 @@
     <div class="container">
         <div class="row">
             <div class="col-md restaurant-searchbar-container">
-            {{search-bar textSearch=true}}
+                <input type=text class="search-textfield" placeholder="&#xF002; Location, Restaurant or cuisine" />
+
+                <div class="search-field dropdown">
+                    <a href="#" data-toggle="dropdown">Sort By
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li>
+                                {{input type="radio" id="byName"}}
+                                <label for="byName">Name</label>
+                            </li>
+                            <li>
+                                {{input type="radio" id="byRating"}}
+                                <label for="byRating">Rating</label>
+                            </li>
+
+                            <li>
+                                {{input type="radio" id="byPricarange"}}
+                                <label for="byPricerange">Price</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="search-field dropdown">
+                    <a href="#" data-toggle="dropdown">Filter By
+                        <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu">
+
+                        <form>
+                            <div class="price-filter">
+                                <label class="restaurant-filter-label" for="price">PRICE</label>
+                                <div  id="price">
+                                    {{rate-component price=true updateRating="priceFilter"}}
+                                </div>
+                            </div>
+                            
+                            <div class="rating-filter">
+                                <label class="restaurant-filter-label" for="rating">RATING</label>
+                                <div id="rating">
+                                    {{rate-component rating=true updateRating="ratingFilter"}}
+                                </div>
+                            </div>
+                            
+                            <div class="cuisine-filter">
+                                <hr>
+                                <label class="restaurant-filter-label" for="cuisine">CUISINE</label>
+                                <div id="cuisine">
+                                    American Bosnian
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <button class="btn-block search-button">
+                    Search
+                </button>
             </div>
         </div>
     </div>
 
     <div class="container">
-            <div class="row">
-                {{#each model.popularRestaurants as |restaurant|}}
-                    <div class="col">
-                        {{restaurant-tile restaurant=restaurant}}
-                    </div>
-                {{/each}} 
+        <div class="row">
+            {{#each model.restaurantsList as |restaurant|}}
+            <div class="col">
+                {{restaurant-tile restaurant=restaurant}}
             </div>
-        </div>  
+            {{/each}}
+        </div>
+    </div>
 
     {{#if model.popularLocations}}
-        <div class="container landing-popular-locations">
-            <div class="row">
-                <div class="col-md">
-                    <div class="landing-popular-locations-label">Popular Locations</div>
-                </div>
+    <div class="container landing-popular-locations">
+        <div class="row">
+            <div class="col-md">
+                <div class="landing-popular-locations-label">Popular Locations</div>
             </div>
-
-            <div class="row">
-                {{#each model.popularLocations as |location|}}
-                    <div class="col-md-3">
-                        <div class="landing-popular-location-city">{{location.city}}</div>
-                        <div class="landing-popular-location-number">{{location.number}} restaurants</div>
-                    </div>
-                {{/each}}
-            </div>
-
         </div>
+
+        <div class="row">
+            {{#each model.popularLocations as |location|}}
+            <div class="col-md-3">
+                <div class="landing-popular-location-city">{{location.city}}</div>
+                <div class="landing-popular-location-number">{{location.number}} restaurants</div>
+            </div>
+            {{/each}}
+        </div>
+
+    </div>
     {{/if}}
 </div>

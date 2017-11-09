@@ -144,30 +144,8 @@ public class Restaurant extends AbstractModel{
         this.restaurantReviews = restaurantReviews;
     }
 
-    /*
-    TODO move following methods somwhere else
-     */
-
-    public Integer getMark() {
-        return getRestaurantReviews().stream()
-                .mapToInt(r -> r.getMark())
-                .sum();
-    }
-
     public Integer getNumberOfVotes() {
         return getRestaurantReviews().size();
-    }
-
-    public String getFoodTypesAsString() {
-        return getFoodType().stream()
-                .map(f -> f.getName())
-                .collect (Collectors.joining (" | "));
-    }
-
-    public List<MenuItem> filterRestaurantMenu(String type) {
-        return getRestaurantMenu().stream()
-                .filter(m -> m.getType().equals(type))
-                .collect(Collectors.toList());
     }
 
     public List<MenuItem> getRestaurantMenu() {

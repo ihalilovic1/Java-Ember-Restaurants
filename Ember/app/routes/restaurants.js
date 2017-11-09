@@ -10,6 +10,16 @@ const {
 export default Ember.Route.extend({
     userService:    service('user-service'),
     restaurantService:      service('restaurant-service'),
+
+    actions: {
+        priceFilter(price) {
+            alert(price);
+        },
+
+        ratingFilter(rating) {
+            alert(rating);
+        }
+    },
     
     model() {
         return RSVP.hash({
@@ -27,8 +37,8 @@ export default Ember.Route.extend({
                                         })              
                                         .catch(error => {
                                             return null;
-                                        }),
-            numberOfRestaurants:     this.get('restaurantService').getNumberOfRestaurants()
+                                        })
+
         })
     }
 });

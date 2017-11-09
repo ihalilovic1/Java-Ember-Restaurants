@@ -1,11 +1,13 @@
 package services;
 
+import forms.RestaurantFilterForm;
 import forms.ReviewForm;
 import helpers.RestaurantLocationResponse;
 import models.tables.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -98,6 +100,20 @@ public class RestaurantService extends AbstractService {
         criteria.select( root );
 
         return em.createQuery(criteria).getResultList();
+    }
+
+    public List<Restaurant> getRestauranByFilter(Integer itemsPerPage, Integer pageNumber, String restaurantName) {
+        EntityManager entityManager = getEntityManager();
+
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+
+        CriteriaQuery<Restaurant> criteriaQuery = criteriaBuilder.createQuery(Restaurant.class);
+
+        Root<Restaurant> restaurantRoot = criteriaQuery.from(Restaurant.class);
+
+
+
+        return new ArrayList<>();
     }
 
 }

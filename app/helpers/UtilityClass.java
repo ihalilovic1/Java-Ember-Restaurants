@@ -1,10 +1,29 @@
 package helpers;
 
+import models.tables.MenuItem;
+import models.tables.Restaurant;
 import org.joda.time.DateTime;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UtilityClass {
 
-    public static Boolean intervalsOverlapping(DateTime start1, DateTime end1, DateTime start2, DateTime end2) {
-        return (start2.isAfter(start1) && end1.isAfter(start2)) || (end2.isAfter(start1) && end1.isAfter(end2));
+    public static Integer getMark(Restaurant restaurant) {
+        return restaurant.getRestaurantReviews().stream()
+                .mapToInt(r -> r.getMark())
+                .sum();
+    }
+
+    public static String getFoodTypesAsString(Restaurant restaurant) {
+        return restaurant.getFoodType().stream()
+                .map(f -> f.getName())
+                .collect (Collectors.joining (" | "));
+    }
+
+    public static List<MenuItem> filterRestaurantMenu(Restaurant restaurant, String type) {
+        return restaurant.getRestaurantMenu().stream()
+                .filter(m -> m.getType().equals(type))
+                .collect(Collectors.toList());
     }
 }

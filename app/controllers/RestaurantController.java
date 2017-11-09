@@ -7,6 +7,7 @@ import forms.ReviewForm;
 import helpers.MenuResponse;
 import helpers.RestaurantLocationResponse;
 import helpers.RestaurantResponse;
+import helpers.UtilityClass;
 import models.tables.Restaurant;
 import play.data.Form;
 import play.data.FormFactory;
@@ -50,7 +51,8 @@ public class RestaurantController extends AbstractController {
             Form<MenuForm> menuFormForm = formFactory.form(MenuForm.class);
             MenuForm menuForm = menuFormForm.bindFromRequest().get();
 
-            return ok(MenuResponse.makeResponseList(restaurantService.getRestaurantById(UUID.fromString(menuForm.getIdRestaurant())).filterRestaurantMenu(menuForm.getType())));
+            return ok(MenuResponse.makeResponseList(UtilityClass.filterRestaurantMenu(
+                    restaurantService.getRestaurantById(UUID.fromString(menuForm.getIdRestaurant())),menuForm.getType())));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
@@ -91,6 +93,7 @@ public class RestaurantController extends AbstractController {
     @Transactional
     public Result allRestaurantsSortReservationsToday() {
         try {
+            //TODO sort
             return ok(RestaurantResponse.makeResponseList(restaurantService.getAllRestaurants()));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
@@ -103,11 +106,8 @@ public class RestaurantController extends AbstractController {
             Form<RestaurantFilterForm> restaurantFilterForm = formFactory.form(RestaurantFilterForm.class);
             RestaurantFilterForm form = restaurantFilterForm.bindFromRequest().get();
 
-            if(form.getSearchText() == null) {
-                return ok("No search text");
-            } else {
-                return ok(form.getSearchText());
-            }
+            //TODO use restaurant.gerRestaurantsByFilter()
+            return ok(RestaurantResponse.makeResponseList(restaurantService.getAllRestaurants()));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }

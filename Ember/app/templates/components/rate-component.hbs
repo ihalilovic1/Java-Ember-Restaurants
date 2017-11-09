@@ -1,0 +1,16 @@
+{{#if rating}}
+    <span class="modal-rating-star">
+        {{fa-icon "star" class=starOne click=(action "oneStar") size=1}} 
+        {{fa-icon "star" class=starTwo click=(action "twoStar") size=1}} 
+        {{fa-icon "star" class=starThree click=(action "threeStar") size=1}} 
+        {{fa-icon "star" class=starFour click=(action "fourStar") size=1}} 
+        {{fa-icon "star" class=starFive click=(action "fiveStar") size=1}}
+    </span>
+{{else}}
+        <span class="modal-rating-star">
+            {{fa-icon "usd" class=starOne click=(action "oneStar") size=1}} 
+            {{fa-icon "usd" class=starTwo click=(action "twoStar")size=1}} 
+            {{fa-icon "usd" class=starThree click=(action "threeStar") size=1}} 
+            {{fa-icon "usd" class=starFour click=(action "fourStar") size=1}}
+        </span>
+{{/if}}

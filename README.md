@@ -20,6 +20,7 @@ CREATE EXTENSION pgcrypto;
 - [ ] Implement 'remember me' option in backend
 - [x] Remove duplicates from registration form country list
 - [ ] Rename RestaurantUUIDForm to UUIDForm
+- [ ] Use rate-component in restaurant-tile and rate restaurant modal
 
 ## Built With
 
