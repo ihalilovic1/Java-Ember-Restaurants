@@ -96,7 +96,7 @@
                        
                     {{#each model.numberOfPages as |page index|}}
                         <li class="pagination-item">
-                            <button value={{adition-helper index 1}}>{{adition-helper index 1}}</button>
+                            <button {{action "updatePage" index}}>{{adition-helper index 1}}</button>
                         </li> 
                     {{/each}}
 

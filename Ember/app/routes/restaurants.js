@@ -11,21 +11,24 @@ export default Ember.Route.extend({
     userService:    service('user-service'),
     restaurantService:      service('restaurant-service'),
 
-    cuisines: {
-        refreshModel: true
-    },
+    queryParams: {
+        cuisines: {
+            refreshModel: true
+        },
 
-    ratingFilter: {
-        refreshModel: true
-    },
+        ratingFilter: {
+            refreshModel: true
+        },
 
-    priceFilter: {
-        refreshModel: true
-    },
+        priceFilter: {
+            refreshModel: true
+        },
 
-    pageNumber: {
-        refreshModel: true
+        pageNumber: {
+            refreshModel: true
+        },
     },
+    
 
     updateRestaurants: function() {
         var searchText = 'price: ' + this.get('priceFilter') + ' ';

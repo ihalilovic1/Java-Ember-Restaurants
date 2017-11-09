@@ -4,10 +4,14 @@ import forms.RestaurantFilterForm;
 import forms.ReviewForm;
 import helpers.RestaurantLocationResponse;
 import models.tables.*;
+import org.hibernate.jpa.criteria.expression.ParameterExpressionImpl;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -102,18 +106,20 @@ public class RestaurantService extends AbstractService {
         return em.createQuery(criteria).getResultList();
     }
 
-    public List<Restaurant> getRestauranByFilter(Integer itemsPerPage, Integer pageNumber, String restaurantName) {
-        EntityManager entityManager = getEntityManager();
+    public List<Restaurant> getRestauranByFilter(Integer itemsPerPage, Integer pageNumber, Double priceRange, Integer rating, List<String> foodTypes, String restaurantName) {
+        try {
+            EntityManager entityManager = getEntityManager();
 
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+            TypedQuery<Restaurant> query =  entityManager.createQuery("select r from Restaurant r where priceRange >= :price", Restaurant.class)
+                    .setParameter("price", priceRange);
+            query.setFirstResult((pageNumber-1) * itemsPerPage).setMaxResults(itemsPerPage);
 
-        CriteriaQuery<Restaurant> criteriaQuery = criteriaBuilder.createQuery(Restaurant.class);
+            return query.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex.getLocalizedMessage());
+            throw ex;
+        }
 
-        Root<Restaurant> restaurantRoot = criteriaQuery.from(Restaurant.class);
-
-
-
-        return new ArrayList<>();
     }
 
 }

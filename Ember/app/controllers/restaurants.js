@@ -9,8 +9,8 @@ export default Ember.Controller.extend({
     },
 
     cuisines: [],
-    ratingFilter: null,
-    priceFilter: null,
+    ratingFilter: 0,
+    priceFilter: 0,
     pageNumber: 1,
 
     actions: {
@@ -23,7 +23,13 @@ export default Ember.Controller.extend({
         },
 
         updatePage(page) {
-            alert(page);
+            page += 1;
+
+            if (page >= this.get('numberOfPages')) {
+                page = 1;
+            }
+
+            this.set('pageNumber', page);
         }
 
     }
