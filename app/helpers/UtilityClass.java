@@ -10,9 +10,14 @@ import java.util.stream.Collectors;
 public class UtilityClass {
 
     public static Integer getMark(Restaurant restaurant) {
-        return restaurant.getRestaurantReviews().stream()
-                .mapToInt(r -> r.getMark())
-                .sum();
+        Integer numberOfVotes = restaurant.getNumberOfVotes();
+        if(numberOfVotes == 0) {
+            return 0;
+        } else {
+            return restaurant.getRestaurantReviews().stream()
+                    .mapToInt(r -> r.getMark())
+                    .sum()/numberOfVotes;
+        }
     }
 
     public static String getFoodTypesAsString(Restaurant restaurant) {

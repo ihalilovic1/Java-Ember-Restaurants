@@ -1,7 +1,7 @@
 <div class="search-bar-form">
     <form class="" {{action 'findTables' on='submit' }}>
         {{#if textSearch}}
-            <input type=text class="find-table-field find-table-textfield" placeholder="&#xF002; Location, Restaurant or cuisine"/>
+            <input type=text class="find-table-textfield" placeholder="&#xF002; Location, Restaurant or cuisine"/>
         {{/if}}
         <select class="find-table-field" onchange={{action 'setNumberOfPeople' value="target.value"}}>>
             <option value="2" selected>2 people</option>

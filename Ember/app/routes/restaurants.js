@@ -52,31 +52,38 @@ export default Ember.Route.extend({
                                     return null;
                                 }),
             
-            popularLocations:       this.get('restaurantService').getRestaurantLocations()
+            popularLocations:   this.get('restaurantService').getRestaurantLocations()
+                                    .then(data => {
+                                        return data;
+                                    })              
+                                    .catch(error => {
+                                        return null;
+                                    }),
+
+            restaurantsList:    this.get('restaurantService').getRestaurantsByFilter(params.pageNumber, 6, 
+                                    params.priceFilter, params.ratingFilter, params.cuisines)
+                                    .then(data => {
+                                        return data;
+                                    })
+                                    .catch(error => {
+                                        return null;
+                                    }),
+
+            numberOfPages:      this.get('restaurantService').getNumberOfRestaurants()
+                                    .then(data => {
+                                        return new Array(Math.ceil(data/6));
+                                    })
+                                    .catch(error => {
+                                        return 0;
+                                    }),
+            
+            restaurantCategories: this.get('restaurantService').getRestaurantCategories()
                                         .then(data => {
                                             return data;
-                                        })              
-                                        .catch(error => {
+                                        })
+                                        .catch(() => {
                                             return null;
-                                        }),
-
-            restaurantsList:        
-                                        this.get('restaurantService').getRestaurantsByFilter(params.pageNumber, 6, "searchText")
-                                            .then(data => {
-                                                return data;
-                                            })
-                                            .catch(error => {
-                                                return null;
-                                            }),
-
-            numberOfPages:              this.get('restaurantService').getNumberOfRestaurants()
-                                            .then(data => {
-                                                return new Array(Math.ceil(data/6));
-                                            })
-                                            .catch(error => {
-                                                return 0;
-                                            })
-
+                                        })
         })
     }
 });

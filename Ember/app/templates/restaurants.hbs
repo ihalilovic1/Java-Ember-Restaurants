@@ -19,7 +19,6 @@
                                 {{input type="radio" id="byRating"}}
                                 <label for="byRating">Rating</label>
                             </li>
-
                             <li>
                                 {{input type="radio" id="byPricarange"}}
                                 <label for="byPricerange">Price</label>
@@ -51,9 +50,16 @@
                             
                             <div class="cuisine-filter">
                                 <hr>
-                                <label class="restaurant-filter-label" for="cuisine">CUISINE</label>
-                                <div id="cuisine">
-                                    American Bosnian
+                                <div class="restaurant-filter-label">CUISINE</div>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        {{#each model.restaurantCategories as |cuisine|}}
+                                            <div class="col-6 cuisine-checkbox">
+                                                {{input type="checkbox" id=cuisine.id change=(action "updateCuisines" cuisine.name)}}
+                                                <label for={{cuisine.id}}>{{cuisine.name}}</label>
+                                            </div>
+                                        {{/each}}
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -91,7 +97,7 @@
             <div class="col-md-12 pagination-container">
                 <ul class="pagination-list">
                     <li class="pagination-item">
-                        <button>PREVIOUS</button>
+                        <button {{action "updatePage" adition-helper pageNumber 1}}>PREVIOUS</button>
                     </li> 
                        
                     {{#each model.numberOfPages as |page index|}}

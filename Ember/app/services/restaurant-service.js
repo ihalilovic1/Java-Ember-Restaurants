@@ -102,7 +102,7 @@ export default CustomAjax.extend({
         })
     },
     
-    getRestaurantsByFilter(pageNumber, itemsPerPage, searchText) {
+    getRestaurantsByFilter(pageNumber, itemsPerPage, priceRange, rating, cuisines, searchText, sortBy) {
         return new Promise((resolve, reject) => {
             this.post('/getRestaurantsByFilter', {
                 xhrFields: {
@@ -111,13 +111,27 @@ export default CustomAjax.extend({
                 data: {
                     itemsPerPage: itemsPerPage,
                     pageNumber: pageNumber,
-                    searchText: searchText
+                    priceRange: priceRange,
+                    rating: rating,
+                    cuisines: cuisines
                 }
             }).then(data => {
                 resolve(data);
             })
                 .catch(error => {
                     this.set('errorMessage', error);
+                    reject(error);
+                })
+        })
+    },
+
+    getRestaurantCategories() {
+        return new Promise((resolve, reject) => {
+            this.request('/getAllCategories')
+                .then(data => {
+                    resolve(data)
+                })
+                .catch(error => {
                     reject(error);
                 })
         })

@@ -30,7 +30,17 @@ export default Ember.Controller.extend({
             }
 
             this.set('pageNumber', page);
-        }
+        },
+
+        updateCuisines(cuisine) {
+            let cuisines = this.get('cuisines');
+            if(cuisines.includes(cuisine)) {
+                cuisines.splice(cuisines.indexOf(cuisine), 1);
+            } else {
+                cuisines.push(cuisine);
+            }
+            this.set('cuisines', cuisines);
+        }        
 
     }
 });

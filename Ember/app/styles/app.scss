@@ -74,6 +74,31 @@
   padding-top: 10px;
 }
 
+.cuisine-filter * {
+  margin: 0;
+  padding: 0;
+}
+
+.cuisine-filter .restaurant-filter-label {
+  margin: 10px auto; 
+}
+
+.cuisine-checkbox > input{
+  display: none;
+}
+
+.cuisine-checkbox > input + label{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.43;
+  color: #131d24;
+}
+
+.cuisine-checkbox > input:checked + label{
+  color: #fd6f60;
+}
+
 .restaurant-searchbar-container {
   margin: auto;
   margin-bottom: 60px;
@@ -868,15 +893,18 @@ html, body {
   */
 .search-bar-form {
   clear: both;
-  margin: 20px auto;
-
+  margin: 20px 0;
+  height: 56px;
   display: inline-block;
-  width: 80%;
+  width: 70%;
+  border: none;
+  background-color: #ffffff;
+  padding: 0;
 }
 
 .find-table-button {
   height: 56px;
-  width: 160px;
+  width: 15%;
   background-color: #fd6f60;
   border: none;
   font-size: 18px;
@@ -884,23 +912,33 @@ html, body {
   font-family: 'Source Sans Pro', sans-serif;
   color: #ffffff;
   display: inline-block;
+  float: right;
+
 }
 
 .find-table-textfield {
-  width: 50%;
-  display: block;
+  height: 56px;
+  width: 40%;
+  display: inline-block;
   padding: 0 20px;
+  
   font-family: 'Source Sans Pro', sans-serif, FontAwesome;
+  background-color: #ffffff;
+  border: none;
+  margin: 0;
+  float: left;
 }
 
 
 .find-table-field {
-  display: inline;
+  display: inline-block;
   height: 56px;
+  width: 15%;
   background-color: #ffffff;
-  border: solid 1px #e3e3e3;
+  border: none;
   margin: 0;
-
+  padding: 0;
+  float: left;
 }
 
 .reservation-time-button {
@@ -936,3 +974,7 @@ html, body {
   width: 100%;
 }
 
+.search-bar-container .find-table-field, .search-bar-container .find-table-button {
+  width: 25%;
+  border: solid 1px #e3e3e3;
+}
