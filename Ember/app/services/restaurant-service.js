@@ -113,7 +113,9 @@ export default CustomAjax.extend({
                     pageNumber: pageNumber,
                     priceRange: priceRange,
                     rating: rating,
-                    cuisines: cuisines
+                    cuisines: cuisines,
+                    searchText: searchText,
+                    sortBy: sortBy
                 }
             }).then(data => {
                 resolve(data);

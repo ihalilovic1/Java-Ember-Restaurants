@@ -8,6 +8,9 @@ const {
   } = Ember;
 
 export default Ember.Route.extend({
+
+    
+
     restaurantService:      service('restaurant-service'),
     userService:    service('user-service'),
     reservationService:     service('reservation-service'),

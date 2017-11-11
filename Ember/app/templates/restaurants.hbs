@@ -3,27 +3,30 @@
     <div class="container">
         <div class="row">
             <div class="col-md restaurant-searchbar-container">
-                <input type=text class="search-textfield" placeholder="&#xF002; Location, Restaurant or cuisine" />
+                {{input type=text class="search-textfield" placeholder=fontAwesomePlaceHolder value=textQuery}}
 
                 <div class="search-field dropdown">
                     <a href="#" data-toggle="dropdown">Sort By
                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                     </a>
-                    <div class="dropdown-menu">
-                        <ul>
-                            <li>
-                                {{input type="radio" id="byName"}}
-                                <label for="byName">Name</label>
-                            </li>
-                            <li>
-                                {{input type="radio" id="byRating"}}
-                                <label for="byRating">Rating</label>
-                            </li>
-                            <li>
-                                {{input type="radio" id="byPricarange"}}
-                                <label for="byPricerange">Price</label>
-                            </li>
-                        </ul>
+                    <div class="dropdown-menu sortby-filter">
+                        <form>
+                            <ul>
+                                <li class="filter-checkbox">
+                                    {{input type="radio" name="sortBy" id="byName" change=(action "sortBy" 'name')}}
+                                    <label for="byName">Name</label>
+                                </li>
+                                <li class="filter-checkbox">
+                                    {{input type="radio" name="sortBy" id="byRating" change=(action "sortBy" 'rating')}}
+                                    <label for="byRating">Rating</label>
+                                </li>
+                                <li class="filter-checkbox">
+                                    {{input type="radio" name="sortBy" id="byPrice" change=(action "sortBy" 'price')}}
+                                    <label for="byPrice">Price</label>
+                                </li>
+                            </ul>
+                        </form>
+
                     </div>
                 </div>
 
@@ -54,8 +57,8 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         {{#each model.restaurantCategories as |cuisine|}}
-                                            <div class="col-6 cuisine-checkbox">
-                                                {{input type="checkbox" id=cuisine.id change=(action "updateCuisines" cuisine.name)}}
+                                            <div class="col-6 filter-checkbox">
+                                                {{input type="radio" id=cuisine.id change=(action "updateCuisines" cuisine.name) checked=(action 'isChecked')}}
                                                 <label for={{cuisine.id}}>{{cuisine.name}}</label>
                                             </div>
                                         {{/each}}
@@ -66,7 +69,7 @@
                     </div>
                 </div>
 
-                <button class="btn-block search-button">
+                <button class="btn-block search-button" {{action "updateSearchText"}}>
                     Search
                 </button>
             </div>

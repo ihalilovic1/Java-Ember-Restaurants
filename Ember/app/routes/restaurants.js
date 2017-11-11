@@ -12,10 +12,6 @@ export default Ember.Route.extend({
     restaurantService:      service('restaurant-service'),
 
     queryParams: {
-        cuisines: {
-            refreshModel: true
-        },
-
         ratingFilter: {
             refreshModel: true
         },
@@ -27,6 +23,18 @@ export default Ember.Route.extend({
         pageNumber: {
             refreshModel: true
         },
+
+        cuisines: {
+            refreshModel: true
+        },
+
+        searchText: {
+            refreshModel: true
+        },
+
+        sortBy: {
+            refreshModel: true
+        }
     },
     
 
@@ -41,7 +49,7 @@ export default Ember.Route.extend({
                 this.controller.set('restaurantsList', null);
             })
     },
-    
+
     model(params) {
         return RSVP.hash({
             currentUser:    this.get('userService').getCurrentUser()
@@ -61,7 +69,8 @@ export default Ember.Route.extend({
                                     }),
 
             restaurantsList:    this.get('restaurantService').getRestaurantsByFilter(params.pageNumber, 6, 
-                                    params.priceFilter, params.ratingFilter, params.cuisines)
+                                    params.priceFilter, params.ratingFilter, params.cuisines.split('-'),
+                                    params.searchText, params.sortBy)
                                     .then(data => {
                                         return data;
                                     })

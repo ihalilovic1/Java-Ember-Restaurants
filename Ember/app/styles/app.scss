@@ -83,11 +83,11 @@
   margin: 10px auto; 
 }
 
-.cuisine-checkbox > input{
+.filter-checkbox > input{
   display: none;
 }
 
-.cuisine-checkbox > input + label{
+.filter-checkbox > input + label{
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -95,8 +95,14 @@
   color: #131d24;
 }
 
-.cuisine-checkbox > input:checked + label{
+.filter-checkbox > input:checked + label{
   color: #fd6f60;
+}
+
+.sortby-filter ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .restaurant-searchbar-container {
