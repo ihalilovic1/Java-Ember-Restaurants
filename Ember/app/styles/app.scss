@@ -541,7 +541,7 @@
 }
 
 .restaurant-tile-container {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   min-width: 100%;
 }
 
@@ -644,7 +644,7 @@
 
 .landing-popular-locations {
   text-align: center;
-  margin-bottom: 204px;
+  margin-bottom: 40px;
 }
 
 .landing-popular-location-city {
@@ -742,18 +742,12 @@
     global
 */
 
- body, body > .ember-view {
-  height: 100%;
-  min-height: 100%;
+ body {
+  min-height: 100vh;
 }
 
 html, body {
   background-color: #F9F9F9;
-}
-
-.content-container {
-  margin-bottom: 50px;
-  height: 100%;
 }
 
 /*
@@ -799,7 +793,7 @@ html, body {
   }
 
   .footer-container {
-    height: 150px;
+    min-height: 150px;
     background-color: #131d24;
     padding-top: 50px;
   }
