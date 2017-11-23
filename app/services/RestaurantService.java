@@ -106,12 +106,21 @@ public class RestaurantService extends AbstractService {
         return em.createQuery(criteria).getResultList();
     }
 
-    public List<Restaurant> getRestauranByFilter(Integer itemsPerPage, Integer pageNumber, Double priceRange, Integer rating, List<String> foodTypes, String restaurantName) {
+    public List<Restaurant> getRestauranByFilter(RestaurantFilterForm filterForm) {
         try {
+            Integer itemsPerPage = filterForm.getItemsPerPage();
+            Integer pageNumber = filterForm.getPageNumber();
+            Double priceRange = filterForm.getPriceRange();
+            Double rating = filterForm.getRating();
+            List<String> foodTypes = filterForm.getCuisines();
+            String restaurantName = filterForm.getSearchText();
+            String sortBy = filterForm.getSortBy();
+
             EntityManager entityManager = getEntityManager();
 
-            TypedQuery<Restaurant> query =  entityManager.createQuery("select r from Restaurant r where priceRange >= :price", Restaurant.class)
-                    .setParameter("price", priceRange);
+            TypedQuery<Restaurant> query =  entityManager.createQuery(
+                    "select r from Restaurant r where priceRange >= :price ORDER BY :sortBy ASC ", Restaurant.class)
+                    .setParameter("price", priceRange).setParameter("sortBy", sortBy);
             query.setFirstResult((pageNumber-1) * itemsPerPage).setMaxResults(itemsPerPage);
 
             return query.getResultList();

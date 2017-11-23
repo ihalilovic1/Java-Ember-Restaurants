@@ -18,6 +18,7 @@ import services.RestaurantService;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class RestaurantController extends AbstractController {
@@ -107,9 +108,9 @@ public class RestaurantController extends AbstractController {
             Form<RestaurantFilterForm> restaurantFilterForm = formFactory.form(RestaurantFilterForm.class);
             RestaurantFilterForm form = restaurantFilterForm.bindFromRequest().get();
 
-            //TODO implement other filters
-            return ok(RestaurantResponse.makeResponseList(restaurantService
-                    .getRestauranByFilter(form.getItemsPerPage(), form.getPageNumber(), 0D, 0, new ArrayList<String>(), "")));
+            List<Restaurant> lista = restaurantService.getRestauranByFilter(form);
+
+            return ok(RestaurantResponse.makeResponseList(lista));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }

@@ -17,11 +17,11 @@
                                     <label for="byName">Name</label>
                                 </li>
                                 <li class="filter-checkbox">
-                                    {{input type="radio" name="sortBy" id="byRating" change=(action "sortBy" 'rating')}}
+                                    {{input type="radio" name="sortBy" id="byRating" change=(action "sortBy" 'mark')}}
                                     <label for="byRating">Rating</label>
                                 </li>
                                 <li class="filter-checkbox">
-                                    {{input type="radio" name="sortBy" id="byPrice" change=(action "sortBy" 'price')}}
+                                    {{input type="radio" name="sortBy" id="byPrice" change=(action "sortBy" 'priceRange')}}
                                     <label for="byPrice">Price</label>
                                 </li>
                             </ul>
@@ -58,7 +58,7 @@
                                     <div class="row">
                                         {{#each model.restaurantCategories as |cuisine|}}
                                             <div class="col-6 filter-checkbox">
-                                                {{input type="radio" id=cuisine.id change=(action "updateCuisines" cuisine.name) checked=(action 'isChecked')}}
+                                                {{input type="radio" id=cuisine.id change=(action "updateCuisines" cuisine.name)}}
                                                 <label for={{cuisine.id}}>{{cuisine.name}}</label>
                                             </div>
                                         {{/each}}
@@ -100,17 +100,17 @@
             <div class="col-md-12 pagination-container">
                 <ul class="pagination-list">
                     <li class="pagination-item">
-                        <button {{action "updatePage" adition-helper pageNumber 1}}>PREVIOUS</button>
+                        <button {{action "previousPage"}}>PREVIOUS</button>
                     </li> 
                        
                     {{#each model.numberOfPages as |page index|}}
                         <li class="pagination-item">
-                            <button {{action "updatePage" index}}>{{adition-helper index 1}}</button>
+                            <button class="{{if (equals-helper pageNumber (adition-helper index 1)) "selected" ""}}" {{action "updatePage" index}}>{{adition-helper index 1}}</button>
                         </li> 
                     {{/each}}
 
                     <li class="pagination-item">
-                        <button>NEXT</button>
+                        <button {{action "nextPage"}}>NEXT</button>
                     </li>
                 </ul>
             </div>

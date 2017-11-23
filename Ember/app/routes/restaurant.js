@@ -9,7 +9,10 @@ const {
 
 export default Ember.Route.extend({
 
-    
+    activate: function () {
+        this._super();
+        window.scrollTo(0, 0);
+    },
 
     restaurantService:      service('restaurant-service'),
     userService:    service('user-service'),

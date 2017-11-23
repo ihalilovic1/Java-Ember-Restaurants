@@ -1,5 +1,7 @@
 package models.tables;
 
+import helpers.UtilityClass;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,17 @@ public class Restaurant extends AbstractModel{
 
     @OneToMany(mappedBy = "restaurant")
     private List<Review> restaurantReviews = new ArrayList<>();
+
+    @Transient
+    private Double mark;
+
+    public Double getMark() {
+        return UtilityClass.getMark(this);
+    }
+
+    public void setMark(Double mark) {
+        this.mark = mark;
+    }
 
     @OneToMany(mappedBy = "restaurant")
     private List<MenuItem> restaurantMenu = new ArrayList<>();

@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 
 public class UtilityClass {
 
-    public static Integer getMark(Restaurant restaurant) {
+    public static Double getMark(Restaurant restaurant) {
         Integer numberOfVotes = restaurant.getNumberOfVotes();
         if(numberOfVotes == 0) {
-            return 0;
+            return 0D;
         } else {
             return restaurant.getRestaurantReviews().stream()
-                    .mapToInt(r -> r.getMark())
+                    .mapToDouble(r -> r.getMark())
                     .sum()/numberOfVotes;
         }
     }
