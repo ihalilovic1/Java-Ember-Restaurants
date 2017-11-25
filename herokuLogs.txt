@@ -1,0 +1,101 @@
+2017-11-25T01:38:57.079734+00:00 app[web.1]: 	at play.api.db.DefaultDBApi$$anonfun$connect$1.apply(DefaultDBApi.scala:42)
+2017-11-25T01:38:57.079395+00:00 app[web.1]: 	at play.api.Configuration.reportError(Configuration.scala:806)
+2017-11-25T01:38:57.079468+00:00 app[web.1]: 	at play.api.db.DefaultDBApi$$anonfun$connect$1.apply(DefaultDBApi.scala:48)
+2017-11-25T01:38:57.080143+00:00 app[web.1]: 	at play.api.db.DBApiProvider.get(DBModule.scala:58)
+2017-11-25T01:38:57.080071+00:00 app[web.1]: 	at play.api.db.DBApiProvider.get(DBModule.scala:62)
+2017-11-25T01:38:57.079806+00:00 app[web.1]: 	at scala.collection.immutable.List.foreach(List.scala:392)
+2017-11-25T01:38:57.079902+00:00 app[web.1]: 	at play.api.db.DefaultDBApi.connect(DefaultDBApi.scala:42)
+2017-11-25T01:38:57.079973+00:00 app[web.1]: 	at play.api.db.DBApiProvider.get$lzycompute(DBModule.scala:72)
+2017-11-25T01:38:57.080470+00:00 app[web.1]: 	at com.google.inject.internal.ProviderInternalFactory.circularGet(ProviderInternalFactory.java:61)
+2017-11-25T01:38:57.080402+00:00 app[web.1]: 	at com.google.inject.internal.BoundProviderFactory.provision(BoundProviderFactory.java:72)
+2017-11-25T01:38:57.081472+00:00 app[web.1]: 	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+2017-11-25T01:38:57.081383+00:00 app[web.1]: 	at com.google.inject.internal.SingleFieldInjector.inject(SingleFieldInjector.java:54)
+2017-11-25T01:38:57.081274+00:00 app[web.1]: 	at com.google.inject.internal.BoundProviderFactory.get(BoundProviderFactory.java:62)
+2017-11-25T01:38:57.081766+00:00 app[web.1]: 	at com.google.inject.internal.MembersInjectorImpl$1.call(MembersInjectorImpl.java:80)
+2017-11-25T01:38:57.081834+00:00 app[web.1]: 	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1103)
+2017-11-25T01:38:57.081928+00:00 app[web.1]: 	at com.google.inject.internal.MembersInjectorImpl.injectAndNotify(MembersInjectorImpl.java:80)
+2017-11-25T01:38:57.081996+00:00 app[web.1]: 	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:62)
+2017-11-25T01:38:57.082210+00:00 app[web.1]: 	at com.google.inject.util.Providers$GuicifiedProviderWithDependencies.initialize(Providers.java:149)
+2017-11-25T01:38:57.082143+00:00 app[web.1]: 	at com.google.inject.internal.InjectorImpl.injectMembers(InjectorImpl.java:984)
+2017-11-25T01:38:57.080238+00:00 app[web.1]: 	at com.google.inject.internal.ProviderInternalFactory.provision(ProviderInternalFactory.java:81)
+2017-11-25T01:38:57.082440+00:00 app[web.1]: 	at com.google.inject.util.Providers$GuicifiedProviderWithDependencies$$FastClassByGuice$$2a7177aa.invoke(<generated>)
+2017-11-25T01:38:57.082515+00:00 app[web.1]: 	at com.google.inject.internal.cglib.reflect.$FastMethod.invoke(FastMethod.java:53)
+2017-11-25T01:38:57.082610+00:00 app[web.1]: 	at com.google.inject.internal.SingleMethodInjector$1.invoke(SingleMethodInjector.java:57)
+2017-11-25T01:38:57.083153+00:00 app[web.1]: 	at com.google.inject.internal.SingleMethodInjector.inject(SingleMethodInjector.java:91)
+2017-11-25T01:38:57.083222+00:00 app[web.1]: 	at com.google.inject.internal.MembersInjectorImpl.injectMembers(MembersInjectorImpl.java:132)
+2017-11-25T01:38:57.083385+00:00 app[web.1]: 	at com.google.inject.internal.MembersInjectorImpl$1.call(MembersInjectorImpl.java:80)
+2017-11-25T01:38:57.081599+00:00 app[web.1]: 	at com.google.inject.internal.MembersInjectorImpl$1.call(MembersInjectorImpl.java:93)
+2017-11-25T01:38:57.083486+00:00 app[web.1]: 	at com.google.inject.internal.InjectorImpl.callInContext(InjectorImpl.java:1092)
+2017-11-25T01:38:57.083689+00:00 app[web.1]: 	at com.google.inject.internal.Initializer$InjectableReference.get(Initializer.java:174)
+2017-11-25T01:38:57.083314+00:00 app[web.1]: 	at com.google.inject.internal.MembersInjectorImpl$1.call(MembersInjectorImpl.java:93)
+2017-11-25T01:38:57.083790+00:00 app[web.1]: 	at com.google.inject.internal.Initializer.injectAll(Initializer.java:108)
+2017-11-25T01:38:57.083624+00:00 app[web.1]: 	at com.google.inject.internal.MembersInjectorImpl.injectAndNotify(MembersInjectorImpl.java:80)
+2017-11-25T01:38:57.084033+00:00 app[web.1]: 	at com.google.inject.internal.InternalInjectorCreator.build(InternalInjectorCreator.java:110)
+2017-11-25T01:38:57.083964+00:00 app[web.1]: 	at com.google.inject.internal.InternalInjectorCreator.injectDynamically(InternalInjectorCreator.java:174)
+2017-11-25T01:38:57.084189+00:00 app[web.1]: 	at com.google.inject.Guice.createInjector(Guice.java:84)
+2017-11-25T01:38:57.084129+00:00 app[web.1]: 	at com.google.inject.Guice.createInjector(Guice.java:96)
+2017-11-25T01:38:57.084731+00:00 app[web.1]: 	at play.core.server.ProdServerStart$.start(ProdServerStart.scala:47)
+2017-11-25T01:38:57.084434+00:00 app[web.1]: 	at play.api.inject.guice.GuiceApplicationBuilder.build(GuiceApplicationBuilder.scala:123)
+2017-11-25T01:38:57.084339+00:00 app[web.1]: 	at play.api.inject.guice.GuiceBuilder.injector(GuiceInjectorBuilder.scala:181)
+2017-11-25T01:38:57.084821+00:00 app[web.1]: 	at play.core.server.ProdServerStart$.main(ProdServerStart.scala:22)
+2017-11-25T01:38:57.085614+00:00 app[web.1]: 	at play.api.Configuration$.configError(Configuration.scala:154)
+2017-11-25T01:38:57.084889+00:00 app[web.1]: 	at play.core.server.ProdServerStart.main(ProdServerStart.scala)
+2017-11-25T01:38:57.084650+00:00 app[web.1]: 	at play.api.inject.guice.GuiceApplicationLoader.load(GuiceApplicationLoader.scala:21)
+2017-11-25T01:38:57.085679+00:00 app[web.1]: 	at play.api.PlayConfig.reportError(Configuration.scala:996)
+2017-11-25T01:38:57.085983+00:00 app[web.1]: 	at play.api.db.DefaultDatabase.dataSource(Databases.scala:121)
+2017-11-25T01:38:57.086044+00:00 app[web.1]: 	at play.api.db.DefaultDatabase.getConnection(Databases.scala:142)
+2017-11-25T01:38:57.086574+00:00 app[web.1]: 	at play.api.db.DefaultDBApi$$anonfun$connect$1.apply(DefaultDBApi.scala:44)
+2017-11-25T01:38:57.085549+00:00 app[web.1]: Caused by: Configuration error: Configuration error[Failed to initialize pool: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.]
+2017-11-25T01:38:57.085772+00:00 app[web.1]: 	at play.api.db.HikariCPConnectionPool.create(HikariCPModule.scala:70)
+2017-11-25T01:38:57.086498+00:00 app[web.1]: 	at play.api.db.DefaultDatabase.getConnection(Databases.scala:138)
+2017-11-25T01:38:57.085849+00:00 app[web.1]: 	at play.api.db.PooledDatabase.createDataSource(Databases.scala:199)
+2017-11-25T01:38:57.087019+00:00 app[web.1]: 	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:512)
+2017-11-25T01:38:57.086655+00:00 app[web.1]: 	... 40 more
+2017-11-25T01:38:57.085918+00:00 app[web.1]: 	at play.api.db.DefaultDatabase.dataSource$lzycompute(Databases.scala:123)
+2017-11-25T01:38:57.087080+00:00 app[web.1]: 	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:105)
+2017-11-25T01:38:57.087154+00:00 app[web.1]: 	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:71)
+2017-11-25T01:38:57.086953+00:00 app[web.1]: Caused by: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2017-11-25T01:38:57.087374+00:00 app[web.1]: 	at scala.util.Try$.apply(Try.scala:192)
+2017-11-25T01:38:57.087295+00:00 app[web.1]: 	at play.api.db.HikariCPConnectionPool$$anonfun$1.apply(HikariCPModule.scala:54)
+2017-11-25T01:38:57.087929+00:00 app[web.1]: 	at play.api.db.HikariCPConnectionPool.create(HikariCPModule.scala:54)
+2017-11-25T01:38:57.088269+00:00 app[web.1]: Caused by: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+2017-11-25T01:38:57.087998+00:00 app[web.1]: 	... 46 more
+2017-11-25T01:38:57.088407+00:00 app[web.1]: 	at org.postgresql.core.ConnectionFactory.openConnection(ConnectionFactory.java:65)
+2017-11-25T01:38:57.088333+00:00 app[web.1]: 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:247)
+2017-11-25T01:38:57.087225+00:00 app[web.1]: 	at play.api.db.HikariCPConnectionPool$$anonfun$1.apply(HikariCPModule.scala:58)
+2017-11-25T01:38:57.088563+00:00 app[web.1]: 	at org.postgresql.jdbc3.AbstractJdbc3Connection.<init>(AbstractJdbc3Connection.java:35)
+2017-11-25T01:38:57.088499+00:00 app[web.1]: 	at org.postgresql.jdbc2.AbstractJdbc2Connection.<init>(AbstractJdbc2Connection.java:149)
+2017-11-25T01:38:57.088836+00:00 app[web.1]: 	at org.postgresql.jdbc42.Jdbc42Connection.<init>(Jdbc42Connection.java:28)
+2017-11-25T01:38:57.088773+00:00 app[web.1]: 	at org.postgresql.jdbc42.AbstractJdbc42Connection.<init>(AbstractJdbc42Connection.java:21)
+2017-11-25T01:38:57.088989+00:00 app[web.1]: 	at org.postgresql.Driver.connect(Driver.java:282)
+2017-11-25T01:38:57.089059+00:00 app[web.1]: 	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:95)
+2017-11-25T01:38:57.088632+00:00 app[web.1]: 	at org.postgresql.jdbc3g.AbstractJdbc3gConnection.<init>(AbstractJdbc3gConnection.java:22)
+2017-11-25T01:38:57.090619+00:00 app[web.1]: 	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:101)
+2017-11-25T01:38:57.090695+00:00 app[web.1]: 	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:341)
+2017-11-25T01:38:57.090830+00:00 app[web.1]: 	... 52 more
+2017-11-25T01:38:57.091222+00:00 app[web.1]: 	at java.net.PlainSocketImpl.socketConnect(Native Method)
+2017-11-25T01:38:57.091143+00:00 app[web.1]: Caused by: java.net.ConnectException: Connection refused (Connection refused)
+2017-11-25T01:38:57.088696+00:00 app[web.1]: 	at org.postgresql.jdbc4.AbstractJdbc4Connection.<init>(AbstractJdbc4Connection.java:47)
+2017-11-25T01:38:57.090763+00:00 app[web.1]: 	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:506)
+2017-11-25T01:38:57.091433+00:00 app[web.1]: 	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+2017-11-25T01:38:57.091369+00:00 app[web.1]: 	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+2017-11-25T01:38:57.088921+00:00 app[web.1]: 	at org.postgresql.Driver.makeConnection(Driver.java:415)
+2017-11-25T01:38:57.091494+00:00 app[web.1]: 	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+2017-11-25T01:38:57.091689+00:00 app[web.1]: 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:129)
+2017-11-25T01:38:57.091299+00:00 app[web.1]: 	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+2017-11-25T01:38:57.091557+00:00 app[web.1]: 	at java.net.Socket.connect(Socket.java:589)
+2017-11-25T01:38:57.091752+00:00 app[web.1]: 	... 65 more
+2017-11-25T01:38:57.091621+00:00 app[web.1]: 	at org.postgresql.core.PGStream.<init>(PGStream.java:61)
+2017-11-25T01:38:57.394576+00:00 heroku[web.1]: Process exited with status 255
+2017-11-25T01:38:57.409510+00:00 heroku[web.1]: State changed from starting to crashed
+2017-11-25T01:39:53.636262+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=mysterious-journey-19305.herokuapp.com request_id=d1803b34-3268-4bca-a9db-3873984e0b77 fwd="109.163.130.4" dyno= connect= service= status=503 bytes= protocol=https
+2017-11-25T01:40:01.357008+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=mysterious-journey-19305.herokuapp.com request_id=a26a3c11-a033-4245-9853-c68ee3b0e9a2 fwd="109.163.130.4" dyno= connect= service= status=503 bytes= protocol=https
+2017-11-25T01:43:23.092630+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=mysterious-journey-19305.herokuapp.com request_id=fbe308b0-6fe6-4525-9d21-14b40ae35194 fwd="109.163.130.4" dyno= connect= service= status=503 bytes= protocol=https
+2017-11-25T01:43:25.735023+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=mysterious-journey-19305.herokuapp.com request_id=e1e3bf2d-e60d-4b99-a11f-831344d24b26 fwd="109.163.130.4" dyno= connect= service= status=503 bytes= protocol=https
+2017-11-25T01:53:19.000000+00:00 app[api]: Build started by user irhadhalilovic@hotmail.com
+2017-11-25T01:54:15.070467+00:00 heroku[web.1]: State changed from crashed to down
+2017-11-25T01:53:19.000000+00:00 app[api]: Build succeeded
+2017-11-25T01:54:14.960843+00:00 app[api]: Release v5 created by user irhadhalilovic@hotmail.com
+2017-11-25T01:54:14.960843+00:00 app[api]: Deploy 7c1bf7a1 by user irhadhalilovic@hotmail.com
+2017-11-25T01:54:45.018142+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/" host=mysterious-journey-19305.herokuapp.com request_id=2283aa52-e3db-4362-945f-ea7a285ce20f fwd="109.163.130.4" dyno= connect= service= status=503 bytes= protocol=https
+2017-11-25T01:54:50.051208+00:00 heroku[router]: at=error code=H14 desc="No web processes running" method=GET path="/favicon.ico" host=mysterious-journey-19305.herokuapp.com request_id=f211fb7c-78c2-4268-b93f-a3e38d98b432 fwd="109.163.130.4" dyno= connect= service= status=503 bytes= protocol=https
