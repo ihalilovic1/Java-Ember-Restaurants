@@ -1728,6 +1728,6 @@ catch(err) {
 });
 
 if (!runningTests) {
-  require("restaurants/app")["default"].create({"name":"restaurants","version":"0.0.0+43b1630c"});
+  require("restaurants/app")["default"].create({"name":"restaurants","version":"0.0.0+52b85c8f"});
 }
 //# sourceMappingURL=restaurants.map
