@@ -1,5 +1,6 @@
 package forms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantFilterForm {
@@ -29,6 +30,9 @@ public class RestaurantFilterForm {
     }
 
     public void setPriceRange(Double priceRange) {
+        if(priceRange == null) {
+            priceRange = 0d;
+        }
         this.priceRange = priceRange;
     }
 
@@ -37,6 +41,8 @@ public class RestaurantFilterForm {
     }
 
     public void setRating(Double rating) {
+        if(rating == null)
+            rating = 0d;
         this.rating = rating;
     }
 
@@ -45,6 +51,8 @@ public class RestaurantFilterForm {
     }
 
     public void setCuisines(List<String> cuisines) {
+        if(cuisines == null)
+            cuisines = new ArrayList<>();
         this.cuisines = cuisines;
     }
 
@@ -53,6 +61,8 @@ public class RestaurantFilterForm {
     }
 
     public void setSortBy(String sortBy) {
+        if(sortBy == null)
+            sortBy = "name";
         this.sortBy = sortBy;
     }
 
@@ -61,6 +71,8 @@ public class RestaurantFilterForm {
     }
 
     public void setItemsPerPage(Integer itemsPerPage) {
+        if(itemsPerPage == null)
+            itemsPerPage = 6;
         this.itemsPerPage = itemsPerPage;
     }
 
@@ -69,6 +81,8 @@ public class RestaurantFilterForm {
     }
 
     public void setPageNumber(Integer pageNumber) {
+        if(pageNumber == null)
+            pageNumber = 1;
         this.pageNumber = pageNumber;
     }
 
@@ -77,6 +91,8 @@ public class RestaurantFilterForm {
     }
 
     public void setSearchText(String searchText) {
+        if(searchText == null)
+            searchText = "";
         this.searchText = searchText;
     }
 }

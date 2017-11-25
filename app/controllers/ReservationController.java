@@ -41,16 +41,9 @@ public class ReservationController extends AbstractController {
             Form<ReservationForm> reservationForm = formFactory.form(ReservationForm.class);
             ReservationForm form = reservationForm.bindFromRequest().get();
 
-            if(SessionHelper.isConnected()) {
-                User currentUser = new User();
-                currentUser.setId(SessionHelper.getId());
+            Reservation newReservation = reservationService.makeReservation(form);
 
-                Reservation newReservation = reservationService.makeReservation(form, currentUser);
-
-                return ok(ReservationResponse.makeResponse(newReservation));
-            } else {
-                return badRequest("Not logged in");
-            }
+            return ok(ReservationResponse.makeResponse(newReservation));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
@@ -63,8 +56,11 @@ public class ReservationController extends AbstractController {
             Form<RestaurantUUIDForm> reservationUUIDForm = formFactory.form(RestaurantUUIDForm.class);
             UUID id = UUID.fromString(reservationUUIDForm.bindFromRequest().get().getId());
 
-            if(SessionHelper.isConnected()) {
-                return ok(Json.toJson(reservationService.confirmReservation(id)));
+            if(isLoggedIn()) {
+                User currentUser = new User();
+                currentUser.setId(getCurrentUser().getId());
+
+                return ok(Json.toJson(reservationService.confirmReservation(id, currentUser)));
             } else {
                 return badRequest("Not logged in");
             }

@@ -6,20 +6,21 @@ import static play.mvc.Controller.session;
 
 public class SessionHelper {
 
-    public static void connect(String id) {
+    public static void setToken(String id) {
+        removeToken();
         session("connected", id);
     }
 
-    public static void disconnect() {
+    public static void removeToken() {
         session().remove("connected");
         session().clear();
     }
 
-    public static UUID getId() {
-        return UUID.fromString(session().get("connected"));
+    public static String getToken() {
+        return session().get("connected");
     }
 
-    public static Boolean isConnected() {
+    public static Boolean hasToken() {
         return session().containsKey("connected");
     }
 }

@@ -64,8 +64,12 @@ public class ReservationResponse {
     }
 
     public static ObjectNode makeResponse(Reservation reservation) {
+        String userId = "";
+        if(reservation.getIdUser() != null) {
+            userId = reservation.getIdUser().getId().toString();
+        }
         return (ObjectNode) Json.toJson(new ReservationResponse(reservation.getId().toString(), reservation.getIdTable().getId().toString(),
-                                        reservation.getIdUser().getId().toString(), reservation.getIdTable().getPersons(),
+                                        userId, reservation.getIdTable().getPersons(),
                                         reservation.getReservationTime().getTime()));
     }
 

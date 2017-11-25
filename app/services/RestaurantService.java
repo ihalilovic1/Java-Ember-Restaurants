@@ -3,6 +3,7 @@ package services;
 import forms.RestaurantFilterForm;
 import forms.ReviewForm;
 import helpers.RestaurantLocationResponse;
+import jdk.nashorn.internal.runtime.regexp.joni.constants.EncloseType;
 import models.tables.*;
 import org.hibernate.jpa.criteria.expression.ParameterExpressionImpl;
 
@@ -10,10 +11,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import javax.persistence.metamodel.EntityType;
+import javax.persistence.metamodel.Metamodel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class RestaurantService extends AbstractService {
 
@@ -113,22 +118,40 @@ public class RestaurantService extends AbstractService {
             Double priceRange = filterForm.getPriceRange();
             Double rating = filterForm.getRating();
             List<String> foodTypes = filterForm.getCuisines();
-            String restaurantName = filterForm.getSearchText();
+            String restaurantName = '%' + filterForm.getSearchText().toLowerCase() + '%';
             String sortBy = filterForm.getSortBy();
 
             EntityManager entityManager = getEntityManager();
 
-            TypedQuery<Restaurant> query =  entityManager.createQuery(
-                    "select r from Restaurant r where priceRange >= :price ORDER BY :sortBy ASC ", Restaurant.class)
-                    .setParameter("price", priceRange).setParameter("sortBy", sortBy);
-            query.setFirstResult((pageNumber-1) * itemsPerPage).setMaxResults(itemsPerPage);
+            Metamodel metamodel = entityManager.getMetamodel();
+            EntityType<Restaurant> Restaurant_ = metamodel.entity(Restaurant.class);
 
-            return query.getResultList();
+            CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+
+            CriteriaQuery<Restaurant> criteria = criteriaBuilder.createQuery(Restaurant.class);
+
+            Root<Restaurant> root = criteria.from(Restaurant.class);
+
+            criteria.select( root );
+
+            if(sortBy.equals("name") || sortBy.equals("priceRange"))
+                criteria.orderBy(criteriaBuilder.asc(root.get(sortBy)));
+
+
+
+            criteria.where(criteriaBuilder.greaterThanOrEqualTo(root.get("priceRange"), priceRange),
+                    criteriaBuilder.like(
+                            criteriaBuilder.lower(root.get("name")), restaurantName));
+
+            List<Restaurant> resultList = entityManager.createQuery(criteria)
+                    .setFirstResult((pageNumber-1) * itemsPerPage)
+                    .setMaxResults(itemsPerPage).getResultList();
+
+            return resultList.stream().filter(restaurant -> restaurant.getMark() >= rating && restaurant.getFoodType().stream().map(foodType -> foodType.getName()).collect(Collectors.toList()).containsAll(foodTypes)).collect(Collectors.toList());
         } catch (Exception ex) {
             System.out.println(ex.getLocalizedMessage());
             throw ex;
         }
-
     }
 
 }

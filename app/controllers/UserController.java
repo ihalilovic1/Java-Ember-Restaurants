@@ -38,7 +38,7 @@ public class UserController extends AbstractController {
 
             User result = userService.register(registerForm.bindFromRequest().get());
 
-            SessionHelper.connect(result.getId().toString());
+            setToken(result);
             return ok(UserResponse.makeResponse(result));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
@@ -54,8 +54,7 @@ public class UserController extends AbstractController {
             User result = userService.login(loginForm.bindFromRequest().get());
 
             if(result != null) {
-                SessionHelper.disconnect();
-                SessionHelper.connect(result.getId().toString());
+                setToken(result);
                 return ok(UserResponse.makeResponse(result));
             } else {
                 return badRequest(Json.parse("{\"error\":\"Entered data is not valid!\"}"));
@@ -69,7 +68,7 @@ public class UserController extends AbstractController {
     @Transactional
     public Result logout() {
         try {
-            SessionHelper.disconnect();
+            removeToken();
             return ok();
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
@@ -79,7 +78,7 @@ public class UserController extends AbstractController {
     @Transactional
     public Result currentUser() {
         try {
-            User result = userService.getUserById(SessionHelper.getId());
+            User result = getCurrentUser();
 
             if(result != null) {
                 return ok(UserResponse.makeResponse(result));

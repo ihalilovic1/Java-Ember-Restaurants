@@ -25,7 +25,7 @@ public class ReservationService extends AbstractService {
     private static Long TWO_HOURS = TimeUnit.HOURS.toMillis(2);
     private static Long FIVE_MINUTES = TimeUnit.MINUTES.toMillis(5);
 
-    public Reservation makeReservation(ReservationForm reservationForm, User user) {
+    public Reservation makeReservation(ReservationForm reservationForm) {
         //get all tables from wanted restaurant with wanted num of persons
         Restaurant restaurant = new Restaurant();
         restaurant.setId(UUID.fromString(reservationForm.getIdRestaurant()));
@@ -40,8 +40,7 @@ public class ReservationService extends AbstractService {
         if(restaurantTables.isEmpty())
             throw new IllegalArgumentException("Table does not exist");
 
-
-        Reservation newReservation = new Reservation(restaurantTables.get(0), user, reservationTime,
+        Reservation newReservation = new Reservation(restaurantTables.get(0), null, reservationTime,
                                             new Timestamp(DateTime.now().getMillis()), false);
         EntityManager entityManager = getEntityManager();
 
@@ -144,7 +143,7 @@ public class ReservationService extends AbstractService {
 
     }
 
-    public Boolean confirmReservation(UUID id) {
+    public Boolean confirmReservation(UUID id, User user) {
         try {
             Timestamp timestampNow = new Timestamp(DateTime.now().getMillis());
             timestampNow.setTime(timestampNow.getTime() - FIVE_MINUTES);
@@ -153,6 +152,7 @@ public class ReservationService extends AbstractService {
             if(reservation.getConfirmed() || reservation.getTimeAdded().before(timestampNow)) {
                 return false;
             } else {
+                reservation.setIdUser(user);
                 reservation.setConfirmed(true);
                 getEntityManager().flush();
                 return true;

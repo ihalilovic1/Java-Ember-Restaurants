@@ -3,8 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 
     numberOfPeople: 2,
-    date: "",
-    time: "",
+    date: new Date().toISOString().substring(0, 10),
+    time: "20:00:00",
     
     actions: {
         findTables() {

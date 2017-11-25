@@ -36,6 +36,17 @@ public class User extends AbstractModel {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "token")
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public User(String firstName, String lastName, String email, String phone, City city, Boolean isAdmin, String password) {
         this.firstName = firstName;
         this.lastName = lastName;

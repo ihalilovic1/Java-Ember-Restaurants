@@ -21,6 +21,7 @@ CREATE TABLE Users (
     city UUID not null,
     isAdmin boolean not null,
     password text not null,
+    token text,
     foreign key(city) references Cities(id) on delete restrict
 );
 

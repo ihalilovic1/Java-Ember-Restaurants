@@ -90,6 +90,7 @@ export default Ember.Route.extend({
             this.get('reservationService').makeReservation(this.get('controller.selectedPeople'), this.get('controller.selectedDate'), time, restaurantId)
                 .then(data => {
                     this.transitionTo('complete-reservation', restaurantId, data.id);
+                    this.controller.set('foundTables', null);
                 })
                 .catch(error => {
                     alert(error);
