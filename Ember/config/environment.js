@@ -44,8 +44,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
-  }
-
+    ENV.baseURL = '/dist/';
+    ENV.locationType = 'none';
+  } 
   return ENV;
 };
