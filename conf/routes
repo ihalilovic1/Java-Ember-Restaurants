@@ -40,4 +40,4 @@ POST /api/v1/getReservation                           controllers.ReservationCon
 #View management
 
 GET     /                                        controllers.HomeController.index
-GET     /index.html                              controllers.HomeController.index
+GET     /*slug                                   controllers.Assets.at(path="/public", slug)

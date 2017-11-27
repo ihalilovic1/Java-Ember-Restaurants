@@ -11,4 +11,7 @@ public class HomeController extends AbstractController {
         return ok(index.render());
     }
 
+    public Result fileServer(String slug) {
+        return ok(slug);
+    }
 }
