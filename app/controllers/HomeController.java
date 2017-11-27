@@ -7,7 +7,8 @@ import views.html.*;
 
 public class HomeController extends AbstractController {
 
-    public Result index(String slug) {
+    public Result index() {
         return ok(index.render());
     }
+
 }
