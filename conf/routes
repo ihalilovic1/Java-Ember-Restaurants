@@ -2,8 +2,6 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET  /*file             controllers.Assets.at(path="/public/", file)
-
 # User management
 POST    /api/v1/register                             controllers.UserController.register
 
@@ -38,3 +36,8 @@ POST /api/v1/confirmReservation                       controllers.ReservationCon
 POST /api/v1/checkReservationAvailability             controllers.ReservationController.checkReservationAvailability
 
 POST /api/v1/getReservation                           controllers.ReservationController.getReservation
+
+#View management
+
+GET     /                                   controllers.HomeController.index(slug = "")
+GET     /*slug                              controllers.HomeController.index(slug)
