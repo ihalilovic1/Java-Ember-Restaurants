@@ -13,9 +13,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     {{#link-to 'index' id="home-link" class="nav-link header-link"}}
-  
                         <span class="{{if home "custom-header-link-landing" "custom-header-link"}}">Home</span>
-
                     {{/link-to}}
                 </li>
                 <li class="nav-item">
@@ -28,25 +26,42 @@
                     {{/link-to}}
                 </li>
                 <li class="nav-item">
-                    {{#link-to 'login' id="login-link" class="nav-link header-link custom-header-link"}}
-                        {{#if login}}
-                            <span class="custom-header-link-open">
-                                {{#if currentUser}}
-                                   <span {{action 'logOut'}}>Logout</span>
-                                {{else}}
-                                    Login
-                                {{/if}}
-                            </span>
+                    {{#if login}}
+                        {{#link-to 'login' id="login-link" class="nav-link header-link custom-header-link-open custom-header-link"}}
+                                Login
+                        {{/link-to}}
+                    {{else}}
+                        {{#if currentUser}}
+                            <span class="{{if home "custom-header-link-landing" "custom-header-link"}} dropdown">
+                                <a href="" data-toggle="dropdown" class="{{if home "custom-header-link-landing" "custom-header-link"}} no-decoration dropdown-toggle nav-link header-link">{{currentUser.firstName}}</a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            {{#if currentUser.admin}}
+                                                {{#link-to 'restaurants' id="login-link" class="nav-link header-link custom-header-link"}} 
+                                                    Admin Panel
+                                                {{/link-to}}
+                                            {{else}}
+                                                 {{#link-to 'restaurants' id="login-link" class="nav-link header-link custom-header-link"}}
+                                                    Account Settings
+                                                 {{/link-to}}
+                                            {{/if}}
+                                        </li>
+                                        <li>
+                                            {{#link-to 'login' class="nav-link header-link custom-header-link"}} 
+                                                <span {{action 'logOut'}}>Logout</span>
+                                            {{/link-to}}
+                                        </li>
+                                    </ul>
+                            </span>   
                         {{else}}
-                            <span class="{{if home "custom-header-link-landing"}}">
-                                {{#if currentUser}}
-                                    <span {{action 'logOut'}}>Logout</span>
-                                {{else}}
+                            {{#link-to 'login' class="nav-link header-link"}}
+                                <span class="{{if home " custom-header-link-landing " "custom-header-link "}}">
                                     Login
-                                {{/if}}
-                            </span>
-                        {{/if}}
-                    {{/link-to}}
+                                </span>
+                            {{/link-to}}
+                        {{/if}}               
+                    {{/if}}
+                    
                 </li>
             </ul>
         </div>

@@ -14,8 +14,8 @@ export default Ember.Controller.extend({
     ratingFilter: 0,
     priceFilter: 0,
     pageNumber: 1,
-    searchText: "",
-    sortBy: null,
+    searchText: '',
+    sortBy: 'default',
     fontAwesomePlaceHolder: "\uF002 Location, Restaurant or cuisine",
 
     actions: {

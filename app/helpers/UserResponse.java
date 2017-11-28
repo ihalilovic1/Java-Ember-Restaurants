@@ -13,10 +13,20 @@ public class UserResponse {
     private String firstName;
     private String lastName;
 
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
+
+    private Boolean isAdmin;
+
     public UserResponse() {
     }
 
-    public UserResponse(String id, String email, String phone, String country, String city, String firstName, String lastName) {
+    public UserResponse(String id, String email, String phone, String country, String city, String firstName, String lastName, Boolean isAdmin) {
         this.id = id;
         this.email = email;
         this.phone = phone;
@@ -24,6 +34,7 @@ public class UserResponse {
         this.city = city;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.isAdmin = isAdmin;
     }
 
     public String getId() {
@@ -84,6 +95,6 @@ public class UserResponse {
 
     public static ObjectNode makeResponse(User user) {
         return (ObjectNode) Json.toJson(new UserResponse(user.getId().toString(), user.getEmail(), user.getPhone(), user.getCity().getCountry().getName(),
-                user.getCity().getName(), user.getFirstName(), user.getLastName()));
+                user.getCity().getName(), user.getFirstName(), user.getLastName(), user.getAdmin()));
     }
 }

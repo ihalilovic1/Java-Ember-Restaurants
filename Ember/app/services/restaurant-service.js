@@ -101,7 +101,7 @@ export default CustomAjax.extend({
             })
         })
     },
-    
+
     getRestaurantsByFilter(pageNumber, itemsPerPage, priceRange, rating, cuisines, searchText, sortBy) {
         return new Promise((resolve, reject) => {
             this.post('/getRestaurantsByFilter', {

@@ -69,7 +69,7 @@ export default Ember.Route.extend({
                                     }),
 
             restaurantsList:    this.get('restaurantService').getRestaurantsByFilter(params.pageNumber, 6, 
-                                    params.priceFilter, params.ratingFilter, params.cuisines.split('-'),
+                params.priceFilter, params.ratingFilter, params.cuisines.length != 0? params.cuisines.split('-') : new Array(),
                                     params.searchText, params.sortBy)
                                     .then(data => {
                                         return data;

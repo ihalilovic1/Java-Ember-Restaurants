@@ -134,7 +134,7 @@ public class RestaurantService extends AbstractService {
 
             criteria.select( root );
 
-            if(sortBy.equals("name") || sortBy.equals("priceRange"))
+            if(!sortBy.equals("default") && !sortBy.equals("rating"))
                 criteria.orderBy(criteriaBuilder.asc(root.get(sortBy)));
 
 

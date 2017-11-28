@@ -13,6 +13,7 @@ public class RestaurantFilterForm {
     private String sortBy;
 
     public RestaurantFilterForm() {
+        this.cuisines = new ArrayList<>();
     }
 
     public RestaurantFilterForm(Integer itemsPerPage, Integer pageNumber, Double priceRange, Double rating, List<String> cuisines, String searchText, String sortBy) {
@@ -32,8 +33,8 @@ public class RestaurantFilterForm {
     public void setPriceRange(Double priceRange) {
         if(priceRange == null) {
             priceRange = 0d;
-        }
-        this.priceRange = priceRange;
+        } else
+            this.priceRange = priceRange;
     }
 
     public Double getRating() {
@@ -43,7 +44,8 @@ public class RestaurantFilterForm {
     public void setRating(Double rating) {
         if(rating == null)
             rating = 0d;
-        this.rating = rating;
+        else
+            this.rating = rating;
     }
 
     public List<String> getCuisines() {
@@ -53,7 +55,8 @@ public class RestaurantFilterForm {
     public void setCuisines(List<String> cuisines) {
         if(cuisines == null)
             cuisines = new ArrayList<>();
-        this.cuisines = cuisines;
+        else
+            this.cuisines = cuisines;
     }
 
     public String getSortBy() {
@@ -63,7 +66,8 @@ public class RestaurantFilterForm {
     public void setSortBy(String sortBy) {
         if(sortBy == null)
             sortBy = "name";
-        this.sortBy = sortBy;
+        else
+            this.sortBy = sortBy;
     }
 
     public Integer getItemsPerPage() {
@@ -73,7 +77,8 @@ public class RestaurantFilterForm {
     public void setItemsPerPage(Integer itemsPerPage) {
         if(itemsPerPage == null)
             itemsPerPage = 6;
-        this.itemsPerPage = itemsPerPage;
+        else
+            this.itemsPerPage = itemsPerPage;
     }
 
     public Integer getPageNumber() {
@@ -83,7 +88,8 @@ public class RestaurantFilterForm {
     public void setPageNumber(Integer pageNumber) {
         if(pageNumber == null)
             pageNumber = 1;
-        this.pageNumber = pageNumber;
+        else
+            this.pageNumber = pageNumber;
     }
 
     public String getSearchText() {
@@ -93,6 +99,7 @@ public class RestaurantFilterForm {
     public void setSearchText(String searchText) {
         if(searchText == null)
             searchText = "";
-        this.searchText = searchText;
+        else
+            this.searchText = searchText;
     }
 }
