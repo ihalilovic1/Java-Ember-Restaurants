@@ -13,10 +13,7 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import javax.persistence.metamodel.EntityType;
 import javax.persistence.metamodel.Metamodel;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -134,7 +131,7 @@ public class RestaurantService extends AbstractService {
 
             criteria.select( root );
 
-            if(!sortBy.equals("default") && !sortBy.equals("rating"))
+            if(sortBy.equals("name") || sortBy.equals("priceRange"))
                 criteria.orderBy(criteriaBuilder.asc(root.get(sortBy)));
 
 

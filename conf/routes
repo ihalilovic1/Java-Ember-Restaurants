@@ -37,6 +37,8 @@ POST /api/v1/checkReservationAvailability             controllers.ReservationCon
 
 POST /api/v1/getReservation                           controllers.ReservationController.getReservation
 
+POST /api/v1/getFreeTables                            controllers.ReservationController.getFreeTables
+
 #View management
 
 

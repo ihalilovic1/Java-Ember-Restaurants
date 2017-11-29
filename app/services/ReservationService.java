@@ -1,5 +1,6 @@
 package services;
 
+import forms.FindTablesForm;
 import forms.ReservationForm;
 import helpers.AvailableTableResponse;
 import models.tables.Reservation;
@@ -26,7 +27,7 @@ public class ReservationService extends AbstractService {
     private static Long FIVE_MINUTES = TimeUnit.MINUTES.toMillis(5);
 
     public Reservation makeReservation(ReservationForm reservationForm) {
-        //get all tables from wanted restaurant with wanted num of persons
+
         Restaurant restaurant = new Restaurant();
         restaurant.setId(UUID.fromString(reservationForm.getIdRestaurant()));
 
@@ -161,6 +162,10 @@ public class ReservationService extends AbstractService {
             throw ex;
         }
 
+    }
+
+    public List<Restaurant> getFreeTables(FindTablesForm form) {
+        return null;
     }
 
 }

@@ -13,8 +13,12 @@
                     <div class="single-restaurant-content-label">Reservation Details</div>
                 </div>
             
-                <div class="col-md-4">
-                    <span class="complete-reservation-counter fa fa-clock-o" > You have 2:54 minutes to complete reservation</span>
+                <div class="col-md-5">
+                    {{#if isValid}}
+                        <span class="complete-reservation-counter fa fa-clock-o" > You have {{countdown-string startDate=goal endDate=start}} to complete reservation</span>
+                    {{else}}
+                        <span class="complete-reservation-counter">Reservation expired</span>
+                    {{/if}}
                 </div>
             </div>
             
@@ -56,7 +60,18 @@
         </div>
 
         <div class="col-md-3">
-            <button {{action "completeReservation" model.reservation.id}} class="btn btn-block complete-reservation-button">Complete Reservation</button>
+            {{#if model.currentUser}}
+                <button {{action "completeReservation" model.reservation.id}} class="btn btn-block complete-reservation-button" >Complete Reservation</button>
+            {{else}}
+                <div class="complete-reservation-message">
+                    <div>To make reservation you have to be logged in.</div>
+                    
+                        {{#link-to 'register' class="complete-reservation-message-link"}}Create account{{/link-to}} or 
+                        {{#link-to 'login' (query-params reservation=model.reservation.id restaurant=model.restaurant.id) class="complete-reservation-message-link"}}Sign in{{/link-to}}
+                    
+                </div>
+                
+            {{/if}}
         </div>
 
         <div class="col-md">

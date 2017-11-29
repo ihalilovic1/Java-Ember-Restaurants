@@ -11,6 +11,12 @@ export default Ember.Route.extend({
     userService:    service('user-service'),
     restaurantService:      service('restaurant-service'),
     
+    actions: {
+        searchRestaurants(numberOfPeople, date, time, searchText) {
+            this.transitionTo('restaurants', { queryParams: {searchText: searchText} });
+        }
+    },
+
     model() {
         return RSVP.hash({
             currentUser:    this.get('userService').getCurrentUser()

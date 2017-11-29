@@ -17,7 +17,12 @@ export default Ember.Route.extend({
                 .then(data => {
                     this.set('controller.loginErrors', false);
                     this.set('controller.loading', false);
-                    this.transitionTo('index');
+                    if (this.controller.get('reservation') != '' && this.controller.get('restaurant') != '') {
+                        this.transitionTo('complete-reservation', this.get('controller.reservation'), this.get('controller.reservation'));
+                    } else {
+                        this.transitionTo('index');
+                    }
+                    
                 })
                 .catch((error) => {
                     alert("Login was not successfull");

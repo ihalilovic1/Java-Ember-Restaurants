@@ -13,7 +13,7 @@ public class ReservationForm {
     private String reservationHour;
     private String idRestaurant;
 
-    private static final Pattern personsPattern = Pattern.compile("(\\d+)");
+    public static final Pattern personsPattern = Pattern.compile("(\\d+)");
 
     public ReservationForm(String persons, String reservationDate, String reservationHour, String idRestaurant) {
         this.persons = persons;

@@ -1,11 +1,9 @@
 package controllers;
 
+import forms.FindTablesForm;
 import forms.ReservationForm;
 import forms.RestaurantUUIDForm;
-import helpers.AvailableTableResponse;
-import helpers.ErrorResponse;
-import helpers.ReservationResponse;
-import helpers.SessionHelper;
+import helpers.*;
 import models.tables.Reservation;
 import models.tables.RestaurantTable;
 import models.tables.User;
@@ -99,7 +97,18 @@ public class ReservationController extends AbstractController {
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
+    }
 
+    @Transactional
+    public Result getFreeTables() {
+        try {
+            Form<FindTablesForm> tablesFormForm = formFactory.form(FindTablesForm.class);
+            FindTablesForm form = tablesFormForm.bindFromRequest().get();
+
+            return ok(RestaurantResponse.makeResponseList(reservationService.getFreeTables(form)));
+        } catch (Exception ex) {
+            return badRequest();
+        }
     }
 
 }
