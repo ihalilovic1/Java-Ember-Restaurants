@@ -12,6 +12,7 @@ CREATE TABLE Restaurants (
     latitude float not null,
     longitude float not null,
     priceRange int not null,
+    rating float default 0,
     imageFileName varchar(255) not null,
     coverFileName varchar(255) not null,
     location UUID not null,
