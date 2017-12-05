@@ -37,7 +37,6 @@ export default Ember.Route.extend({
         }
     },
     
-
     updateRestaurants: function() {
         var searchText = 'price: ' + this.get('priceFilter') + ' ';
         searchText += 'rating: ' + this.get('ratingFilter');
@@ -69,7 +68,8 @@ export default Ember.Route.extend({
                                     }),
 
             restaurantsList:    this.get('restaurantService').getRestaurantsByFilter(params.pageNumber, 6, 
-                params.priceFilter, params.ratingFilter, params.cuisines.length != 0? params.cuisines.split('-') : new Array(),
+                                    params.priceFilter, params.ratingFilter,
+                                    params.cuisines.length != 0? params.cuisines.split('-') : new Array(),
                                     params.searchText, params.sortBy)
                                     .then(data => {
                                         return data;
@@ -78,7 +78,10 @@ export default Ember.Route.extend({
                                         return null;
                                     }),
 
-            numberOfPages:      this.get('restaurantService').getNumberOfRestaurants()
+            numberOfPages:      this.get('restaurantService').getNumberOfRestaurantsWithFilter(params.priceFilter, 
+                                    params.ratingFilter,
+                                    params.cuisines.length != 0? params.cuisines.split('-') : new Array(),
+                                    params.searchText, params.sortBy)
                                     .then(data => {
                                         return new Array(Math.ceil(data/6));
                                     })

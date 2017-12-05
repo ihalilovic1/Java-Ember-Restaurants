@@ -3,6 +3,7 @@ package services;
 import forms.RestaurantFilterForm;
 import forms.ReviewForm;
 import helpers.RestaurantLocationResponse;
+import helpers.UtilityClass;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.EncloseType;
 import models.tables.*;
 import org.hibernate.jpa.criteria.expression.ParameterExpressionImpl;
@@ -92,6 +93,8 @@ public class RestaurantService extends AbstractService {
         Review newReview = new Review(reviewForm.getMark(), userFK, restaurantFK, reviewForm.getComment());
 
         em.persist(newReview);
+
+        em.flush();
     }
 
     public List<FoodType> getAllCategories() {
@@ -108,6 +111,17 @@ public class RestaurantService extends AbstractService {
         return em.createQuery(criteria).getResultList();
     }
 
+    public void updateRestaurantRating(UUID uuid) {
+        EntityManager entityManager = getEntityManager();
+
+        Restaurant restaurant = entityManager.find(Restaurant.class, uuid);
+
+        restaurant.setRating(UtilityClass.getMark(restaurant));
+
+        entityManager.flush();
+
+    }
+
     public List<Restaurant> getRestauranByFilter(RestaurantFilterForm filterForm) {
         try {
             Integer itemsPerPage = filterForm.getItemsPerPage();
@@ -120,9 +134,6 @@ public class RestaurantService extends AbstractService {
 
             EntityManager entityManager = getEntityManager();
 
-            Metamodel metamodel = entityManager.getMetamodel();
-            EntityType<Restaurant> Restaurant_ = metamodel.entity(Restaurant.class);
-
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 
             CriteriaQuery<Restaurant> criteria = criteriaBuilder.createQuery(Restaurant.class);
@@ -131,20 +142,23 @@ public class RestaurantService extends AbstractService {
 
             criteria.select( root );
 
-            if(sortBy.equals("name") || sortBy.equals("priceRange"))
+            if(!sortBy.equals("default"))
                 criteria.orderBy(criteriaBuilder.asc(root.get(sortBy)));
 
-
-
-            criteria.where(criteriaBuilder.greaterThanOrEqualTo(root.get("priceRange"), priceRange),
+            criteria.where(criteriaBuilder.lessThanOrEqualTo(root.get("priceRange"), priceRange),
                     criteriaBuilder.like(
-                            criteriaBuilder.lower(root.get("name")), restaurantName));
+                            criteriaBuilder.lower(root.get("name")), restaurantName),
+                    criteriaBuilder.greaterThanOrEqualTo(root.get("rating"), rating));
 
-            List<Restaurant> resultList = entityManager.createQuery(criteria)
-                    .setFirstResult((pageNumber-1) * itemsPerPage)
-                    .setMaxResults(itemsPerPage).getResultList();
+            if(itemsPerPage <= 0) {
+                return entityManager.createQuery(criteria)
+                        .setFirstResult((pageNumber-1) * itemsPerPage).getResultList();
+            } else {
+                return entityManager.createQuery(criteria)
+                        .setFirstResult((pageNumber-1) * itemsPerPage)
+                        .setMaxResults(itemsPerPage).getResultList();
+            }
 
-            return resultList.stream().filter(restaurant -> restaurant.getMark() >= rating && restaurant.getFoodType().stream().map(foodType -> foodType.getName()).collect(Collectors.toList()).containsAll(foodTypes)).collect(Collectors.toList());
         } catch (Exception ex) {
             System.out.println(ex.getLocalizedMessage());
             throw ex;

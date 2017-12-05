@@ -139,14 +139,14 @@ public class RestaurantResponse {
 
     public static ObjectNode makeResponse(Restaurant restaurant) {
         return (ObjectNode) Json.toJson(new RestaurantResponse(restaurant.getId().toString(), restaurant.getName(),
-                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getMark(),
+                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getRating(),
                 restaurant.getNumberOfVotes(), restaurant.getPriceRange(), restaurant.getImageFileName(),
                 restaurant.getCoverFileName(), restaurant.getLocation().getId().toString(), UtilityClass.getFoodTypesAsString(restaurant)));
     }
 
     public static RestaurantResponse makeResponseObject(Restaurant restaurant) {
         return new RestaurantResponse(restaurant.getId().toString(), restaurant.getName(),
-                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getMark(),
+                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getRating(),
                 restaurant.getNumberOfVotes(), restaurant.getPriceRange(), restaurant.getImageFileName(),
                 restaurant.getCoverFileName(), restaurant.getLocation().getId().toString(), UtilityClass.getFoodTypesAsString(restaurant));
     }

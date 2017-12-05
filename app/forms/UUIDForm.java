@@ -1,13 +1,13 @@
 package forms;
 
-public class RestaurantUUIDForm {
+public class UUIDForm {
     String id;
 
-    public RestaurantUUIDForm(String id) {
+    public UUIDForm(String id) {
         this.id = id;
     }
 
-    public RestaurantUUIDForm() {
+    public UUIDForm() {
     }
 
     public String getId() {

@@ -127,6 +127,31 @@ export default CustomAjax.extend({
         })
     },
 
+    getNumberOfRestaurantsWithFilter(priceRange, rating, cuisines, searchText, sortBy) {
+        return new Promise((resolve, reject) => {
+            this.post('/getRestaurantsByFilter', {
+                xhrFields: {
+                    withCredentials: true,
+                },
+                data: {
+                    itemsPerPage: 0,
+                    pageNumber: 1,
+                    priceRange: priceRange,
+                    rating: rating,
+                    cuisines: cuisines,
+                    searchText: searchText,
+                    sortBy: sortBy
+                }
+            }).then(data => {
+                resolve(data.length);
+            })
+                .catch(error => {
+                    this.set('errorMessage', error);
+                    reject(error);
+                })
+        })
+    },
+
     getRestaurantCategories() {
         return new Promise((resolve, reject) => {
             this.request('/getAllCategories')

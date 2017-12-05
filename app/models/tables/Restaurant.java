@@ -30,15 +30,15 @@ public class Restaurant extends AbstractModel{
     @OneToMany(mappedBy = "restaurant")
     private List<Review> restaurantReviews = new ArrayList<>();
 
-    @Transient
-    private Double mark;
+    @Column
+    private Double rating;
 
-    public Double getMark() {
-        return UtilityClass.getMark(this);
+    public Double getRating() {
+        return rating;
     }
 
-    public void setMark(Double mark) {
-        this.mark = mark;
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     @OneToMany(mappedBy = "restaurant")
