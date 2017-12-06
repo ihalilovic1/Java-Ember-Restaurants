@@ -1,0 +1,22 @@
+<div class="cuisine-filter">
+    <hr>
+    <div class="restaurant-filter-label">CUISINE</div>
+    <div class="container-fluid">
+        <div class="row">
+            {{#each cuisines as |cuisine|}}
+                <div class="col-6 filter-checkbox">
+                    {{#if (contains selectedCuisines cuisine.name)}}
+                        <span class="filter-checkbox-checked">
+                            {{input type="radio" id=cuisine.id change=(action "updateCuisines" cuisine.name) class="display-none"}}
+                            <label for={{cuisine.id}}>{{cuisine.name}}</label>
+                        </span>
+                        
+                    {{else}}
+                        {{input type="radio" id=cuisine.id change=(action "updateCuisines" cuisine.name) }}
+                        <label for={{cuisine.id}}>{{cuisine.name}}</label>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

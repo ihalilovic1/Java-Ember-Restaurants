@@ -87,7 +87,11 @@
   display: none;
 }
 
-.filter-checkbox > input + label{
+.display-none {
+  display: none;
+}
+
+.filter-checkbox{
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -918,6 +922,7 @@ html, body {
   height: 56px;
   display: inline-block;
   width: 70%;
+  min-width: 565px;
   border: none;
   background-color: #ffffff;
   padding: 0;

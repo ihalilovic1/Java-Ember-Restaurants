@@ -51,20 +51,7 @@
                                 </div>
                             </div>
                             
-                            <div class="cuisine-filter">
-                                <hr>
-                                <div class="restaurant-filter-label">CUISINE</div>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        {{#each model.restaurantCategories as |cuisine|}}
-                                            <div class="col-6 filter-checkbox">
-                                                {{input type="radio" id=cuisine.id change=(action "updateCuisines" cuisine.name)}}
-                                                <label for={{cuisine.id}}>{{cuisine.name}}</label>
-                                            </div>
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
+                            {{cuisine-filter cuisines = model.restaurantCategories update = "updateCuisines"}}
                         </form>
                     </div>
                 </div>

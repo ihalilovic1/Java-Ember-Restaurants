@@ -144,7 +144,7 @@ public class RestaurantService extends AbstractService {
 
             if(!sortBy.equals("default"))
                 criteria.orderBy(criteriaBuilder.asc(root.get(sortBy)));
-
+            
             criteria.where(criteriaBuilder.lessThanOrEqualTo(root.get("priceRange"), priceRange),
                     criteriaBuilder.like(
                             criteriaBuilder.lower(root.get("name")), restaurantName),
@@ -160,7 +160,6 @@ public class RestaurantService extends AbstractService {
             }
 
         } catch (Exception ex) {
-            System.out.println(ex.getLocalizedMessage());
             throw ex;
         }
     }
