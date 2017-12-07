@@ -6,7 +6,11 @@ import helpers.RestaurantLocationResponse;
 import helpers.UtilityClass;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.EncloseType;
 import models.tables.*;
-import org.hibernate.jpa.criteria.expression.ParameterExpressionImpl;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.jpa.HibernateEntityManager;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -138,17 +142,21 @@ public class RestaurantService extends AbstractService {
 
             CriteriaQuery<Restaurant> criteria = criteriaBuilder.createQuery(Restaurant.class);
 
-            Root<Restaurant> root = criteria.from(Restaurant.class);
+            Root<Restaurant> restaurantRoot = criteria.from(Restaurant.class);
 
-            criteria.select( root );
+            criteria.select( restaurantRoot );
 
-            if(!sortBy.equals("default"))
-                criteria.orderBy(criteriaBuilder.asc(root.get(sortBy)));
-            
-            criteria.where(criteriaBuilder.lessThanOrEqualTo(root.get("priceRange"), priceRange),
+            if(sortBy.equals("name") || sortBy.equals("priceRange")) {
+                criteria.orderBy(criteriaBuilder.asc(restaurantRoot.get(sortBy)));
+            }
+            else if(sortBy.equals("rating")) {
+                criteria.orderBy(criteriaBuilder.desc(restaurantRoot.get(sortBy)));
+            }
+
+            criteria.where(criteriaBuilder.lessThanOrEqualTo(restaurantRoot.get("priceRange"), priceRange),
                     criteriaBuilder.like(
-                            criteriaBuilder.lower(root.get("name")), restaurantName),
-                    criteriaBuilder.greaterThanOrEqualTo(root.get("rating"), rating));
+                            criteriaBuilder.lower(restaurantRoot.get("name")), restaurantName),
+                    criteriaBuilder.greaterThanOrEqualTo(restaurantRoot.get("rating"), rating));
 
             if(itemsPerPage <= 0) {
                 return entityManager.createQuery(criteria)
@@ -158,6 +166,7 @@ public class RestaurantService extends AbstractService {
                         .setFirstResult((pageNumber-1) * itemsPerPage)
                         .setMaxResults(itemsPerPage).getResultList();
             }
+
 
         } catch (Exception ex) {
             throw ex;
