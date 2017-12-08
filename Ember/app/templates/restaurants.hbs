@@ -13,15 +13,15 @@
                         <form>
                             <ul>
                                 <li class="filter-checkbox">
-                                    {{input type="radio" name="sortBy" id="byName" change=(action "sortBy" 'name')}}
+                                    {{input type="radio" name="sortBy" id="byName" click=(action "sortBy" 'name' '#byName')}}
                                     <label for="byName">Name</label>
                                 </li>
                                 <li class="filter-checkbox">
-                                    {{input type="radio" name="sortBy" id="byRating" change=(action "sortBy" 'mark')}}
+                                    {{input type="radio" name="sortBy" id="byRating" click=(action "sortBy" 'rating' '#byRating')}}
                                     <label for="byRating">Rating</label>
                                 </li>
                                 <li class="filter-checkbox">
-                                    {{input type="radio" name="sortBy" id="byPrice" change=(action "sortBy" 'priceRange')}}
+                                    {{input type="radio" name="sortBy" id="byPrice" click=(action "sortBy" 'priceRange' '#byPrice')}}
                                     <label for="byPrice">Price</label>
                                 </li>
                             </ul>
@@ -51,20 +51,7 @@
                                 </div>
                             </div>
                             
-                            <div class="cuisine-filter">
-                                <hr>
-                                <div class="restaurant-filter-label">CUISINE</div>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        {{#each model.restaurantCategories as |cuisine|}}
-                                            <div class="col-6 filter-checkbox">
-                                                {{input type="radio" id=cuisine.id change=(action "updateCuisines" cuisine.name)}}
-                                                <label for={{cuisine.id}}>{{cuisine.name}}</label>
-                                            </div>
-                                        {{/each}}
-                                    </div>
-                                </div>
-                            </div>
+                            {{cuisine-filter cuisines = model.restaurantCategories update = "updateCuisines"}}
                         </form>
                     </div>
                 </div>

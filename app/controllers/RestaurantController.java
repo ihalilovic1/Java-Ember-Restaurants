@@ -2,7 +2,7 @@ package controllers;
 
 import forms.MenuForm;
 import forms.RestaurantFilterForm;
-import forms.RestaurantUUIDForm;
+import forms.UUIDForm;
 import forms.ReviewForm;
 import helpers.MenuResponse;
 import helpers.RestaurantLocationResponse;
@@ -17,7 +17,6 @@ import play.mvc.Result;
 import services.RestaurantService;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -37,7 +36,7 @@ public class RestaurantController extends AbstractController {
     @Transactional
     public Result getRestaurantDetails() {
         try {
-            Form<RestaurantUUIDForm> restaurantUUIDForm = formFactory.form(RestaurantUUIDForm.class);
+            Form<UUIDForm> restaurantUUIDForm = formFactory.form(UUIDForm.class);
             String uuid = restaurantUUIDForm.bindFromRequest().get().getId();
 
             Restaurant restaurant = restaurantService.getRestaurantById(UUID.fromString(uuid));
@@ -73,9 +72,12 @@ public class RestaurantController extends AbstractController {
     @Transactional
     public  Result insertComment() {
         try {
-            Form<ReviewForm> reviewForm = formFactory.form(ReviewForm.class);
+            Form<ReviewForm> form = formFactory.form(ReviewForm.class);
 
-            restaurantService.insertComment(reviewForm.bindFromRequest().get());
+            ReviewForm reviewForm = form.bindFromRequest().get();
+
+            restaurantService.insertComment(reviewForm);
+            restaurantService.updateRestaurantRating(UUID.fromString(reviewForm.getIdRestaurant()));
             return ok();
         } catch (Exception ex) {
             return badRequest();
@@ -114,8 +116,6 @@ public class RestaurantController extends AbstractController {
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
-
-
     }
 
 }

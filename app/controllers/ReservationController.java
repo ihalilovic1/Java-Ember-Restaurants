@@ -2,10 +2,9 @@ package controllers;
 
 import forms.FindTablesForm;
 import forms.ReservationForm;
-import forms.RestaurantUUIDForm;
+import forms.UUIDForm;
 import helpers.*;
 import models.tables.Reservation;
-import models.tables.RestaurantTable;
 import models.tables.User;
 import play.data.Form;
 import play.data.FormFactory;
@@ -15,7 +14,6 @@ import play.mvc.Result;
 import services.ReservationService;
 
 import javax.inject.Inject;
-import java.sql.Timestamp;
 import java.util.UUID;
 
 public class ReservationController extends AbstractController {
@@ -51,7 +49,7 @@ public class ReservationController extends AbstractController {
     @Transactional
     public Result confirmReservation() {
         try {
-            Form<RestaurantUUIDForm> reservationUUIDForm = formFactory.form(RestaurantUUIDForm.class);
+            Form<UUIDForm> reservationUUIDForm = formFactory.form(UUIDForm.class);
             UUID id = UUID.fromString(reservationUUIDForm.bindFromRequest().get().getId());
 
             if(isLoggedIn()) {
@@ -90,7 +88,7 @@ public class ReservationController extends AbstractController {
     @Transactional
     public Result getReservation() {
         try {
-            Form<RestaurantUUIDForm> reservationUUIDForm = formFactory.form(RestaurantUUIDForm.class);
+            Form<UUIDForm> reservationUUIDForm = formFactory.form(UUIDForm.class);
             UUID id = UUID.fromString(reservationUUIDForm.bindFromRequest().get().getId());
 
             return ok(ReservationResponse.makeResponse(reservationService.getReservation(id)));

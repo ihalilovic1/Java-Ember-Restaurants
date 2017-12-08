@@ -1,11 +1,17 @@
 package services;
 
 import forms.RestaurantFilterForm;
+import forms.RestaurantForm;
 import forms.ReviewForm;
 import helpers.RestaurantLocationResponse;
+import helpers.UtilityClass;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.EncloseType;
 import models.tables.*;
-import org.hibernate.jpa.criteria.expression.ParameterExpressionImpl;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.jpa.HibernateEntityManager;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -92,6 +98,8 @@ public class RestaurantService extends AbstractService {
         Review newReview = new Review(reviewForm.getMark(), userFK, restaurantFK, reviewForm.getComment());
 
         em.persist(newReview);
+
+        em.flush();
     }
 
     public List<FoodType> getAllCategories() {
@@ -108,6 +116,17 @@ public class RestaurantService extends AbstractService {
         return em.createQuery(criteria).getResultList();
     }
 
+    public void updateRestaurantRating(UUID uuid) {
+        EntityManager entityManager = getEntityManager();
+
+        Restaurant restaurant = entityManager.find(Restaurant.class, uuid);
+
+        restaurant.setRating(UtilityClass.getMark(restaurant));
+
+        entityManager.flush();
+
+    }
+
     public List<Restaurant> getRestauranByFilter(RestaurantFilterForm filterForm) {
         try {
             Integer itemsPerPage = filterForm.getItemsPerPage();
@@ -120,33 +139,37 @@ public class RestaurantService extends AbstractService {
 
             EntityManager entityManager = getEntityManager();
 
-            Metamodel metamodel = entityManager.getMetamodel();
-            EntityType<Restaurant> Restaurant_ = metamodel.entity(Restaurant.class);
-
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 
             CriteriaQuery<Restaurant> criteria = criteriaBuilder.createQuery(Restaurant.class);
 
-            Root<Restaurant> root = criteria.from(Restaurant.class);
+            Root<Restaurant> restaurantRoot = criteria.from(Restaurant.class);
 
-            criteria.select( root );
+            criteria.select( restaurantRoot );
 
-            if(sortBy.equals("name") || sortBy.equals("priceRange"))
-                criteria.orderBy(criteriaBuilder.asc(root.get(sortBy)));
+            if(sortBy.equals("name") || sortBy.equals("priceRange")) {
+                criteria.orderBy(criteriaBuilder.asc(restaurantRoot.get(sortBy)));
+            }
+            else if(sortBy.equals("rating")) {
+                criteria.orderBy(criteriaBuilder.desc(restaurantRoot.get(sortBy)));
+            }
 
-
-
-            criteria.where(criteriaBuilder.greaterThanOrEqualTo(root.get("priceRange"), priceRange),
+            criteria.where(criteriaBuilder.lessThanOrEqualTo(restaurantRoot.get("priceRange"), priceRange),
                     criteriaBuilder.like(
-                            criteriaBuilder.lower(root.get("name")), restaurantName));
+                            criteriaBuilder.lower(restaurantRoot.get("name")), restaurantName),
+                    criteriaBuilder.greaterThanOrEqualTo(restaurantRoot.get("rating"), rating));
 
-            List<Restaurant> resultList = entityManager.createQuery(criteria)
-                    .setFirstResult((pageNumber-1) * itemsPerPage)
-                    .setMaxResults(itemsPerPage).getResultList();
+            if(itemsPerPage <= 0) {
+                return entityManager.createQuery(criteria)
+                        .setFirstResult((pageNumber-1) * itemsPerPage).getResultList();
+            } else {
+                return entityManager.createQuery(criteria)
+                        .setFirstResult((pageNumber-1) * itemsPerPage)
+                        .setMaxResults(itemsPerPage).getResultList();
+            }
 
-            return resultList.stream().filter(restaurant -> restaurant.getMark() >= rating && restaurant.getFoodType().stream().map(foodType -> foodType.getName()).collect(Collectors.toList()).containsAll(foodTypes)).collect(Collectors.toList());
+
         } catch (Exception ex) {
-            System.out.println(ex.getLocalizedMessage());
             throw ex;
         }
     }

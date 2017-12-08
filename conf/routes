@@ -39,10 +39,49 @@ POST /api/v1/getReservation                           controllers.ReservationCon
 
 POST /api/v1/getFreeTables                            controllers.ReservationController.getFreeTables
 
+#Administrator management
+#Locatons
+GET /api/v1/admin/getAdministrationCounters           controllers.AdministratorController.getAdminCounters
+
+POST /api/v1/admin/addCountry                         controllers.AdministratorController.addCountry
+
+POST /api/v1/admin/addCity                            controllers.AdministratorController.addCity
+
+POST /api/v1/admin/editCountry                        controllers.AdministratorController.editCountry
+
+POST /api/v1/admin/editCity                           controllers.AdministratorController.editCity
+
+POST /api/v1/admin/deleteCity                         controllers.AdministratorController.deleteCity
+
+POST /api/v1/admin/deleteCountry                      controllers.AdministratorController.deleteCountry
+
+POST /api/v1/admin/getCityDetails                     controllers.AdministratorController.getCityDetails
+
+POST /api/v1/admin/getCountryDetails                  controllers.AdministratorController.getCountryDetails
+
+#Categories
+POST /api/v1/admin/getFilteredCategories              controllers.AdministratorController.getFilteredCategories
+
+POST /api/v1/admin/addCategory                        controllers.AdministratorController.addCategory
+
+POST /api/v1/admin/editCategory                       controllers.AdministratorController.editCategory
+
+POST /api/v1/admin/deleteCategory                     controllers.AdministratorController.deleteCategory
+
+POST /api/v1/admin/getCategoryDetails                 controllers.AdministratorController.getCategoryDetails
+
+#Restaurants
+POST /api/v1/admin/getFilteredRestaurants             controllers.AdministratorController.getFilteredRestaurants
+
+POST /api/v1/admin/addRestaurant                      controllers.AdministratorController.addRestaurant
+
+POST /api/v1/admin/deleteRestaurant                   controllers.AdministratorController.deleteRestaurant
+
+POST /api/v1/admin/editRestaurant                     controllers.AdministratorController.editRestaurant
+
 #View management
 
+GET     /assets/*file                                 controllers.Assets.versioned(path="/public/assets", file: Asset)
 
-GET     /assets/*file                            controllers.Assets.versioned(path="/public/assets", file: Asset)
-
-GET     /                                        controllers.HomeController.index(slug = "")
-GET     /*slug                                   controllers.HomeController.index(slug)
+GET     /                                             controllers.HomeController.index(slug = "")
+GET     /*slug                                        controllers.HomeController.index(slug)

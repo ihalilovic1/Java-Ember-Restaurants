@@ -42,4 +42,14 @@ public abstract class AbstractController extends Controller {
             return null;
         }
     }
+
+    public Boolean isAdmin() {
+        User currentUser = getCurrentUser();
+
+        if(currentUser != null) {
+            return currentUser.getAdmin();
+        } else {
+            return false;
+        }
+    }
 }

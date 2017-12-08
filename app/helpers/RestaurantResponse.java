@@ -26,6 +26,21 @@ public class RestaurantResponse {
     public RestaurantResponse() {
     }
 
+    public RestaurantResponse(Restaurant restaurant) {
+        this.id = restaurant.getId().toString();
+        this.restaurantName = restaurant.getName();
+        this.description = restaurant.getDescription();
+        this.latitude = restaurant.getLatitude();
+        this.longitude = restaurant.getLongitude();
+        this.mark = restaurant.getRating();
+        this.votes = restaurant.getNumberOfVotes();
+        this.priceRange = restaurant.getPriceRange();
+        this.imageFileName = restaurant.getImageFileName();
+        this.coverFileName = restaurant.getCoverFileName();
+        this.location = restaurant.getLocation().getId().toString();
+        this.foodType = UtilityClass.getFoodTypesAsString(restaurant);
+    }
+
     public RestaurantResponse(String id, String restaurantName, String description, Double latitude, Double longitude, Double mark, Integer votes, Double priceRange, String imageFileName, String coverFileName, String location, String foodType) {
         this.id = id;
         this.restaurantName = restaurantName;
@@ -139,14 +154,14 @@ public class RestaurantResponse {
 
     public static ObjectNode makeResponse(Restaurant restaurant) {
         return (ObjectNode) Json.toJson(new RestaurantResponse(restaurant.getId().toString(), restaurant.getName(),
-                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getMark(),
+                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getRating(),
                 restaurant.getNumberOfVotes(), restaurant.getPriceRange(), restaurant.getImageFileName(),
                 restaurant.getCoverFileName(), restaurant.getLocation().getId().toString(), UtilityClass.getFoodTypesAsString(restaurant)));
     }
 
     public static RestaurantResponse makeResponseObject(Restaurant restaurant) {
         return new RestaurantResponse(restaurant.getId().toString(), restaurant.getName(),
-                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getMark(),
+                restaurant.getDescription(), restaurant.getLatitude(), restaurant.getLongitude(), restaurant.getRating(),
                 restaurant.getNumberOfVotes(), restaurant.getPriceRange(), restaurant.getImageFileName(),
                 restaurant.getCoverFileName(), restaurant.getLocation().getId().toString(), UtilityClass.getFoodTypesAsString(restaurant));
     }

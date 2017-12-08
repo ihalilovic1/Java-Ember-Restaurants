@@ -32,7 +32,7 @@ public class RestaurantFilterForm {
 
     public void setPriceRange(Double priceRange) {
         if(priceRange == null) {
-            priceRange = 0d;
+            priceRange = 10d;
         } else
             this.priceRange = priceRange;
     }
@@ -65,7 +65,7 @@ public class RestaurantFilterForm {
 
     public void setSortBy(String sortBy) {
         if(sortBy == null)
-            sortBy = "name";
+            sortBy = "default";
         else
             this.sortBy = sortBy;
     }
@@ -76,7 +76,7 @@ public class RestaurantFilterForm {
 
     public void setItemsPerPage(Integer itemsPerPage) {
         if(itemsPerPage == null)
-            itemsPerPage = 6;
+            itemsPerPage = 0;
         else
             this.itemsPerPage = itemsPerPage;
     }

@@ -1,0 +1,23 @@
+{{header-component user=model.currentUser}}
+
+<div class="container">
+    <div class="row admin-menu">
+        {{input type="checkbox" name="admin-menu" id="dashboard" class="display-none admin-menu-item" checked=dashRadio change=(action "menuSelect" "index")}}
+        <label for="dashboard" class="admin-menu-item">Dashboard</label>
+
+        {{input type="checkbox" name="admin-menu" id="restaurants" class="display-none admin-menu-item" checked=restRadio change=(action "menuSelect" "restaurants")}}
+        <label for="restaurants" class="admin-menu-item">Restaurants</label>
+
+        {{input type="checkbox" name="admin-menu" id="locations" class="display-none admin-menu-item" checked=locRadio change=(action "menuSelect" "locations")}}
+        <label for="locations" class="admin-menu-item">Locations</label>
+
+        {{input type="checkbox" name="admin-menu" id="categories" class="display-none admin-menu-item" checked=catRadio change=(action "menuSelect" "categories")}}
+        <label for="categories" class="admin-menu-item">Categories</label>
+    
+        {{input type="checkbox" name="admin-menu" id="users" class="display-none admin-menu-item" checked=userRadio change=(action "menuSelect" "users")}}
+        <label for="users" class="admin-menu-item">Users</label>
+    </div>
+    <div class="row admin-content">
+        {{outlet}}
+    </div>
+</div>

@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
 
     cuisines: '',
     ratingFilter: 0,
-    priceFilter: 0,
+    priceFilter: 10,
     pageNumber: 1,
     searchText: '',
     sortBy: 'default',
@@ -20,7 +20,10 @@ export default Ember.Controller.extend({
 
     actions: {
         priceFilter(price) {
-            this.set('priceFilter', price);
+            if(price == 0)
+            this.set('priceFilter', 10);
+            else
+                this.set('priceFilter', price);
         },
 
         ratingFilter(rating) {
@@ -50,8 +53,14 @@ export default Ember.Controller.extend({
             }  
         },
 
-        sortBy(param) {
-            this.set('sortBy', param);
+        sortBy(param, radio) {
+            if(this.get('sortBy') == param) {
+                this.set('sortBy', 'default');
+                Ember.$(radio).prop('checked', false);
+            }
+            else {
+                this.set('sortBy', param);
+            }      
         },
 
         updateSearchText() {
