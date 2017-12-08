@@ -6,4 +6,16 @@
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     height: 46px;
     margin-top: -50px;
+    align-items: center;
+}
+
+.admin-menu-item {
+    margin: 0 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #B5B5B5;
+}
+
+.admin-menu-item:checked + label{
+    color: #fd6f60;
 }

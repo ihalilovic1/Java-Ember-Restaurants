@@ -1,0 +1,41 @@
+.admin-counter-box {
+    min-height: 180px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    margin-top: 80px;
+    
+    text-align: center;
+    padding: 0;
+    position: relative;
+}
+
+.admin-counter-box .counters {
+    position: absolute;
+    padding-bottom: 0;
+    left: 30%;
+    width: 40%;
+    top: 25%;
+    font-weight: 600;
+}
+
+.admin-counter-box button {
+    position: absolute;
+    width: 40%;
+    display: block;
+    bottom: -15px;
+    left: 30%;
+    border: none;
+    border-radius: 2px;
+    background-color: #fd6f60;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    height: 30px;
+}
+
+.admin-counter-central-box {
+    margin-left: 20px;
+    margin-right: 20px;
+}
