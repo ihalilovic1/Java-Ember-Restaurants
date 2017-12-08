@@ -1,6 +1,7 @@
 package services;
 
 import forms.RestaurantFilterForm;
+import forms.RestaurantForm;
 import forms.ReviewForm;
 import helpers.RestaurantLocationResponse;
 import helpers.UtilityClass;

@@ -47,6 +47,19 @@ public class Restaurant extends AbstractModel{
     @Column(name = "priceRange")
     private Double priceRange;
 
+    public Restaurant(String name, String description, Double latitude, Double longitude, Double priceRange, String imageFileName, String coverFileName, City location, List<FoodType> foodType) {
+        this.name = name;
+        this.description = description;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.priceRange = priceRange;
+        this.imageFileName = imageFileName;
+        this.coverFileName = coverFileName;
+        this.location = location;
+        this.foodType = foodType;
+        this.rating = 0D;
+    }
+
     @Column(name = "imagefilename")
     private String imageFileName;
 

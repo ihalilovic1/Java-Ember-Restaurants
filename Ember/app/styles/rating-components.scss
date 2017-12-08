@@ -1,0 +1,40 @@
+/*
+  dollar rating
+*/
+.dollar-rating {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.67;
+    padding-top: 3px;
+    font-family: 'Source Sans Pro', sans-serif;
+    float: left;
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+  
+  .highlighted-dollar {
+    color: #131d24;
+  }
+  
+  .empty-dollar {
+    color: #D3D9DC;
+  }
+  
+  /*
+    star-rating
+  */
+  .star-rating {
+    float: left;
+  }
+  
+  .highlighted-star {
+    color: #FD6F60;
+    margin-right: 4px;
+  
+  }
+  
+  .empty-star {
+    color: #D3D9DC;
+    margin-right: 4px;
+  
+  }

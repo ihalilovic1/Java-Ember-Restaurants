@@ -73,6 +73,12 @@ POST /api/v1/admin/getCategoryDetails                 controllers.AdministratorC
 #Restaurants
 POST /api/v1/admin/getFilteredRestaurants             controllers.AdministratorController.getFilteredRestaurants
 
+POST /api/v1/admin/addRestaurant                      controllers.AdministratorController.addRestaurant
+
+POST /api/v1/admin/deleteRestaurant                   controllers.AdministratorController.deleteRestaurant
+
+POST /api/v1/admin/editRestaurant                     controllers.AdministratorController.editRestaurant
+
 #View management
 
 GET     /assets/*file                                 controllers.Assets.versioned(path="/public/assets", file: Asset)

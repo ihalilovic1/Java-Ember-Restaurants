@@ -1,0 +1,89 @@
+.search-bar-form {
+    clear: both;
+    margin: 20px 0;
+    height: 56px;
+    display: inline-block;
+    width: 70%;
+    min-width: 565px;
+    border: none;
+    background-color: #ffffff;
+    padding: 0;
+  }
+  
+  .find-table-button {
+    height: 56px;
+    width: 15%;
+    background-color: #fd6f60;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+    display: inline-block;
+    float: right;
+  
+  }
+  
+  .find-table-textfield {
+    height: 56px;
+    width: 40%;
+    display: inline-block;
+    padding: 0 20px;
+    
+    font-family: 'Source Sans Pro', sans-serif, FontAwesome;
+    background-color: #ffffff;
+    border: none;
+    margin: 0;
+    float: left;
+  }
+  
+  
+  .find-table-field {
+    display: inline-block;
+    height: 56px;
+    width: 15%;
+    background-color: #ffffff;
+    border: none;
+    margin: 0;
+    padding: 0;
+    float: left;
+  }
+  
+  .reservation-time-button {
+    height: 34px;
+    border-radius: 2px;
+    background-color: #fd6f60;
+  
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+    .found-tables {
+      clear: both;
+    }
+  
+    .found-tables-label {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 20px;
+      color: #131d24;
+      font-weight: bold;
+      margin-top: 30px;
+      margin-bottom: 0;
+    }
+  
+  .tables-left-label {
+    font-size: 14px;
+    color: #131d24;
+  }
+  
+  .search-bar-container {
+    width: 100%;
+  }
+  
+  .search-bar-container .find-table-field, .search-bar-container .find-table-button {
+    width: 25%;
+    border: solid 1px #e3e3e3;
+  }
+  

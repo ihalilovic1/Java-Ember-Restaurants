@@ -1,0 +1,102 @@
+.landing-food-types {
+    opacity: 0.4;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    color: #131d24;
+    margin: 0;
+  }
+  
+  .landing-header {
+    height: 680px;
+    width: 100%;
+    background-size: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .landing-header img {
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: inherit;
+    padding: 0;
+    margin: 0;
+    
+  }
+  
+  .transparent-background {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: white;
+  }
+  
+  .landing-header-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    text-align: center;
+    padding-top: 232px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .free-reservation-label {
+    height: 60px;
+    font-size: 48px;
+    font-weight: 300;
+  }
+  
+  .number-of-restaurants-label {
+    height: 25px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .not-transparent {
+    background-color: black;
+    padding: 0;
+  }
+  
+  .landing-popular-restaurants {
+    margin-top: 73px;
+  
+  }
+  
+  .landing-popular-restaurants-label {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;;
+    font-size: 30px;
+    font-weight: 300;
+    color: #131d24;
+    margin-bottom: 50px;
+  }
+  
+  .landing-popular-locations-label {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;;
+    font-size: 30px;
+    font-weight: 300;
+    color: #131d24;
+    margin-bottom: 74px;
+  }
+  
+  .landing-popular-locations {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .landing-popular-location-city {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    color: #131d24;
+    margin-bottom: 0;
+  
+  }
+  
+  .landing-popular-location-number {
+    opacity: 0.4;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    color: #131d24;
+    margin-top: 2px;
+  
+  }

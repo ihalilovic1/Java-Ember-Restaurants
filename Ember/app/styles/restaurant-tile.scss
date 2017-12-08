@@ -1,0 +1,56 @@
+.restaurant-tile-votes-number {
+    opacity: 0.4;
+    font-size: 16px;
+    color: #131d24;
+    font-family: 'Source Sans Pro', sans-serif;
+    float: left;
+    margin-left: 8px;
+    margin-right: 10px;
+  }
+  
+  .restaurant-tile-rating {
+    min-width: 100%;
+    margin-bottom: 1px;
+    margin-top: 3px;
+    height: 16px;
+  }
+  
+  .restaurant-tile-horizontal-line {
+    border: none;
+    outline: none;
+    height: 1px;
+    width: 100%;
+    background-color: #e5e5e5;
+    margin-top: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .restaurant-tile-button {
+    border-radius: 2px;
+    background-color: #f9f9f9;
+    border: solid 1px #e5e5e5;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #131d24;
+    min-width: 100%;
+    margin-top: 25px;
+  }
+  
+  .restaurant-tile-container {
+    margin-bottom: 50px;
+    min-width: 100%;
+  }
+  
+  .restaurant-logo {
+    height: 260px;
+    
+  }
+  
+  .restaurant-tile-name {
+    height: 31px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 24px;
+    color: #131d24;
+    padding-top: 10px;
+  }

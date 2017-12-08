@@ -1,10 +1,8 @@
 package controllers;
 
 import com.google.inject.Inject;
-import forms.CategoryForm;
-import forms.LocationForm;
-import forms.PaginationForm;
-import forms.UUIDForm;
+import forms.*;
+import helpers.RestaurantResponse;
 import org.hibernate.exception.ConstraintViolationException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -247,6 +245,50 @@ public class AdministratorController extends AbstractController {
                     paginationForm.getItemsPerPage(),
                     paginationForm.getPageNumber(),
                     paginationForm.getSearchText())));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+    @Transactional
+    public Result addRestaurant() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<RestaurantForm> form = formFactory.form(RestaurantForm.class);
+            RestaurantForm restaurantForm = form.bindFromRequest().get();
+
+            return ok(RestaurantResponse.makeResponse(administratorService.addRestaurant(restaurantForm)));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+    @Transactional
+    public Result deleteRestaurant() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<UUIDForm> form = formFactory.form(UUIDForm.class);
+            UUIDForm uuidForm = form.bindFromRequest().get();
+
+            administratorService.deleteRestaurant(UUID.fromString(uuidForm.getId()));
+
+            return ok();
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+    @Transactional
+    public Result editRestaurant() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<RestaurantForm> form = formFactory.form(RestaurantForm.class);
+            RestaurantForm restaurantForm = form.bindFromRequest().get();
+
+            return ok(RestaurantResponse.makeResponse(administratorService.editRestaurant(restaurantForm)));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }

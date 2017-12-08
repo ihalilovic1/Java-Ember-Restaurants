@@ -1,0 +1,33 @@
+.rating-modal-star {
+    font-size: 36px;
+    width: 240px;
+    height: 36px;
+  }
+  
+  .rating-modal {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    color: #131d24;
+  }
+  
+  .rating-modal-textarea {
+    max-width: 465px;
+    max-height: 233px;
+    border-radius: 2px;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: solid 1px #e1e1e1;
+  }
+  
+  .rating-modal-save {
+    background-color: #fd6f60;
+    color: white;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .rating-modal-header {
+    font-size: 24px;
+  }

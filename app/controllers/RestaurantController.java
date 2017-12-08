@@ -116,8 +116,6 @@ public class RestaurantController extends AbstractController {
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
-
-
     }
 
 }

@@ -1,0 +1,114 @@
+.dropdown-menu {
+    min-width: 328px;
+    padding: 20px 26px;
+  
+  }
+  
+  .restaurant-filter-label {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(46, 57, 63, 0.6);
+  }
+  
+  .price-filter {
+    float: left;
+  }
+  
+  .rating-filter {
+    float: right;
+  }
+  
+  .cuisine-filter {
+    clear: both;
+    padding-top: 10px;
+  }
+  
+  .cuisine-filter * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .cuisine-filter .restaurant-filter-label {
+    margin: 10px auto; 
+  }
+  
+  .filter-checkbox > input{
+    display: none;
+  }
+  
+  .display-none {
+    display: none;
+  }
+  
+  .filter-checkbox{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.43;
+    color: #131d24;
+  }
+  
+  .filter-checkbox > input:checked + label{
+    color: #fd6f60;
+  }
+  
+  .filter-checkbox-checked{
+    color: #fd6f60;
+  }
+  
+  .sortby-filter ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .restaurant-searchbar-container {
+    margin: auto;
+    margin-bottom: 60px;
+    padding: 0;
+    border-radius: 3px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-button {
+    height: 56px;
+    width: 12%;
+    background-color: #fd6f60;
+    border: none;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+    float: right;
+  }
+  
+  .search-textfield {
+    width: 60%;
+    display: inline-block;
+    height: 56px;
+    padding: 0 20px;
+    margin: 0;
+    background-color: #ffffff;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif, FontAwesome;
+  }
+  
+  .search-field {
+    display: inline-block;
+    width: 12%;
+    background-color: #ffffff;
+    border: none;
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+  }
+  
+  .search-field a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #131d24;
+  }

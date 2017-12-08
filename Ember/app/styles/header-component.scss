@@ -1,0 +1,62 @@
+.custom-header {
+    height: 85px;
+    margin-bottom: 100px;
+    z-index: 3;
+}
+
+.custom-header-landing {
+  height: 85px;
+  margin-bottom: -85px;
+  z-index: 3;
+}
+
+.custom-header-link {
+    color: black;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+}
+
+.custom-header-link-landing {
+  color: white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
+}
+
+.custom-header-list {
+    font-size: 16px;
+    text-align: right;
+    
+}
+
+.custom-header-app-name {
+    font-size: 20px;
+    text-align: center;
+}
+
+.custom-header-link:active {
+    color: rgb(253, 111, 96);
+}
+
+.custom-header-link:hover {
+    color: rgb(253, 111, 96);
+}
+
+.custom-header-link:visited {
+    text-decoration: none;
+}
+
+.custom-header-link-landing:active {
+  color: rgb(253, 111, 96);
+}
+
+.custom-header-link-landing:hover {
+  color: rgb(253, 111, 96);
+}
+
+.custom-header-link-landing:visited {
+  text-decoration: none;
+}
+
+.custom-header-link-open {
+  color: rgb(253, 111, 96);
+}

@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('restaurants');
   this.route('restaurant', { path: '/restaurant/:restaurant_id' });
   this.route('complete-reservation', { path: '/complete-reservation/:restaurant_id/:reservation_id' });
+  this.route('admin');
 });
 
 export default Router;

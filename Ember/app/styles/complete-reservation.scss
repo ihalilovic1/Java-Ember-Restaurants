@@ -1,0 +1,90 @@
+.complete-reservation-image {
+    float: left;
+  
+    max-width: 130px;
+    max-height: 113px;
+  
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  .complete-reservation-details-name {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    color: #fd6f60;
+    font-weight: 600;
+  }
+  
+  .complete-reservation-details {
+    float: left;
+    margin-top: 20px;
+    padding: 0;
+  }
+  
+  .complete-reservation-details-label {
+    opacity: 0.4;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #171717;
+    margin-bottom: 0;
+  }
+  
+  .complete-reservation-detail {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    color: #131d24;
+    font-weight: 600;
+  }
+  
+  .complete-reservation-details-table {
+    margin-top: 20px;
+    width: 80%;
+  }
+  
+  .complete-reservation-title {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 60px;
+    margin-bottom: 49px;
+  }
+  
+  .complete-reservation-button {
+    border-radius: 3px;
+    background-color: #fd6f60;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+   margin-top: 20px;
+  }
+  
+  
+  .complete-reservation-counter {
+    height: 34px;
+    border-radius: 2px;
+    background-color: #FFC6C0;
+    float: right;
+    padding: 8px 5px;
+    color: #716062;
+    margin: 0;
+    
+    text-align: center;
+  }
+  
+  .complete-reservation-message {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    color: #131d24;
+    margin: 1em 0;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .complete-reservation-message-link {
+    color: #fd6f60;
+  }
+  

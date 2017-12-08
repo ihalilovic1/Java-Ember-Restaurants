@@ -1,5 +1,6 @@
 package services;
 
+import forms.RestaurantForm;
 import helpers.AdminCountersResponse;
 import helpers.CategoryResponse;
 import helpers.RestaurantPagination;
@@ -262,5 +263,72 @@ public class AdministratorService extends AbstractService {
             count = count / itemsPerPage + 1;
 
         return new RestaurantPagination(categories, count);
+    }
+
+    public Restaurant addRestaurant(RestaurantForm restaurantForm) {
+        EntityManager entityManager = getEntityManager();
+
+        City location = new City();
+
+        location.setId(UUID.fromString(restaurantForm.getLocation()));
+
+        List<FoodType> foodTypes = new ArrayList<FoodType>();
+
+        for(String foodType : restaurantForm.getCategories()) {
+            FoodType newCategory = entityManager.find(FoodType.class, UUID.fromString(foodType));
+            foodTypes.add(newCategory);
+        }
+
+        Restaurant restaurant = new Restaurant(restaurantForm.getRestaurantName(), restaurantForm.getDescription(),
+                restaurantForm.getLatitude(), restaurantForm.getLongitude(), restaurantForm.getPriceRange(),
+                restaurantForm.getImageFileName(), restaurantForm.getCoverFileName(), location, foodTypes);
+
+
+        entityManager.persist(restaurant);
+
+        entityManager.flush();
+
+        return restaurant;
+    }
+
+    public void deleteRestaurant(UUID uuid) {
+        EntityManager entityManager = getEntityManager();
+
+        Restaurant restaurant = entityManager.find(Restaurant.class, uuid);
+
+        entityManager.remove(restaurant);
+
+        entityManager.flush();
+    }
+
+    public Restaurant editRestaurant(RestaurantForm restaurantForm) {
+        EntityManager entityManager = getEntityManager();
+
+        City location = new City();
+
+        location.setId(UUID.fromString(restaurantForm.getLocation()));
+
+        List<FoodType> foodTypes = new ArrayList<FoodType>();
+
+        for(String foodType : restaurantForm.getCategories()) {
+            FoodType newCategory = entityManager.find(FoodType.class, UUID.fromString(foodType));
+            foodTypes.add(newCategory);
+        }
+
+        Restaurant restaurant = entityManager.find(Restaurant.class, UUID.fromString(restaurantForm.getId()));
+
+        restaurant.setName(restaurantForm.getRestaurantName());
+        restaurant.setDescription(restaurantForm.getDescription());
+        restaurant.setLatitude(restaurantForm.getLatitude());
+        restaurant.setLongitude(restaurantForm.getLongitude());
+        restaurant.setPriceRange(restaurantForm.getPriceRange());
+        restaurant.setImageFileName(restaurantForm.getImageFileName());
+        restaurant.setCoverFileName(restaurantForm.getCoverFileName());
+        restaurant.setLocation(location);
+        restaurant.setFoodType(foodTypes);
+
+        entityManager.flush();
+
+        return restaurant;
     }
 }

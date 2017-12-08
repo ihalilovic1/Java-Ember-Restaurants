@@ -37,11 +37,11 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             {{#if currentUser.admin}}
-                                                {{#link-to 'restaurants' id="login-link" class="nav-link header-link custom-header-link"}} 
+                                                {{#link-to 'admin' id="admin-link" class="nav-link header-link custom-header-link"}} 
                                                     Admin Panel
                                                 {{/link-to}}
                                             {{else}}
-                                                 {{#link-to 'restaurants' id="login-link" class="nav-link header-link custom-header-link"}}
+                                                 {{#link-to 'restaurants' id="account-link" class="nav-link header-link custom-header-link"}}
                                                     Account Settings
                                                  {{/link-to}}
                                             {{/if}}
