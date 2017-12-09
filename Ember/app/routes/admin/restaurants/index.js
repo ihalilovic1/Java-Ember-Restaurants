@@ -22,7 +22,7 @@ export default Ember.Route.extend({
 
     model(params) {
         return RSVP.hash({
-            filteredCategories: this.get('adminService').getFilteredCategories(10, params.pageNumber, params.searchText)
+            filteredRestaurants: this.get('adminService').getFilteredRestaurants(10, params.pageNumber, params.searchText)
                 .then(data => {
                     return data;
                 })
@@ -32,9 +32,4 @@ export default Ember.Route.extend({
 
         })
     },
-
-    afterModel(model) {
-        this.controllerFor('admin').set('catRadio', true);
-    }
-    
 });

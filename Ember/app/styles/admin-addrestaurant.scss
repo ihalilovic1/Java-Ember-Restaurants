@@ -1,0 +1,53 @@
+
+.add-restaurant-tabs {
+    margin-top: 40px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    border: solid 1px #e6e8eb;
+
+}
+
+.add-restaurant-tabs a {
+    text-decoration: none;
+    color: #B5B5B5;
+    font-weight: 600;
+    margin: 10px;
+}
+
+.add-restaurant-tabs .active {
+    color: #fd6f60;
+}
+
+.add-restaurant-content {
+    width: 100%;
+    border-radius: 3px;
+    background-color: #ffffff;
+    min-height: 5%;
+    border: solid 1px #e6e8eb;
+}
+
+.add-restaurant-content .tab-pane{
+    width: 100%;
+}
+
+.add-restaurant-content button {
+    float: right;
+}
+
+.restaurant-input-box {
+    min-width: 50px;
+    min-height: 50px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #e6e8eb;
+    margin: 10px 0;
+}
+
+.add-restaurant-section-title {
+        height: 20px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #131d24;
+        margin: 5px 0;
+}

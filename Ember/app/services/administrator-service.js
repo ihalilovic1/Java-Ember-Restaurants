@@ -13,26 +13,45 @@ export default CustomAjax.extend({
                 });
         });
     },
-    login(email, password) {
+
+    getFilteredRestaurants(itemsPerPage, pageNumber, searchText) {
         return new Promise((resolve, reject) => {
-            this.post('/login', {
+            this.post('/admin/getFilteredRestaurants', {
                 xhrFields: {
                     withCredentials: true,
                 },
                 data: {
-                    email: email,
-                    password: password
+                    itemsPerPage: itemsPerPage,
+                    pageNumber: pageNumber,
+                    searchText: searchText
                 }
             }).then(data => {
-                this.set('currentUser', data);
-                this.set('isLoggedIn', true);
                 resolve(data);
             })
                 .catch(error => {
-                    this.set('currentUser', null);
-                    this.set('isLoggedIn', false);
                     reject(error);
                 })
         })
     },
+
+    getFilteredCategories(itemsPerPage, pageNumber, searchText) {
+        return new Promise((resolve, reject) => {
+            this.post('/admin/getFilteredCategories', {
+                xhrFields: {
+                    withCredentials: true,
+                },
+                data: {
+                    itemsPerPage: itemsPerPage,
+                    pageNumber: pageNumber,
+                    searchText: searchText
+                }
+            }).then(data => {
+                resolve(data);
+            })
+                .catch(error => {
+                    reject(error);
+                })
+        })
+    },
+
 });

@@ -40,9 +40,9 @@ POST /api/v1/getReservation                           controllers.ReservationCon
 POST /api/v1/getFreeTables                            controllers.ReservationController.getFreeTables
 
 #Administrator management
-#Locatons
-GET /api/v1/admin/getAdministrationCounters           controllers.AdministratorController.getAdminCounters
 
+GET /api/v1/admin/getAdministrationCounters           controllers.AdministratorController.getAdminCounters
+#Locatons
 POST /api/v1/admin/addCountry                         controllers.AdministratorController.addCountry
 
 POST /api/v1/admin/addCity                            controllers.AdministratorController.addCity

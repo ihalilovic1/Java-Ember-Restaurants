@@ -245,7 +245,7 @@ public class AdministratorService extends AbstractService {
 
         criteria.where(criteriaBuilder.like(criteriaBuilder.lower(restaurantRoot.get("name")), '%' + searchText.toLowerCase() + '%'));
 
-        List<RestaurantResponse> categories = entityManager.createQuery(criteria)
+        List<RestaurantResponse> restaurants = entityManager.createQuery(criteria)
                 .setFirstResult((pageNumber - 1) * itemsPerPage)
                 .setMaxResults(itemsPerPage)
                 .getResultList();
@@ -262,7 +262,7 @@ public class AdministratorService extends AbstractService {
         if(count != 0)
             count = count / itemsPerPage + 1;
 
-        return new RestaurantPagination(categories, count);
+        return new RestaurantPagination(restaurants, count);
     }
 
     public Restaurant addRestaurant(RestaurantForm restaurantForm) {

@@ -4,22 +4,24 @@
             <thead>
                 <tr>
                     <th>
-                        All categories
+                        All restaurants
                     </th>
 
                     <th class="admin-table-action">
+                        {{#link-to 'admin.restaurants.addRestaurant'}}
                         <button>
-                            Add category
+                            Add restaurant
                         </button>
+                        {{/link-to}}
                     </th>
                 </tr>
             </thead>
 
             <tbody>
-                {{#each model.filteredCategories.categories as |category|}}
+                {{#each model.filteredRestaurants.restaurants as |restaurant|}}
                 <tr>
                     <td>
-                        {{category.name}}
+                        {{restaurant.restaurantName}}
                     </td>
 
                     <td class="admin-table-action">
@@ -38,7 +40,7 @@
                     <button {{action "previousPage"}}>PREVIOUS</button>
                 </li>
 
-                {{#each (loop model.filteredCategories.numberOfPages) as |page index|}}
+                {{#each (loop model.filteredRestaurants.numberOfPages) as |page index|}}
                 <li class="pagination-item">
                     <button class="{{if (equals-helper pageNumber (adition-helper index 1)) " selected " " "}}" {{action "updatePage" index}}>{{adition-helper index 1}}</button>
                 </li>
@@ -51,7 +53,3 @@
         </div>
     </div>
 </div>
-
-
-{{outlet}}
-{{outlet}}
