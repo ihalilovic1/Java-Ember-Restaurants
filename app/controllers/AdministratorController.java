@@ -8,10 +8,12 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.db.jpa.Transactional;
 import play.libs.Json;
+import play.mvc.Http;
 import play.mvc.Result;
 import services.AdministratorService;
 
 import javax.persistence.PersistenceException;
+import java.io.File;
 import java.util.UUID;
 
 public class AdministratorController extends AbstractController {
@@ -292,5 +294,15 @@ public class AdministratorController extends AbstractController {
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
+    }
+
+    public Result uploadPhoto() {
+        File file = request().body().asRaw().asFile();
+        try {
+            return ok(file.getCanonicalPath());
+        } catch (Exception ex) {
+            return badRequest("Neuspjesan upload");
+        }
+
     }
 }

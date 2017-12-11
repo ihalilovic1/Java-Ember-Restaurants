@@ -42,6 +42,9 @@ POST /api/v1/getFreeTables                            controllers.ReservationCon
 #Administrator management
 
 GET /api/v1/admin/getAdministrationCounters           controllers.AdministratorController.getAdminCounters
+
+POST /api/v1/admin/uploadPhoto                        controllers.AdministratorController.uploadPhoto
+
 #Locatons
 POST /api/v1/admin/addCountry                         controllers.AdministratorController.addCountry
 

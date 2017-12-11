@@ -39,12 +39,17 @@
   font-family: 'Source Sans Pro', sans-serif;
 }
 
- body {
+body {
   min-height: 100vh;
 }
 
 html, body {
   background-color: #F9F9F9;
+}
+
+.background-orange-pink {
+  background-color: #fd6f60;
+  color: white;
 }
 
 .no-decoration a {

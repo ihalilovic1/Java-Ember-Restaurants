@@ -26,8 +26,8 @@
                             Add Logo
                         </div>
 
-                        <div class="restaurant-input-box">
-
+                        <div class="restaurant-input-box restaurant-logo-box">
+                            {{fa-icon class="fa fa-cloud-upload fa-3x center-self" aria-hidden="true"}}
                         </div>
                     </div>
                     <div class="col-md-6 add-restaurant-section-title">
@@ -35,7 +35,8 @@
                             Add Cover Photo
                         </div>
 
-                        <div class="restaurant-input-box">
+                        <div class="restaurant-input-box restaurant-cover-box">
+                            {{fa-icon class="fa fa-cloud-upload fa-3x center-self" aria-hidden="true"}}
                         </div>
                     </div>
                 </div>
@@ -45,7 +46,7 @@
                             Name
                         </div>
                         <div class="restaurant-input-box">
-
+                            {{input class="restaurant-name-input" type="text" value=restaurantName}}
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -53,7 +54,11 @@
                             Category
                         </div>
                         <div class="restaurant-input-box">
-
+                            <select multiple class="form-control" onchange={{action "selectCuisine" value="target"}}>
+                                {{#each model.restaurantCategories as |category|}}
+                                    <option>{{category.name}}</option>
+                                {{/each}}
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -61,7 +66,11 @@
                             Location
                         </div>
                         <div class="restaurant-input-box">
-
+                            <select class="form-control" onchange={{action "selectLocation" value="target.value"}}>
+                                {{#each model.locations as |location|}}
+                                    <option value="{{location.id}}">{{location.city}}</option>
+                                {{/each}}
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -70,23 +79,23 @@
                         <div class="add-restaurant-section-title">
                             Description
                         </div>
-                        <div class="restaurant-input-box">
-
-                        </div>
+                        {{textarea class="restaurant-descriptio-input" value=restaurantDescription}}
+                        
                     </div>
                     <div class="col-md-6">
 
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6">
-
+                
                     </div>
                     <div class="col-md-6">
-                        <button>
+                        <button class="add-restaurant-button background-orange-pink" {{action "addRestaurant"}}>
                             Add Restaurant
                         </button>
-                        <button>
+                        <button class="add-restaurant-button">
                             Cancel
                         </button>
                     </div>
@@ -95,7 +104,52 @@
         </div>
 
         <div class="tab-pane" id="menu" role="tabpanel">
-            Menu
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <input value="breakfast" type="radio" checked=true name="mealType" id="breakfastmeal">
+                        <label for="breakfastmeal">Breakfast</label>
+                        
+                        <input value="lunch" type="radio" name="mealType" id="lunchmeal">
+                        <label for="lunchmeal">Lunch</label>
+                        
+                        <input type="radio" value="dinner" name="mealType" id="dinnermeal">
+                        <label for="dinnermeal">Dinner</label>
+
+                    </div>
+                    <div class="col-6">
+                        <button {{action "newMenuItem"}}>Add new item</button>
+                    </div>
+                </div>
+                {{#each (loop numberOfNewMenuItems) as |item index|}}
+                    <div class="row">
+                        <div class="col-1">
+                                {{adition-helper index 1}}.
+                        </div>
+                        <div class="col-4">
+                            {{input type="text" placeholder="Name"}}
+                        </div>
+                        <div class="col-4">
+                            {{input type="number" placeholder="$ Price"}}
+                             {{newMenuItems.[index].type}}
+                        </div>
+                        
+                    </div>
+                {{/each}}
+                <div class="row">
+                    <div class="col-md-6">
+                
+                    </div>
+                    <div class="col-md-6">
+                        <button class="add-restaurant-button background-orange-pink" {{action "addRestaurant"}}>
+                            Add Restaurant
+                        </button>
+                        <button class="add-restaurant-button">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="tab-pane" id="gallery" role="tabpanel">
