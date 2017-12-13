@@ -3,6 +3,7 @@ package controllers;
 import com.google.inject.Inject;
 import forms.*;
 import helpers.RestaurantResponse;
+import helpers.ReviewResponse;
 import org.hibernate.exception.ConstraintViolationException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -304,5 +305,50 @@ public class AdministratorController extends AbstractController {
             return badRequest("Neuspjesan upload");
         }
 
+    }
+
+    @Transactional
+    public Result getAllRestaurantComments() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<UUIDForm> form = formFactory.form(UUIDForm.class);
+            UUIDForm uuidForm = form.bindFromRequest().get();
+
+            return ok(ReviewResponse.makeResponseList(administratorService.getAllRestaurantComments(UUID.fromString(uuidForm.getId()))));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+    @Transactional
+    public Result getRestaurantCategories() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<UUIDForm> form = formFactory.form(UUIDForm.class);
+            UUIDForm uuidForm = form.bindFromRequest().get();
+
+            return ok(Json.toJson(administratorService.getRestaurantCategories(UUID.fromString(uuidForm.getId()))));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+    @Transactional
+    public Result getFilteredUsers() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<PaginationForm> form = formFactory.form(PaginationForm.class);
+            PaginationForm paginationForm = form.bindFromRequest().get();
+
+            return ok(Json.toJson(administratorService.getFilteredUsers(
+                    paginationForm.getItemsPerPage(),
+                    paginationForm.getPageNumber(),
+                    paginationForm.getSearchText())));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
     }
 }

@@ -12,6 +12,7 @@ public class UserResponse {
     private String city;
     private String firstName;
     private String lastName;
+    private Boolean isAdmin;
 
     public Boolean getAdmin() {
         return isAdmin;
@@ -21,9 +22,18 @@ public class UserResponse {
         isAdmin = admin;
     }
 
-    private Boolean isAdmin;
-
     public UserResponse() {
+    }
+
+    public UserResponse(User user) {
+        this.id = user.getId().toString();
+        this.email = user.getEmail();
+        this.phone = user.getPhone();
+        this.country = user.getCity().getCountry().getName();
+        this.city = user.getCity().getName();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.isAdmin = user.getAdmin();
     }
 
     public UserResponse(String id, String email, String phone, String country, String city, String firstName, String lastName, Boolean isAdmin) {

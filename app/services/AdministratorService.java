@@ -1,10 +1,7 @@
 package services;
 
 import forms.RestaurantForm;
-import helpers.AdminCountersResponse;
-import helpers.CategoryResponse;
-import helpers.RestaurantPagination;
-import helpers.RestaurantResponse;
+import helpers.*;
 import models.tables.*;
 import net.sf.ehcache.search.aggregator.Count;
 import org.hibernate.exception.ConstraintViolationException;
@@ -330,5 +327,68 @@ public class AdministratorService extends AbstractService {
         entityManager.flush();
 
         return restaurant;
+    }
+
+    public List<Review> getAllRestaurantComments(UUID uuid) {
+        EntityManager entityManager = getEntityManager();
+
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+
+        CriteriaQuery<Review> reviewCriteriaQuery = criteriaBuilder.createQuery(Review.class);
+
+        Root<Review> reviewRoot = reviewCriteriaQuery.from(Review.class);
+
+        reviewCriteriaQuery.select(reviewRoot);
+
+        Restaurant restaurant = new Restaurant();
+        restaurant.setId(uuid);
+
+        reviewCriteriaQuery.where(criteriaBuilder.equal(reviewRoot.get("restaurant"), restaurant));
+
+        return entityManager.createQuery(reviewCriteriaQuery).getResultList();
+    }
+
+    public List<FoodType> getRestaurantCategories(UUID uuid) {
+        EntityManager entityManager = getEntityManager();
+
+        Restaurant restaurant = entityManager.find(Restaurant.class, uuid);
+
+        return restaurant.getFoodType();
+    }
+
+    public UsersPagination getFilteredUsers(Integer itemsPerPage, Integer pageNumber, String searchText) {
+        EntityManager entityManager = getEntityManager();
+
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+
+        CriteriaQuery<UserResponse> criteria = criteriaBuilder.createQuery(UserResponse.class);
+
+        Root<User> userRoot = criteria.from(User.class);
+
+        criteria.select(criteriaBuilder.construct(
+                UserResponse.class,
+                userRoot
+        ));
+
+        criteria.where(criteriaBuilder.like(criteriaBuilder.lower(userRoot.get("firstName")), '%' + searchText.toLowerCase() + '%'));
+
+        List<UserResponse> users = entityManager.createQuery(criteria)
+                .setFirstResult((pageNumber - 1) * itemsPerPage)
+                .setMaxResults(itemsPerPage)
+                .getResultList();
+
+        CriteriaQuery<Long> usersCount = criteriaBuilder.createQuery(Long.class);
+
+        userRoot = usersCount.from(User.class);
+
+        usersCount.select(criteriaBuilder.count(userRoot));
+        usersCount.where(criteriaBuilder.like(criteriaBuilder.lower(userRoot.get("firstName")), '%' + searchText.toLowerCase() + '%'));
+
+        Long count = entityManager.createQuery(usersCount).getSingleResult();
+
+        if(count != 0 && itemsPerPage != 1)
+            count = count / itemsPerPage + 1;
+
+        return new UsersPagination(users, count);
     }
 }
