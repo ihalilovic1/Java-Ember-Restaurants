@@ -90,6 +90,16 @@ POST /api/v1/admin/getRestaurantCategories            controllers.AdministratorC
 
 POST /api/v1/admin/getFilteredUsers                   controllers.AdministratorController.getFilteredUsers
 
+#Tables
+
+POST /api/v1/admin/getAllRestaurantTables             controllers.AdministratorController.getAllRestaurantTables
+
+POST /api/v1/admin/adminTableItems                    controllers.AdministratorController.updateTables
+
+#Menu
+
+POST /api/v1/admin/adminTableItems                    controllers.AdministratorController.updateMenu
+
 #View management
 
 GET     /assets/*file                                 controllers.Assets.versioned(path="/public/assets", file: Asset)

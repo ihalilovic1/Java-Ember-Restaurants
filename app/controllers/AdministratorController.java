@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import forms.*;
 import helpers.RestaurantResponse;
 import helpers.ReviewResponse;
+import helpers.TableResponse;
 import org.hibernate.exception.ConstraintViolationException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -347,6 +348,52 @@ public class AdministratorController extends AbstractController {
                     paginationForm.getItemsPerPage(),
                     paginationForm.getPageNumber(),
                     paginationForm.getSearchText())));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+    @Transactional
+    public Result getAllRestaurantTables() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<UUIDForm> form = formFactory.form(UUIDForm.class);
+            UUIDForm uuidForm = form.bindFromRequest().get();
+
+            return ok(TableResponse.makeResponseList(administratorService.getAllRestaurantTables(UUID.fromString(uuidForm.getId()))));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+    @Transactional
+    public Result updateTables() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<TablesUpdateForm> form = formFactory.form(TablesUpdateForm.class);
+            TablesUpdateForm tablesUpdateForm = form.bindFromRequest().get();
+
+            administratorService.updateTables(tablesUpdateForm);
+
+            return ok();
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
+
+    @Transactional
+    public Result updateMenu() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<TablesUpdateForm> form = formFactory.form(TablesUpdateForm.class);
+            TablesUpdateForm tablesUpdateForm = form.bindFromRequest().get();
+
+            administratorService.updateTables(tablesUpdateForm);
+
+            return ok();
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }

@@ -1,6 +1,8 @@
 package services;
 
 import forms.RestaurantForm;
+import forms.TableForm;
+import forms.TablesUpdateForm;
 import helpers.*;
 import models.tables.*;
 import net.sf.ehcache.search.aggregator.Count;
@@ -390,5 +392,59 @@ public class AdministratorService extends AbstractService {
             count = count / itemsPerPage + 1;
 
         return new UsersPagination(users, count);
+    }
+
+    public List<RestaurantTable> getAllRestaurantTables(UUID uuid) {
+        EntityManager em = getEntityManager();
+
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<RestaurantTable> criteria = cb.createQuery(RestaurantTable.class);
+
+        Root<RestaurantTable> root = criteria.from(RestaurantTable.class);
+
+        criteria.select( root );
+
+        Restaurant restaurant = new Restaurant();
+        restaurant.setId(uuid);
+
+        criteria.where(cb.equal(root.get("restaurantId"), restaurant));
+
+        return em.createQuery(criteria).getResultList();
+    }
+
+    public void updateTables(TablesUpdateForm tablesUpdateForm) {
+        EntityManager entityManager = getEntityManager();
+
+        // Adding tables
+        List<TableForm> queue = tablesUpdateForm.getAddQueue();
+
+        for(TableForm table : queue) {
+            Restaurant restaurant = new Restaurant();
+            restaurant.setId(UUID.fromString(table.getRestaurantId()));
+
+            entityManager.persist(new RestaurantTable(restaurant, table.getSittingPlaces()));
+        }
+
+        //Delete tables
+        queue = tablesUpdateForm.getDeleteQueue();
+
+        for(TableForm table : queue) {
+            RestaurantTable restaurantTable = entityManager.find(RestaurantTable.class, UUID.fromString(table.getId()));
+
+            entityManager.remove(restaurantTable);
+        }
+
+        queue = tablesUpdateForm.getEditQueue();
+        for(TableForm table : queue) {
+            Restaurant restaurant = new Restaurant();
+            restaurant.setId(UUID.fromString(table.getRestaurantId()));
+
+            RestaurantTable restaurantTable = entityManager.find(RestaurantTable.class, UUID.fromString(table.getId()));
+            restaurantTable.setPersons(table.getSittingPlaces());
+            restaurantTable.setRestaurantId(restaurant);
+        }
+
+        entityManager.flush();
     }
 }
