@@ -23,7 +23,16 @@ public class MenuItem extends AbstractModel {
     @Column(name = "name")
     private String name;
 
+    public MenuItem(Restaurant restaurant, String type, String name, Double price, String description) {
+        this.restaurant = restaurant;
+        this.type = type;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+    }
+
     @Column(name = "price")
+
     private Double price;
 
     @Column(name = "description")

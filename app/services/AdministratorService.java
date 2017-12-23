@@ -1,8 +1,6 @@
 package services;
 
-import forms.RestaurantForm;
-import forms.TableForm;
-import forms.TablesUpdateForm;
+import forms.*;
 import helpers.*;
 import models.tables.*;
 import net.sf.ehcache.search.aggregator.Count;
@@ -443,6 +441,45 @@ public class AdministratorService extends AbstractService {
             RestaurantTable restaurantTable = entityManager.find(RestaurantTable.class, UUID.fromString(table.getId()));
             restaurantTable.setPersons(table.getSittingPlaces());
             restaurantTable.setRestaurantId(restaurant);
+        }
+
+        entityManager.flush();
+    }
+
+    public void updateMenus(MenusUpdateForm menusUpdateForm) {
+        EntityManager entityManager = getEntityManager();
+
+        // Adding tables
+        List<MenuForm> queue = menusUpdateForm.getAddQueue();
+
+        for(MenuForm menuItem : queue) {
+            Restaurant restaurant = new Restaurant();
+            restaurant.setId(UUID.fromString(menuItem.getIdRestaurant()));
+
+            entityManager.persist(new MenuItem(restaurant, menuItem.getType(), menuItem.getName(),
+                    menuItem.getPrice(), menuItem.getDescription()));
+        }
+
+        //Delete tables
+        queue = menusUpdateForm.getDeleteQueue();
+
+        for(MenuForm menuItem : queue) {
+            MenuItem menu = entityManager.find(MenuItem.class, UUID.fromString(menuItem.getId()));
+
+            entityManager.remove(menu);
+        }
+
+        queue = menusUpdateForm.getEditQueue();
+        for(MenuForm menuItem : queue) {
+            Restaurant restaurant = new Restaurant();
+            restaurant.setId(UUID.fromString(menuItem.getIdRestaurant()));
+
+            MenuItem menu = entityManager.find(MenuItem.class, UUID.fromString(menuItem.getId()));
+            menu.setRestaurant(restaurant);
+            menu.setDescription(menuItem.getDescription());
+            menu.setName(menuItem.getName());
+            menu.setPrice(menuItem.getPrice());
+            menu.setType(menuItem.getType());
         }
 
         entityManager.flush();

@@ -51,6 +51,22 @@ public class RestaurantService extends AbstractService {
         }
     }
 
+    public List<Restaurant> allRestaurantsSortReservationsToday() {
+        try {
+            EntityManager em = getEntityManager();
+
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            //TODO sort by reservations today
+            CriteriaQuery<Restaurant> criteria = builder.createQuery( Restaurant.class );
+            Root<Restaurant> root = criteria.from( Restaurant.class );
+            criteria.select( root );
+
+            return em.createQuery(criteria).getResultList();
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+
     public List<RestaurantLocationResponse> getRestaurantLocations() {
 
         EntityManager em = getEntityManager();
@@ -127,7 +143,7 @@ public class RestaurantService extends AbstractService {
 
     }
 
-    public List<Restaurant> getRestauranByFilter(RestaurantFilterForm filterForm) {
+    public List<Restaurant> getRestaurantsByFilter(RestaurantFilterForm filterForm) {
         try {
             Integer itemsPerPage = filterForm.getItemsPerPage();
             Integer pageNumber = filterForm.getPageNumber();

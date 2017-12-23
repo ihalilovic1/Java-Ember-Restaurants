@@ -97,8 +97,7 @@ public class RestaurantController extends AbstractController {
     @Transactional
     public Result allRestaurantsSortReservationsToday() {
         try {
-            //TODO sort
-            return ok(RestaurantResponse.makeResponseList(restaurantService.getAllRestaurants()));
+            return ok(RestaurantResponse.makeResponseList(restaurantService.allRestaurantsSortReservationsToday()));
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
@@ -110,7 +109,7 @@ public class RestaurantController extends AbstractController {
             Form<RestaurantFilterForm> restaurantFilterForm = formFactory.form(RestaurantFilterForm.class);
             RestaurantFilterForm form = restaurantFilterForm.bindFromRequest().get();
 
-            List<Restaurant> lista = restaurantService.getRestauranByFilter(form);
+            List<Restaurant> lista = restaurantService.getRestaurantsByFilter(form);
 
             return ok(RestaurantResponse.makeResponseList(lista));
         } catch (Exception ex) {

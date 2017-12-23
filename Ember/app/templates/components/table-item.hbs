@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-1">
+        {{index}}.
+    </div>
+    <div class="col-5">
+        <select onchange={{action 'setNumberOfPeople' value="target.value" }}>>
+            <option value=2 selected>Table for two persons</option>
+            <option value=3>Table for three persons</option>
+            <option value=4>Table for four persons</option>
+            <option value=5>Table for five persons</option>
+            <option value=6>Table for six persons</option>
+        </select>
+    </div>
+
+    <div class="col-4">
+         {{input type="number" placeholder="Ammount" value=ammount}}
+    </div>
+</div>

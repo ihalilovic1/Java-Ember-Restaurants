@@ -13,13 +13,8 @@ CREATE EXTENSION pgcrypto;
 
 ## TODO
 - [ ] Exception handling
-- [x] Set response body according to API table
-- [x] Change color of active navigation bar links
 - [ ] Form validation
-- [x] Switch to PostgreSQL-specific UUID
 - [ ] Implement 'remember me' option in backend
-- [x] Remove duplicates from registration form country list
-- [ ] Rename RestaurantUUIDForm to UUIDForm
 - [ ] Use rate-component in restaurant-tile and rate restaurant modal
 
 ## Built With

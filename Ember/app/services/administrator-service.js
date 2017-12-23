@@ -48,6 +48,63 @@ export default CustomAjax.extend({
             }).then(data => {
                 resolve(data);
             })
+            .catch(error => {
+                reject(error);
+            })
+        })
+    },
+
+    addRestaurant(restaurantName, description, categories, location, longitude, latitude, priceRange, imageFileName, coverFileName) {
+        return new Promise((resolve, reject) => {
+            this.post('/admin/addRestaurant', {
+                data: {
+                    restaurantName: restaurantName,
+                    description: description,
+                    categories: categories,
+                    location: location,
+                    longitude: longitude,
+                    latitude: latitude,
+                    priceRange: priceRange,
+                    imageFileName,
+                    coverFileName
+                }
+            }).then(data => {
+                resolve(data);
+            })
+            .catch(error => {
+                reject(error);
+            })
+        })
+    },
+
+    adminTableItems(addQueue, editQueue, deleteQueue) {
+        return new Promise((resolve, reject) => {
+            this.post('/admin/adminTableItems', {
+                data: {
+                    addQueue: addQueue,
+                    editQueue: editQueue,
+                    deleteQueue: deleteQueue
+                }
+            }).then(data => {
+                resolve(data);
+            })
+                .catch(error => {
+                    reject(error);
+                })
+        })
+    },
+
+    adminMenuItems(addQueue, editQueue, deleteQueue) {
+        return new Promise((resolve, reject) => {
+            this.post('/admin/adminTableItems', {
+                data: {
+                    addQueue: addQueue,
+                    editQueue: editQueue,
+                    deleteQueue: deleteQueue
+                }
+            }).then(data => {
+                resolve(data);
+            })
                 .catch(error => {
                     reject(error);
                 })

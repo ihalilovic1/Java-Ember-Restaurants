@@ -9,9 +9,12 @@ const {
 
 export default Ember.Route.extend({
     restaurantService: service('restaurant-service'),
+    administratorService: service('administrator-service'),
 
     actions: {
-
+        addRestaurant() {
+           
+        }
     },
 
     model() {
@@ -30,7 +33,7 @@ export default Ember.Route.extend({
                 })
                 .catch(() => {
                     return null;
-                })
+                }),
         })
 
     }

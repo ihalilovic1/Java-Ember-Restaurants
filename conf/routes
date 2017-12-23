@@ -98,7 +98,7 @@ POST /api/v1/admin/adminTableItems                    controllers.AdministratorC
 
 #Menu
 
-POST /api/v1/admin/adminTableItems                    controllers.AdministratorController.updateMenu
+POST /api/v1/admin/adminMenuItems                     controllers.AdministratorController.updateMenu
 
 #View management
 

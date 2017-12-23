@@ -336,6 +336,8 @@ public class AdministratorController extends AbstractController {
         }
     }
 
+
+
     @Transactional
     public Result getFilteredUsers() {
         if(!isAdmin())
@@ -388,10 +390,10 @@ public class AdministratorController extends AbstractController {
         if(!isAdmin())
             return badRequest("Access denied");
         try {
-            Form<TablesUpdateForm> form = formFactory.form(TablesUpdateForm.class);
-            TablesUpdateForm tablesUpdateForm = form.bindFromRequest().get();
+            Form<MenusUpdateForm> form = formFactory.form(MenusUpdateForm.class);
+            MenusUpdateForm menusUpdateForm = form.bindFromRequest().get();
 
-            administratorService.updateTables(tablesUpdateForm);
+            administratorService.updateMenus(menusUpdateForm);
 
             return ok();
         } catch (Exception ex) {

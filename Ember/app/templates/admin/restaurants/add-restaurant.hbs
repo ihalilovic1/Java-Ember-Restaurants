@@ -56,7 +56,7 @@
                         <div class="restaurant-input-box">
                             <select multiple class="form-control" onchange={{action "selectCuisine" value="target"}}>
                                 {{#each model.restaurantCategories as |category|}}
-                                    <option>{{category.name}}</option>
+                                    <option value={{category.id}}>{{category.name}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -122,19 +122,7 @@
                     </div>
                 </div>
                 {{#each (loop numberOfNewMenuItems) as |item index|}}
-                    <div class="row">
-                        <div class="col-1">
-                                {{adition-helper index 1}}.
-                        </div>
-                        <div class="col-4">
-                            {{input type="text" placeholder="Name"}}
-                        </div>
-                        <div class="col-4">
-                            {{input type="number" placeholder="$ Price"}}
-                             {{newMenuItems.[index].type}}
-                        </div>
-                        
-                    </div>
+                    {{menu-item index=(adition-helper index 1) dataUpdate="editMenuItem" dataDelete="deleteMenuItem" onfocus="gotFocus"}}
                 {{/each}}
                 <div class="row">
                     <div class="col-md-6">
@@ -157,7 +145,39 @@
         </div>
 
         <div class="tab-pane" id="tables" role="tabpanel">
-            Tables
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="add-restaurant-section-title">
+                            Tables
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <button {{action "newTableItem"}}>Add new item</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {{#each (loop numberOfNewTableItems) as |item index|}}
+                        {{table-item index=(adition-helper index 1) dataUpdate="editTableItem"}}
+
+                    {{/each}}
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                
+                    </div>
+                    <div class="col-md-6">
+                        <button class="add-restaurant-button background-orange-pink" {{action "addRestaurant"}}>
+                            Add Restaurant
+                        </button>
+                        <button class="add-restaurant-button">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

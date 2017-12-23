@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
     isDinner: false,
     numberOfNewMenuItems: 0,
     newMenuItems: [],
+    numberOfNewTableItems: 0,
+    newTableItems: [],
 
     actions: {
         selectLocation(value) {
@@ -50,14 +52,60 @@ export default Ember.Controller.extend({
                     break;
                 }
             }
-            console.log(menuItems);
 
             this.set('newMenuItems', menuItems);
         },
 
-        addRestaurant() {
-            console.log(this.get('selectedLocation'));
-            console.log(this.get('selectedCategories'));
+        editMenuItem(index, name, description, price) {
+            let menuItems = this.get('newMenuItems');
+            menuItems[index].name = name;
+            menuItems[index].price = price;
+            menuItems[index].description = description;
+
+            this.set('newMenuItems', menuItems);
+        },
+
+        deleteMenuItem(index) {
+            let menuItems = this.get('newMenuItems');
+            menuItems.splice(index, 1);
+            this.set('newMenuItems', menuItems);
+            this.set('numberOfNewMenuItems', this.get('numberOfNewMenuItems') - 1);
+        },
+
+        newTableItem() {
+            let tableItems = this.get('newTableItems');
+
+            tableItems.push(new Object({
+                sittingPlaces: 2,
+                ammount: 0,
+            }));
+            this.set('numberOfNewTableItems', this.get('numberOfNewTableItems') + 1);
+            this.set('newTableItems', tableItems);
+        },
+
+        editTableItem(index, numberOfPeople, ammount) {
+            let tableItems = this.get('newTableItems');
+
+            tableItems[index].sittingPlaces = numberOfPeople;
+            tableItems[index].ammount = ammount;
+
+            this.set('newTableItems', tableItems);
+        },
+
+        gotFocus(index) {
+            var radios = document.getElementsByName('mealType');
+
+            let menuItems = this.get('newMenuItems');
+
+            for (var i = 0, length = radios.length; i < length; i++) {
+                if (menuItems[index].type === radios[i].value) {
+                    radios[i].checked = true;
+                } else {
+
+                    radios[i].checked = false;
+                }
+            }
+
         }
     }
 
