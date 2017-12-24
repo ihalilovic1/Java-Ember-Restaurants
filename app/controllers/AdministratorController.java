@@ -379,7 +379,7 @@ public class AdministratorController extends AbstractController {
 
             administratorService.updateTables(tablesUpdateForm);
 
-            return ok();
+            return ok("{}");
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }
@@ -395,7 +395,7 @@ public class AdministratorController extends AbstractController {
 
             administratorService.updateMenus(menusUpdateForm);
 
-            return ok();
+            return ok("{}");
         } catch (Exception ex) {
             return badRequest(ex.getLocalizedMessage());
         }

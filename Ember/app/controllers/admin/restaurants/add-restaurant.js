@@ -46,7 +46,6 @@ export default Ember.Controller.extend({
                         price: 0,
                         type: radios[i].value,
                         idRestaurant: '',
-                        id: ''
                     }));
                     
                     break;

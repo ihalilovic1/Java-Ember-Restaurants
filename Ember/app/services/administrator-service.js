@@ -96,7 +96,7 @@ export default CustomAjax.extend({
 
     adminMenuItems(addQueue, editQueue, deleteQueue) {
         return new Promise((resolve, reject) => {
-            this.post('/admin/adminTableItems', {
+            this.post('/admin/adminMenuItems', {
                 data: {
                     addQueue: addQueue,
                     editQueue: editQueue,
