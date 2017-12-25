@@ -111,4 +111,8 @@ export default CustomAjax.extend({
         })
     },
 
+    uploadPhoto() {
+        
+    }
+
 });

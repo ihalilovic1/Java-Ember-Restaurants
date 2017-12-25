@@ -1,6 +1,6 @@
 <div class="restaurant-tile-container">
     {{#link-to 'restaurant' restaurant.id}}
-        <img class="image-fluid restaurant-logo" src="https://drive.google.com/uc?export=view&id=0B2kerAVz5owdWEo1dEY1U1I0TXM">
+        <img class="image-fluid restaurant-logo" src="{{restaurant.imageFileName}}">
         <h3 class="restaurant-tile-name">{{restaurant.restaurantName}}</h3>
 
         <p class="restaurant-tile-rating">{{star-rating rating=restaurant.mark}}

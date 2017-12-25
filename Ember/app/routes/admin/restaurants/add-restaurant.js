@@ -14,7 +14,7 @@ export default Ember.Route.extend({
     actions: {
         addRestaurant() {
             this.get('administratorService').addRestaurant(this.controller.get('restaurantName'), this.controller.get('restaurantDescription'),
-                this.controller.get('selectedCategories'), this.controller.get('selectedLocation'), -80, 21, 3, "imagefilename", "coverfilename")
+                this.controller.get('selectedCategories'), this.controller.get('selectedLocation'), -80, 21, 3, "/images/restaurant_logo.jpg", "/images/restaurant_cover.jpg")
                 .then(data => {
                     let newTableItems = this.controller.get('newTableItems');
                     let tableItems = [];
