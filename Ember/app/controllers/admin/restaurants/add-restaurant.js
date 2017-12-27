@@ -10,8 +10,18 @@ export default Ember.Controller.extend({
     newMenuItems: [],
     numberOfNewTableItems: 0,
     newTableItems: [],
+    logoPath: null,
+    coverPath: null,
 
     actions: {
+        setLogoPath(path) {
+            this.set('logoPath', path);
+        },
+
+        setCoverPath(path) {
+            this.set('coverPath', path);
+        },
+
         selectLocation(value) {
             this.set('selectedLocation', value);
         },

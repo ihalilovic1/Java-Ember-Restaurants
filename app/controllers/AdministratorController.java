@@ -5,6 +5,7 @@ import forms.*;
 import helpers.RestaurantResponse;
 import helpers.ReviewResponse;
 import helpers.TableResponse;
+import org.h2.store.fs.FileUtils;
 import org.hibernate.exception.ConstraintViolationException;
 import play.data.Form;
 import play.data.FormFactory;
@@ -16,6 +17,7 @@ import services.AdministratorService;
 
 import javax.persistence.PersistenceException;
 import java.io.File;
+import java.util.Map;
 import java.util.UUID;
 
 public class AdministratorController extends AbstractController {
@@ -299,11 +301,26 @@ public class AdministratorController extends AbstractController {
     }
 
     public Result uploadPhoto() {
-        File file = request().body().asRaw().asFile();
         try {
-            return ok(file.getCanonicalPath());
+            Http.MultipartFormData<File> body = request().body().asMultipartFormData();
+            Http.MultipartFormData.FilePart<File> picture = body.getFile("file");
+            if (picture != null) {
+                String path = body.asFormUrlEncoded().get("path")[0];
+
+                String fileName = picture.getFilename();
+
+                if(path.isEmpty())
+                    path = "public/images/" + body.asFormUrlEncoded().get("uploadFor")[0] +
+                            UUID.randomUUID().toString() + fileName;
+
+                File file = picture.getFile();
+                FileUtils.move(file.getAbsolutePath(), path);
+                return ok(Json.parse("{\"path\":\"" + path.substring(6) + "\"}"));
+            } else {
+                return badRequest("Missing file");
+            }
         } catch (Exception ex) {
-            return badRequest("Neuspjesan upload");
+            return badRequest("Upload failed");
         }
 
     }

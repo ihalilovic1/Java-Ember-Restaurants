@@ -27,7 +27,15 @@
                         </div>
 
                         <div class="restaurant-input-box restaurant-logo-box">
-                            {{fa-icon class="fa fa-cloud-upload fa-3x center-self" aria-hidden="true"}}
+                             {{file-upload id="logo-upload-input" url="/api/v1/admin/uploadPhoto" uploadFor="logo" returnPath="setLogoPath"}}
+                            <label for="logo-upload-input">
+                                {{#if logoPath}}
+                                    <img src="{{logoPath}}" alt="restaurant logo">
+                                {{else}}
+                                    {{fa-icon class="fa fa-cloud-upload fa-3x center-self" aria-hidden="true"}}
+                                {{/if}}
+                                
+                            </label>
                         </div>
                     </div>
                     <div class="col-md-6 add-restaurant-section-title">
@@ -36,7 +44,14 @@
                         </div>
 
                         <div class="restaurant-input-box restaurant-cover-box">
-                            {{fa-icon class="fa fa-cloud-upload fa-3x center-self" aria-hidden="true"}}
+                            {{file-upload id="cover-upload-input" url="/api/v1/admin/uploadPhoto" uploadFor="cover" returnPath="setCoverPath"}}
+                            <label for="cover-upload-input">
+                                {{#if coverPath}}
+                                    <img src="{{coverPath}}" alt="restaurant cover">
+                                {{else}} 
+                                    {{fa-icon class="fa fa-cloud-upload fa-3x center-self" aria-hidden="true"}}
+                                {{/if}}
+                            </label>
                         </div>
                     </div>
                 </div>
