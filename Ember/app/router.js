@@ -15,10 +15,14 @@ Router.map(function() {
   this.route('admin', function() {
     this.route('restaurants', function() {
       this.route('addRestaurant');
+      this.route('edit-restaurant');
     });
     this.route('locations');
     this.route('categories');
-    this.route('users');
+    this.route('users', function() {
+      this.route('add-user');
+      this.route('edit-user');
+    });
   });
 });
 

@@ -7,7 +7,11 @@
                         <h1>{{model.counters.restaurantsNumber}}</h1>
                         <p>Restaurants</p>
                     </div>
-                    <button>Add Restaurant</button>
+                     {{#link-to 'admin.restaurants.addRestaurant'}}
+                    <button>
+                        Add restaurant
+                    </button>
+                    {{/link-to}}
                 </div>
                 
             </div>

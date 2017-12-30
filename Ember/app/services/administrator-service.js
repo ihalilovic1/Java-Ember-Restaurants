@@ -111,8 +111,24 @@ export default CustomAjax.extend({
         })
     },
 
-    uploadPhoto() {
-        
-    }
-
+    getFilteredUsers(itemsPerPage, pageNumber, searchText) {
+        return new Promise((resolve, reject) => {
+            this.post('/admin/getFilteredUsers', {
+                xhrFields: {
+                    withCredentials: true,
+                },
+                data: {
+                    itemsPerPage: itemsPerPage,
+                    pageNumber: pageNumber,
+                    searchText: searchText
+                }
+            }).then(data => {
+                resolve(data);
+            })
+                .catch(error => {
+                    reject(error);
+                })
+        })
+    },
+    
 });

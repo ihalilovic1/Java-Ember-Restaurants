@@ -1,23 +1,29 @@
-<div class="row">
-    <div class="col-1">
+<div class="row menu-item-container">
+    <div class="col-sm-1 menu-item-opacity">
         {{index}}.
     </div>
-    <div class="col-4">
-        {{input type="text" placeholder="Name" value=name}}
+    <div class="col-sm-4">
+        {{input class="menu-item-wide" type="text" placeholder="Name" value=name}}
     </div>
-    <div class="col-2">
+    <div class="col-sm-2">
         {{input type="number" placeholder="$ Price" value=price}}
     </div>
 
-    <div class="col-1">
-        {{fa-icon "trash" click=(action "deleteData")}}
+    <div class="col-sm-1">
+        <span>
+            {{fa-icon "trash" click=(action "deleteData")}}
+        </span>
+        
     </div>
+    
+    
+
 </div>
-<div class="row">
+<div class="row menu-item-container">
     <div class="col-1">
     </div>
 
     <div class="col-4">
-        {{input type="text" placeholder="Description" value=description}}
+        {{input class="menu-item-wide" type="text" placeholder="Description" value=description}}
     </div>
 </div>

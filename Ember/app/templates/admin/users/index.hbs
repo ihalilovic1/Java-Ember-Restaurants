@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>
+                        All users
+                    </th>
+
+                    <th class="admin-table-action">
+                        {{#link-to 'admin.users.add-user'}}
+                        <button>
+                            Add user
+                        </button>
+                        {{/link-to}}
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each model.filteredUsers.users as |user|}}
+                <tr>
+                    <td>
+                        {{user.firstName}} {{user.lastName}}
+                    </td>
+
+                    <td class="admin-table-action">
+                        {{fa-icon "pencil"}} {{fa-icon "trash"}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 pagination-container">
+            <ul class="pagination-list">
+                <li class="pagination-item">
+                    <button {{action "previousPage"}}>PREVIOUS</button>
+                </li>
+
+                {{#each (loop model.filteredUsers.numberOfPages) as |page index|}}
+                <li class="pagination-item">
+                    <button class="{{if (equals-helper pageNumber (adition-helper index 1)) " selected " " "}}" {{action "updatePage" index}}>{{adition-helper index 1}}</button>
+                </li>
+                {{/each}}
+
+                <li class="pagination-item">
+                    <button {{action "nextPage"}}>NEXT</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

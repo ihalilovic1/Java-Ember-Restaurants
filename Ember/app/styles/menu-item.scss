@@ -1,0 +1,20 @@
+
+.menu-item-opacity {
+    opacity: 0.4;
+    font-weight: 600;
+}
+
+.menu-item-container > div  {
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.menu-item-container > div > input {
+    border-radius: 3px;
+    background-color: #ffffff;
+    border: solid 1px #e6e8eb;
+}
+
+.menu-item-wide {
+    width: 100%;
+}

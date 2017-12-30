@@ -81,7 +81,7 @@
                             Location
                         </div>
                         <div class="restaurant-input-box">
-                            <select class="form-control" onchange={{action "selectLocation" value="target.value"}}>
+                            <select class="form-control select-restaurant-location" onchange={{action "selectLocation" value="target.value"}}>
                                 {{#each model.locations as |location|}}
                                     <option value="{{location.id}}">{{location.city}}</option>
                                 {{/each}}
@@ -122,18 +122,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <input value="Breakfast" type="radio" checked=true name="mealType" id="breakfastmeal">
+                        <input class="select-menu-type" value="Breakfast" type="radio" checked=true name="mealType" id="breakfastmeal">
                         <label for="breakfastmeal">Breakfast</label>
                         
-                        <input value="Lunch" type="radio" name="mealType" id="lunchmeal">
+                        <input class="select-menu-type" value="Lunch" type="radio" name="mealType" id="lunchmeal">
                         <label for="lunchmeal">Lunch</label>
                         
-                        <input type="radio" value="Dinner" name="mealType" id="dinnermeal">
+                        <input class="select-menu-type" type="radio" value="Dinner" name="mealType" id="dinnermeal">
                         <label for="dinnermeal">Dinner</label>
 
                     </div>
                     <div class="col-6">
-                        <button {{action "newMenuItem"}}>Add new item</button>
+                        <button class="add-restaurant-add-item" {{action "newMenuItem"}}>Add new item</button>
                     </div>
                 </div>
                 {{#each (loop numberOfNewMenuItems) as |item index|}}
@@ -163,22 +163,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <div class="add-restaurant-section-title">
+                        <div class="add-restaurant-section-title add-restaurant-tables-title">
                             Tables
                         </div>
                     </div>
                     <div class="col-6">
-                        <button {{action "newTableItem"}}>Add new item</button>
+                        <button class="add-restaurant-add-item" {{action "newTableItem"}}>Add new item</button>
                     </div>
                 </div>
 
-                <div class="row">
+                
                     {{#each (loop numberOfNewTableItems) as |item index|}}
                         {{table-item index=(adition-helper index 1) dataUpdate="editTableItem"}}
 
                     {{/each}}
 
-                </div>
+                
                 <div class="row">
                     <div class="col-md-6">
                 
