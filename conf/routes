@@ -46,6 +46,8 @@ GET /api/v1/admin/getAdministrationCounters           controllers.AdministratorC
 POST /api/v1/admin/uploadPhoto                        controllers.AdministratorController.uploadPhoto
 
 #Locatons
+POST /api/v1/admin/getFilteredLocations               controllers.AdministratorController.getFilteredLocations
+
 POST /api/v1/admin/addCountry                         controllers.AdministratorController.addCountry
 
 POST /api/v1/admin/addCity                            controllers.AdministratorController.addCity

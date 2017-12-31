@@ -17,7 +17,9 @@ Router.map(function() {
       this.route('addRestaurant');
       this.route('edit-restaurant');
     });
-    this.route('locations');
+    this.route('locations', function() {
+      this.route('addLocation');
+    });
     this.route('categories');
     this.route('users', function() {
       this.route('add-user');

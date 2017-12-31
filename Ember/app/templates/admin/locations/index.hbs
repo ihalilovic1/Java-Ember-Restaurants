@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>
+                        All locations
+                    </th>
+
+                    <th class="admin-table-action">
+                        {{#link-to 'admin.locations.addLocation'}}
+                        <button>
+                            Add location
+                        </button>
+                        {{/link-to}}
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each model.filteredLocations.cities as |location|}}
+                <tr>
+                    <td>
+                        {{location.name}}
+                    </td>
+
+                    <td class="admin-table-action">
+                        {{fa-icon "pencil"}} {{fa-icon "trash"}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 pagination-container">
+            <ul class="pagination-list">
+                <li class="pagination-item">
+                    <button {{action "previousPage"}}>PREVIOUS</button>
+                </li>
+
+                {{#each (loop model.filteredLocations.numberOfPages) as |page index|}}
+                <li class="pagination-item">
+                    <button class="{{if (equals-helper pageNumber (adition-helper index 1)) " selected " " "}}" {{action "updatePage" index}}>{{adition-helper index 1}}</button>
+                </li>
+                {{/each}}
+
+                <li class="pagination-item">
+                    <button {{action "nextPage"}}>NEXT</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

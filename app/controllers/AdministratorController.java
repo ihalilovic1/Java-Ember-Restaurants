@@ -417,4 +417,21 @@ public class AdministratorController extends AbstractController {
             return badRequest(ex.getLocalizedMessage());
         }
     }
+
+    @Transactional
+    public Result getFilteredLocations() {
+        if(!isAdmin())
+            return badRequest("Access denied");
+        try {
+            Form<PaginationForm> form = formFactory.form(PaginationForm.class);
+            PaginationForm paginationForm = form.bindFromRequest().get();
+
+            return ok(Json.toJson(administratorService.getFilteredLocations(
+                    paginationForm.getItemsPerPage(),
+                    paginationForm.getPageNumber(),
+                    paginationForm.getSearchText())));
+        } catch (Exception ex) {
+            return badRequest(ex.getLocalizedMessage());
+        }
+    }
 }

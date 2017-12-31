@@ -484,4 +484,37 @@ public class AdministratorService extends AbstractService {
 
         entityManager.flush();
     }
+
+    public LocationsPagination getFilteredLocations(Integer itemsPerPage, Integer pageNumber, String searchText) {
+        EntityManager entityManager = getEntityManager();
+
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+
+        CriteriaQuery<City> criteria = criteriaBuilder.createQuery(City.class);
+
+        Root<City> cityRoot = criteria.from(City.class);
+
+        criteria.select(cityRoot);
+
+        criteria.where(criteriaBuilder.like(criteriaBuilder.lower(cityRoot.get("name")), '%' + searchText.toLowerCase() + '%'));
+
+        List<City> cities = entityManager.createQuery(criteria)
+                .setFirstResult((pageNumber - 1) * itemsPerPage)
+                .setMaxResults(itemsPerPage)
+                .getResultList();
+
+        CriteriaQuery<Long> locationsCount = criteriaBuilder.createQuery(Long.class);
+
+        cityRoot = locationsCount.from(City.class);
+
+        locationsCount.select(criteriaBuilder.count(cityRoot));
+        locationsCount.where(criteriaBuilder.like(criteriaBuilder.lower(cityRoot.get("name")), '%' + searchText.toLowerCase() + '%'));
+
+        Long count = entityManager.createQuery(locationsCount).getSingleResult();
+
+        if(count != 0 && itemsPerPage != 1)
+            count = count / itemsPerPage + 1;
+
+        return new LocationsPagination(cities, count);
+    }
 }

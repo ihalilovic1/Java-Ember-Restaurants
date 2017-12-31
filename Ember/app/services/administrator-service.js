@@ -130,5 +130,25 @@ export default CustomAjax.extend({
                 })
         })
     },
+
+    getFilteredLocations(itemsPerPage, pageNumber, searchText) {
+        return new Promise((resolve, reject) => {
+            this.post('/admin/getFilteredLocations', {
+                xhrFields: {
+                    withCredentials: true,
+                },
+                data: {
+                    itemsPerPage: itemsPerPage,
+                    pageNumber: pageNumber,
+                    searchText: searchText
+                }
+            }).then(data => {
+                resolve(data);
+            })
+                .catch(error => {
+                    reject(error);
+                })
+        })
+    },
     
 });
