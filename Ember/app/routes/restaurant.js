@@ -102,6 +102,7 @@ export default Ember.Route.extend({
         return RSVP.hash({
             restaurant:     this.get('restaurantService').getRestaurantDetails(params.restaurant_id)
                                 .then(data => {
+                                    console.log(data);
                                     return data;
                                 })              
                                 .catch(error => {

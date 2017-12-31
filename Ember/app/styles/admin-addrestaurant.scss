@@ -157,3 +157,16 @@
     
     margin: 30px 7px;
 }
+
+.add-restaurant-category {
+    padding-bottom: 40px;
+    margin-bottom: 10px;
+}
+
+.add-restaurant-category > .restaurant-input-box {
+    height: 100%;
+}
+
+.add-restaurant-category > .restaurant-input-box > select {
+    height: 100%;
+}

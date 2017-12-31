@@ -64,7 +64,7 @@
                             {{input class="restaurant-name-input" type="text" value=restaurantName}}
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 add-restaurant-category">
                         <div class="add-restaurant-section-title">
                             Category
                         </div>
@@ -78,17 +78,32 @@
                     </div>
                     <div class="col-md-3">
                         <div class="add-restaurant-section-title">
+                            Price range
+                        </div>
+                        <div class="restaurant-input-box">
+                            <select class="form-control select-restaurant-location" onchange={{action "selectPriceRange" value="target.value"}}>
+                                
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="add-restaurant-section-title">
                             Location
                         </div>
                         <div class="restaurant-input-box">
-                            <select class="form-control select-restaurant-location" onchange={{action "selectLocation" value="target.value"}}>
+                            <select class="form-control select-restaurant-location" onchange={{action "selectLocation" value="target.value" }}>
+                                <option value="" disabled selected>Select location</option>
                                 {{#each model.locations as |location|}}
-                                    <option value="{{location.id}}">{{location.city}}</option>
+                                <option value="{{location.id}}">{{location.city}}</option>
                                 {{/each}}
                             </select>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-6">
                         <div class="add-restaurant-section-title">
@@ -98,7 +113,7 @@
                         
                     </div>
                     <div class="col-md-6">
-
+                        {{google-maps isAdmin=true marker=marker}}
                     </div>
                 </div>
 

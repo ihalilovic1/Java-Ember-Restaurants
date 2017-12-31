@@ -3,6 +3,17 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     selectedCategories: [],
     selectedLocation: '',
+    selectedLocationObject: Ember.computed('selectedLocation', function(){
+        let locations = this.get('model').locations;
+        let selectedId = this.get('selectedLocation');
+        for(let loc in locations) {
+            if(loc.id == selectedId) {
+                return loc;
+            }
+                
+        }
+        return locations[0];
+    }),
     isBreakfast: false,
     isLunch: false,
     isDinner: false,
@@ -12,8 +23,16 @@ export default Ember.Controller.extend({
     newTableItems: [],
     logoPath: null,
     coverPath: null,
+    priceRange: 1,
+    latitude: 43.84864,
+    longitude: 18.35644,
+    marker: new google.maps.Marker({
+        position: { lat: 43.84864, lng: 18.35644 },
+        draggable: true
+    }),
 
     actions: {
+
         setLogoPath(path) {
             this.set('logoPath', path);
         },
@@ -39,6 +58,10 @@ export default Ember.Controller.extend({
             }
 
             this.set('selectedCategories', opts);
+        },
+
+        selectPriceRange(range) {
+            this.set('priceRange', range);
         },
 
         newMenuItem() {
